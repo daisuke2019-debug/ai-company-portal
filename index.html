@@ -382,7 +382,7 @@
 <div class="nav-tabs-container">
   <div class="nav-tabs">
     <button class="tab-btn active" onclick="switchTab('dashboard', this)"><i class="fa-solid fa-chart-pie"></i> 📊 AI Company ダッシュボード</button>
-    <button class="tab-btn" onclick="switchTab('detail-format', this)"><i class="fa-solid fa-file-pen"></i> 📝 詳細現場報告フォーマット（新）</button>
+    <button class="tab-btn" onclick="switchTab('detail-format', this)"><i class="fa-solid fa-file-pen"></i> 📝 項目別 現場報告フォーマット</button>
     <button class="tab-btn" onclick="switchTab('srp-guide', this)"><i class="fa-solid fa-clipboard-check"></i> 📱 DCM SRP 現場ガイド</button>
     <button class="tab-btn" onclick="switchTab('contest-templates', this)"><i class="fa-solid fa-trophy"></i> 🏆 コンテスト ＆ FFF8コピペ</button>
     <button class="tab-btn" onclick="switchTab('agency-table', this)"><i class="fa-solid fa-building"></i> 🏢 代理店別 早見表</button>
@@ -456,26 +456,24 @@
 
       <div class="card">
         <div class="card-title" style="color: var(--brand-indigo);"><i class="fa-solid fa-bullhorn"></i> ボーダー現場チーム要請・連絡事項</div>
-        <div style="background: var(--bg-main); padding: 14px; border-radius: var(--radius-md); font-size: 0.88rem; margin-bottom: 10px;">
-          <b>📌 新・詳細現場報告フォーマット設置のお知らせ:</b><br>
-          背景や5W1Hが伝わる詳細記入サンプル付きフォーマットを更新しました。「詳細現場報告フォーマット」タブよりコピペしてご活用ください。
+        <div style="background: var(--bg-main); padding: 14px; border-radius: var(--radius-md); font-size: 0.88rem;">
+          <b>📌 項目別コピペ対応のお知らせ:</b><br>
+          「自社」「他社」「トレーニング」「フリーエリア」の各セクションごとに、個別でワンクリックコピーできるようボタンを設置いたしました。必要な項目だけ選んでコピー可能です。
         </div>
       </div>
     </div>
   </div>
 
-  <!-- TAB 2: 詳細現場報告フォーマット（新） -->
+  <!-- TAB 2: 項目別 現場報告フォーマット -->
   <div id="detail-format" class="tab-content">
+    
+    <!-- 全体一括コピー -->
     <div class="card" style="border-top: 4px solid var(--brand-indigo);">
       <div class="card-title" style="color: var(--brand-indigo); justify-content: space-between;">
-        <span><i class="fa-solid fa-file-signature"></i> 📝 現場巡回・店舗詳細報告フォーマット（定型入力用）</span>
-        <button class="btn-copy" onclick="copyText('txt-detail-full', this)"><i class="fa-regular fa-copy"></i> フルフォーマットを一括コピー</button>
+        <span><i class="fa-solid fa-cubes"></i> 📱 全セクション一括 コピー枠</span>
+        <button class="btn-copy" onclick="copyText('txt-detail-full', this)"><i class="fa-regular fa-copy"></i> 全項目を一括コピー</button>
       </div>
-
       <div class="copy-box">
-        <div class="copy-header">
-          <span class="pill pill-purple"><i class="fa-solid fa-wand-magic-sparkles"></i> 報告用コピーテンプレート (定型入力用)</span>
-        </div>
         <div class="copy-text" id="txt-detail-full">【自社】
 ・対象端末：FFF8シリーズ、S26シリーズ、A57 5G
 ・現場状況・主な客層：
@@ -526,10 +524,95 @@ Google（Pixel 11シリーズ ／ 10a）
       </div>
     </div>
 
-    <!-- 記入サンプル (背景・5W1Hを明確にした実例) -->
+    <!-- 項目別 個別コピーカード -->
+    <div style="margin-bottom: 20px; font-weight: 800; font-size: 1.1rem;">
+      <i class="fa-solid fa-list-check" style="color: var(--brand-blue);"></i> 項目別 個別コピペカード（必要な項目だけ選んでコピー）
+    </div>
+
+    <div class="grid-2">
+      <!-- 1. 【自社】 -->
+      <div class="card" style="border-top: 4px solid var(--brand-blue);">
+        <div class="card-title" style="color: var(--brand-blue); justify-content: space-between;">
+          <span><i class="fa-solid fa-mobile"></i> 1. 【自社】報告フォーマット</span>
+          <button class="btn-copy" onclick="copyText('txt-sec-jisya', this)"><i class="fa-regular fa-copy"></i> 【自社】をコピー</button>
+        </div>
+        <div class="copy-box">
+          <div class="copy-text" id="txt-sec-jisya">【自社】
+・対象端末：FFF8シリーズ、S26シリーズ、A57 5G
+・現場状況・主な客層：
+・在庫ステータス（カラー/容量欠品等）：［ 潤沢 ／ 一部欠品 ／ 欠品多数 ］
+
+【店舗個別課題と改善策】
+・店頭での課題（案内不足・他社比較での弱み等）：
+・改善策／アクション：
+
+【購入者インタビュー（Hip Share獲得事例）】※該当時のみ
+・対応スタッフ名：（ FSM ／ Ambassador ）
+・前利用端末：
+・予約／購入端末：
+・購入の決め手・動機：</div>
+        </div>
+      </div>
+
+      <!-- 2. 【他社】 -->
+      <div class="card" style="border-top: 4px solid #EA580C;">
+        <div class="card-title" style="color: #EA580C; justify-content: space-between;">
+          <span><i class="fa-solid fa-store"></i> 2. 【他社】報告フォーマット</span>
+          <button class="btn-copy" onclick="copyText('txt-sec-tasha', this)"><i class="fa-regular fa-copy"></i> 【他社】をコピー</button>
+        </div>
+        <div class="copy-box">
+          <div class="copy-text" id="txt-sec-tasha">【他社動向】
+Apple（iPhone 18、17シリーズ）
+・店頭での動き・お客様の反応：
+・17シリーズ在庫状況：［ 潤沢 ／ 品薄 ／ 欠品 ］
+
+Google（Pixel 11シリーズ ／ 10a）
+・店頭での動き・お客様の反応：
+・現場での勢いやフック（キャンペーン・施策等）：
+・Pixel 10a 在庫状況：［ 潤沢 ／ 品薄 ／ 欠品 ］
+
+その他メーカー(　　　　　) ※該当時のみ
+・店頭での動き・お客様の反応：
+・現場での勢いやフック：</div>
+        </div>
+      </div>
+
+      <!-- 3. 【トレーニング実施報告】 -->
+      <div class="card" style="border-top: 4px solid var(--success-text);">
+        <div class="card-title" style="color: var(--success-text); justify-content: space-between;">
+          <span><i class="fa-solid fa-graduation-cap"></i> 3. 【トレーニング実施報告】</span>
+          <button class="btn-copy" onclick="copyText('txt-sec-tr', this)"><i class="fa-regular fa-copy"></i> 【トレーニング】をコピー</button>
+        </div>
+        <div class="copy-box">
+          <div class="copy-text" id="txt-sec-tr">【トレーニング実施報告】
+・利用資料：
+・実施形式：［ 対面TR ／ 集合型 ］
+・トレーニング内容：
+・受講FSMの反応・現場の声（FSM VOC）：</div>
+        </div>
+      </div>
+
+      <!-- 4. 【フリーエリア】 -->
+      <div class="card" style="border-top: 4px solid var(--purple-main);">
+        <div class="card-title" style="color: var(--purple-main); justify-content: space-between;">
+          <span><i class="fa-solid fa-pen-to-square"></i> 4. 【フリーエリア】フォーマット</span>
+          <button class="btn-copy" onclick="copyText('txt-sec-free', this)"><i class="fa-regular fa-copy"></i> 【フリーエリア】をコピー</button>
+        </div>
+        <div class="copy-box">
+          <div class="copy-text" id="txt-sec-free">【フリーエリア（Ambassador・コンテスト・共有事項）】※該当時のみ
+・新S+ログイン状況：［ 完了 ／ 不可 ］
+・ログインできなかった理由：
+・Ambassador活動状況（1期生・2期生進捗/不満・不明点等）：
+・Watch販売コンテスト状況（盛り上がり・進捗）：
+・その他共有事項：</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 記入サンプル -->
     <div class="card" style="border-top: 4px solid var(--success-text);">
       <div class="card-title" style="color: var(--success-text); justify-content: space-between;">
-        <span><i class="fa-solid fa-circle-info"></i> 💡 報告記入サンプル（背景・経緯が明確な実例）</span>
+        <span><i class="fa-solid fa-circle-info"></i> 💡 記入サンプル文（全体の参考に）</span>
         <button class="btn-copy" onclick="copyText('txt-detail-sample', this)"><i class="fa-regular fa-copy"></i> サンプル文をコピー</button>
       </div>
 
