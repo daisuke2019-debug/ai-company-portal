@@ -62,9 +62,6 @@
     transition: background-color 0.3s, color 0.3s;
   }
 
-  /* -------------------------------------------------------------
-     Header & Nav
-  ------------------------------------------------------------- */
   header {
     background: var(--brand-gradient);
     color: white;
@@ -132,9 +129,6 @@
     transform: translateY(-2px);
   }
 
-  /* -------------------------------------------------------------
-     Navigation Tabs
-  ------------------------------------------------------------- */
   .nav-tabs-container {
     max-width: 1280px;
     margin: -30px auto 24px;
@@ -156,13 +150,13 @@
 
   .tab-btn {
     flex: 1;
-    padding: 12px 20px;
+    padding: 12px 18px;
     border: none;
     border-radius: var(--radius-full);
     background: transparent;
     color: var(--text-muted);
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -178,9 +172,6 @@
     box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
   }
 
-  /* -------------------------------------------------------------
-     Main Container & Layout
-  ------------------------------------------------------------- */
   .container {
     max-width: 1280px;
     margin: 0 auto;
@@ -190,9 +181,6 @@
   .tab-content { display: none; }
   .tab-content.active { display: block; }
 
-  /* -------------------------------------------------------------
-     Dashboard KPI Cards
-  ------------------------------------------------------------- */
   .kpi-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -238,9 +226,6 @@
     border-radius: var(--radius-full);
   }
 
-  /* -------------------------------------------------------------
-     Cards & Tables
-  ------------------------------------------------------------- */
   .card {
     background: var(--bg-card);
     border-radius: var(--radius-lg);
@@ -271,7 +256,6 @@
     gap: 20px;
   }
 
-  /* Copy Format Styles */
   .copy-box {
     background: var(--bg-main);
     border: 1px solid var(--border-color);
@@ -288,27 +272,29 @@
   }
 
   .copy-text {
-    font-family: monospace;
+    font-family: 'Consolas', 'Courier New', monospace;
     font-size: 0.82rem;
     background: var(--bg-card);
-    padding: 10px;
+    padding: 12px;
     border-radius: 8px;
     border: 1px solid var(--border-color);
     word-break: break-all;
+    white-space: pre-wrap;
+    line-height: 1.5;
   }
 
   .btn-copy {
     background: var(--brand-blue);
     color: white;
     border: none;
-    padding: 5px 12px;
+    padding: 6px 14px;
     border-radius: var(--radius-full);
     font-size: 0.78rem;
     font-weight: 700;
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
     transition: all 0.2s;
   }
 
@@ -330,7 +316,6 @@
   .pill-warn { background: var(--warn-bg); color: var(--warn-text); }
   .pill-purple { background: var(--purple-bg); color: var(--purple-text); }
 
-  /* Table Styles */
   .search-input {
     width: 100%;
     padding: 14px 20px;
@@ -382,7 +367,7 @@
       <div class="brand-icon"><i class="fa-solid fa-rocket"></i></div>
       <div>
         <h1>AI Company 統合ポータル</h1>
-        <div class="tagline">9月 DCM SRP施策 / 販売コンテスト / ボーダー連携ダッシュボード</div>
+        <div class="tagline">9月 DCM SRP施策 / 販売コンテスト / 詳細現場報告フォーマット</div>
       </div>
     </div>
 
@@ -397,9 +382,10 @@
 <div class="nav-tabs-container">
   <div class="nav-tabs">
     <button class="tab-btn active" onclick="switchTab('dashboard', this)"><i class="fa-solid fa-chart-pie"></i> 📊 AI Company ダッシュボード</button>
-    <button class="tab-btn" onclick="switchTab('srp-guide', this)"><i class="fa-solid fa-clipboard-check"></i> 📱 DCM SRP施策 現場ガイド</button>
+    <button class="tab-btn" onclick="switchTab('detail-format', this)"><i class="fa-solid fa-file-pen"></i> 📝 詳細現場報告フォーマット（新）</button>
+    <button class="tab-btn" onclick="switchTab('srp-guide', this)"><i class="fa-solid fa-clipboard-check"></i> 📱 DCM SRP 現場ガイド</button>
     <button class="tab-btn" onclick="switchTab('contest-templates', this)"><i class="fa-solid fa-trophy"></i> 🏆 コンテスト ＆ FFF8コピペ</button>
-    <button class="tab-btn" onclick="switchTab('agency-table', this)"><i class="fa-solid fa-building"></i> 🏢 代理店別 早見表 (全21社)</button>
+    <button class="tab-btn" onclick="switchTab('agency-table', this)"><i class="fa-solid fa-building"></i> 🏢 代理店別 早見表</button>
   </div>
 </div>
 
@@ -407,8 +393,6 @@
 
   <!-- TAB 1: AI Company ダッシュボード -->
   <div id="dashboard" class="tab-content active">
-    
-    <!-- KPI Summary -->
     <div class="kpi-grid">
       <div class="kpi-card">
         <div class="kpi-icon" style="background: rgba(37,99,235,0.15); color: #2563EB;"><i class="fa-solid fa-building-user"></i></div>
@@ -447,7 +431,6 @@
       </div>
     </div>
 
-    <!-- ダッシュボード内インサイト & アクション -->
     <div class="grid-2">
       <div class="card">
         <div class="card-title" style="color: var(--brand-blue);"><i class="fa-solid fa-chart-line"></i> AI Company 施策推進ステータス</div>
@@ -474,18 +457,135 @@
       <div class="card">
         <div class="card-title" style="color: var(--brand-indigo);"><i class="fa-solid fa-bullhorn"></i> ボーダー現場チーム要請・連絡事項</div>
         <div style="background: var(--bg-main); padding: 14px; border-radius: var(--radius-md); font-size: 0.88rem; margin-bottom: 10px;">
-          <b>📌 報告コメント作成時の鉄則:</b><br>
-          スプレッドシートへの報告入力時は、下の「コピペ用フォーマット」タブから定型テキストをコピーしてご記入ください。入力ブレを防止できます。
-        </div>
-        <div style="background: var(--bg-main); padding: 14px; border-radius: var(--radius-md); font-size: 0.88rem;">
-          <b>⚠️ 追加12店舗（言及待ち店舗）の注意:</b><br>
-          日本電子、古荘本店等12店舗はこちらから話を切り出さず、話題が出なかった場合は「ヒアリング不可」＋「FSMの言及なし」とご記入ください。
+          <b>📌 新・詳細現場報告フォーマット設置のお知らせ:</b><br>
+          自社/他社動向・購入者インタビュー・TR実施報告・Ambassador状況をまとめた詳細フォーマットを追加しました。「詳細現場報告フォーマット」タブよりコピペしてご活用ください。
         </div>
       </div>
     </div>
   </div>
 
-  <!-- TAB 2: DCM SRP施策 現場ガイド -->
+  <!-- TAB 2: 詳細現場報告フォーマット（新） -->
+  <div id="detail-format" class="tab-content">
+    <div class="card" style="border-top: 4px solid var(--brand-indigo);">
+      <div class="card-title" style="color: var(--brand-indigo); justify-content: space-between;">
+        <span><i class="fa-solid fa-file-signature"></i> 📝 現場巡回・店舗詳細報告フォーマット（ワンクリックコピー対応）</span>
+        <button class="btn-copy" onclick="copyText('txt-detail-full', this)"><i class="fa-regular fa-copy"></i> フルフォーマットを一括コピー</button>
+      </div>
+
+      <div class="copy-box">
+        <div class="copy-header">
+          <span class="pill pill-purple"><i class="fa-solid fa-wand-magic-sparkles"></i> 報告用コピーテンプレート (定型入力用)</span>
+        </div>
+        <div class="copy-text" id="txt-detail-full">【自社】
+・対象端末：FFF8シリーズ、S26シリーズ、A57 5G
+・現場状況・主な客層：
+・在庫ステータス（カラー/容量欠品等）：［ 🟢 潤沢 ／ 🟡 一部欠品 ／ 🔴 欠品多数 ］
+
+【店舗個別課題と改善策】
+・店頭での課題（案内不足・他社比較での弱み等）：
+・改善策／アクション：
+
+【購入者インタビュー（Hip Share獲得事例）】※該当時のみ
+・対応スタッフ名：（ FSM ／ Ambassador ）
+・前利用端末：
+・予約／購入端末：
+・購入の決め手・動機：
+
+------------------------------------------------
+
+【他社動向】
+Apple（iPhone 18、17シリーズ）
+・店頭での動き・お客様の反応：
+・17シリーズ在庫状況：［ 🟢 潤沢 ／ 🟡 品薄 ／ 🔴 欠品 ］
+
+Google（Pixel 11シリーズ ／ 10a）
+・店頭での動き・お客様の反応：
+・現場での勢いやフック（キャンペーン・施策等）：
+・Pixel 10a 在庫状況：［ 🟢 潤沢 ／ 🟡 品薄 ／ 🔴 欠品 ］
+
+その他メーカー(　　　　　) ※該当時のみ
+・店頭での動き・お客様の反応：
+・現場での勢いやフック：
+
+------------------------------------------------
+
+【トレーニング実施報告】
+・利用資料：
+・実施形式：［ 対面TR ／ 集合型 ］
+・トレーニング内容：
+・受講FSMの反応・現場の声（FSM VOC）：
+
+------------------------------------------------
+
+【フリーエリア（Ambassador・コンテスト・共有事項）】※該当時のみ
+・新S+ログイン状況：［ 🟢 完了 ／ 🔴 不可 ］
+・ログインできなかった理由：
+・Ambassador活動状況（1期生・2期生進捗/不満・不明点等）：
+・Watch販売コンテスト状況（盛り上がり・進捗）：
+・その他共有事項：</div>
+      </div>
+    </div>
+
+    <!-- 記入サンプル (ブラッシュアップ実例) -->
+    <div class="card" style="border-top: 4px solid var(--success-text);">
+      <div class="card-title" style="color: var(--success-text); justify-content: space-between;">
+        <span><i class="fa-solid fa-circle-info"></i> 💡 報告記入サンプル（ブラッシュアップ記入例）</span>
+        <button class="btn-copy" onclick="copyText('txt-detail-sample', this)"><i class="fa-regular fa-copy"></i> サンプル文をコピー</button>
+      </div>
+
+      <div class="copy-box">
+        <div class="copy-text" id="txt-detail-sample">【自社】
+・対象端末：FFF8シリーズ、S26シリーズ、A57 5G
+・現場状況・主な客層：20代〜40代のガジェット関心層および機種変更層が中心。FFF8の折りたたみ実機への関心が高い。
+・在庫ステータス（カラー/容量欠品等）：［ 🟡 一部欠品 ］(FFF8 256GB ブラック欠品中、次回9/8入荷予定)
+
+【店舗個別課題と改善策】
+・店頭での課題（案内不足・他社比較での弱み等）：新規スタッフのFFF8開閉耐久性・カメラ訴求トークが不足しており他社iPhoneに流れるケースあり。
+・改善策／アクション：店長・副店長へ案内用リーフレットを再提示し、朝礼での1分ロープレ実施を提案。
+
+【購入者インタビュー（Hip Share獲得事例）】※該当時のみ
+・対応スタッフ名：FSM 山田
+・前利用端末：iPhone 13 (2年利用)
+・予約／購入端末：Galaxy FFF8 256GB
+・購入の決め手・動機：大画面での動画視聴と、下取り・還元施策の魅力で乗り換えを決定。
+
+------------------------------------------------
+
+【他社動向】
+Apple（iPhone 18、17シリーズ）
+・店頭での動き・お客様の反応：17シリーズの値下がり・価格訴求で指名買いが多い。
+・17シリーズ在庫状況：［ 🟢 潤沢 ］
+
+Google（Pixel 11シリーズ ／ 10a）
+・店頭での動き・お客様の反応：10aの施策（実質1円訴求）に若年層が反応。
+・現場での勢いやフック（キャンペーン・施策等）：他社乗換時のポイント還元POPが目立つ位置に展開。
+・Pixel 10a 在庫状況：［ 🟢 潤沢 ］
+
+その他メーカー(Xiaomi)
+・店頭での動き・お客様の反応：急速充電とコスパ重視のお客様がスペック確認。
+・現場での勢いやフック：単体値引きキャンペーンを展開中。
+
+------------------------------------------------
+
+【トレーニング実施報告】
+・利用資料：9月度SRP施策＆FFF8販売トークガイド
+・実施形式：［ 対面TR ］
+・トレーニング内容：FFF8の競合比較トークと下取り還元訴求の実践レクチャー。
+・受講FSMの反応・現場の声（FSM VOC）：「下取りを絡めた提案方法が明確になり接客しやすくなった」と高評価。
+
+------------------------------------------------
+
+【フリーエリア（Ambassador・コンテスト・共有事項）】
+・新S+ログイン状況：［ 🟢 完了 ］(店舗スタッフ全員ログイン完了)
+・ログインできなかった理由：なし
+・Ambassador活動状況：2期生が主導となり専用POPの装飾を実施。意欲高く活動中。
+・Watch販売コンテスト状況：目標20台に対し現在12台達成。店舗ランキング上位を狙いスタッフ間での声掛けが活発。
+・その他共有事項：週末の体験イベント用に販促ノベルティの追加送付を希望。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 3: DCM SRP施策 現場ガイド -->
   <div id="srp-guide" class="tab-content">
     <div class="card" style="border-left: 5px solid var(--danger-text);">
       <div class="card-title" style="color: var(--danger-text);"><i class="fa-solid fa-triangle-exclamation"></i> 🚨 現場で「絶対やってはいけない」3大ルール</div>
@@ -505,7 +605,6 @@
       </div>
     </div>
 
-    <!-- SRP コピペ -->
     <div class="card">
       <div class="card-title" style="color: var(--brand-blue);"><i class="fa-solid fa-copy"></i> SRP施策（メーカー施策）用 コピペテンプレート</div>
       <div class="grid-2">
@@ -528,10 +627,9 @@
     </div>
   </div>
 
-  <!-- TAB 3: コンテスト ＆ FFF8コピペ -->
+  <!-- TAB 4: コンテスト ＆ FFF8コピペ -->
   <div id="contest-templates" class="tab-content">
     <div class="grid-2">
-      <!-- コンテスト -->
       <div class="card" style="border-top: 4px solid var(--brand-blue);">
         <div class="card-title" style="color: var(--brand-blue);"><i class="fa-solid fa-trophy"></i> 販売コンテスト用 コピペテンプレート</div>
         <div class="copy-box">
@@ -543,7 +641,6 @@
         </div>
       </div>
 
-      <!-- FFF8還元 -->
       <div class="card" style="border-top: 4px solid var(--purple-text);">
         <div class="card-title" style="color: var(--purple-text);"><i class="fa-solid fa-mobile-screen"></i> FFF8インセンティブ還元用 コピペテンプレート</div>
         <div class="copy-box">
@@ -557,7 +654,7 @@
     </div>
   </div>
 
-  <!-- TAB 4: 代理店別 早見表 -->
+  <!-- TAB 5: 代理店別 早見表 -->
   <div id="agency-table" class="tab-content">
     <div class="card">
       <div class="card-title"><i class="fa-solid fa-building"></i> 全21代理店 ヒアリング対象者＆注意事項早見表</div>
