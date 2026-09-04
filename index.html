@@ -181,6 +181,9 @@
   .tab-content { display: none; }
   .tab-content.active { display: block; }
 
+  /* -------------------------------------------------------------
+     KPI Card (Clickable Navigation)
+  ------------------------------------------------------------- */
   .kpi-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -197,6 +200,33 @@
     display: flex;
     align-items: center;
     gap: 16px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    user-select: none;
+  }
+
+  .kpi-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--brand-blue);
+  }
+
+  .kpi-card::after {
+    content: '➔';
+    position: absolute;
+    right: 14px;
+    top: 14px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .kpi-card:hover::after {
+    opacity: 1;
+    transform: translateX(2px);
+    color: var(--brand-blue);
   }
 
   .kpi-icon {
@@ -207,6 +237,7 @@
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
+    flex-shrink: 0;
   }
 
   .kpi-val { font-size: 1.8rem; font-weight: 900; line-height: 1.1; }
@@ -381,11 +412,11 @@
 <!-- Navigation Tabs -->
 <div class="nav-tabs-container">
   <div class="nav-tabs">
-    <button class="tab-btn active" onclick="switchTab('dashboard', this)"><i class="fa-solid fa-chart-pie"></i> 📊 AI Company ダッシュボード</button>
-    <button class="tab-btn" onclick="switchTab('detail-format', this)"><i class="fa-solid fa-file-pen"></i> 📝 項目別 現場報告フォーマット</button>
-    <button class="tab-btn" onclick="switchTab('srp-guide', this)"><i class="fa-solid fa-clipboard-check"></i> 📱 DCM SRP 現場ガイド</button>
-    <button class="tab-btn" onclick="switchTab('contest-templates', this)"><i class="fa-solid fa-trophy"></i> 🏆 コンテスト ＆ FFF8コピペ</button>
-    <button class="tab-btn" onclick="switchTab('agency-table', this)"><i class="fa-solid fa-building"></i> 🏢 代理店別 早見表</button>
+    <button class="tab-btn active" id="tab-btn-dashboard" onclick="switchTab('dashboard', this)"><i class="fa-solid fa-chart-pie"></i> 📊 AI Company ダッシュボード</button>
+    <button class="tab-btn" id="tab-btn-detail-format" onclick="switchTab('detail-format', this)"><i class="fa-solid fa-file-pen"></i> 📝 項目別 現場報告フォーマット</button>
+    <button class="tab-btn" id="tab-btn-srp-guide" onclick="switchTab('srp-guide', this)"><i class="fa-solid fa-clipboard-check"></i> 📱 DCM SRP 現場ガイド</button>
+    <button class="tab-btn" id="tab-btn-contest-templates" onclick="switchTab('contest-templates', this)"><i class="fa-solid fa-trophy"></i> 🏆 コンテスト ＆ FFF8コピペ</button>
+    <button class="tab-btn" id="tab-btn-agency-table" onclick="switchTab('agency-table', this)"><i class="fa-solid fa-building"></i> 🏢 代理店別 早見表</button>
   </div>
 </div>
 
@@ -393,8 +424,10 @@
 
   <!-- TAB 1: AI Company ダッシュボード -->
   <div id="dashboard" class="tab-content active">
+    <!-- クリック（タップ）可能な KPI カード群 -->
     <div class="kpi-grid">
-      <div class="kpi-card">
+      <!-- 1. 21法人 -> 代理店別早見表タブへ -->
+      <div class="kpi-card" onclick="navigateToTab('agency-table')" title="タップして代理店別早見表を開く">
         <div class="kpi-icon" style="background: rgba(37,99,235,0.15); color: #2563EB;"><i class="fa-solid fa-building-user"></i></div>
         <div style="flex:1;">
           <div class="kpi-val">21 法人</div>
@@ -403,7 +436,8 @@
         </div>
       </div>
 
-      <div class="kpi-card">
+      <!-- 2. 認知あり -> SRP現場ガイドタブへ -->
+      <div class="kpi-card" onclick="navigateToTab('srp-guide')" title="タップしてSRP現場ガイドを開く">
         <div class="kpi-icon" style="background: rgba(21,128,61,0.15); color: #15803D;"><i class="fa-solid fa-circle-check"></i></div>
         <div style="flex:1;">
           <div class="kpi-val">認知あり</div>
@@ -412,7 +446,8 @@
         </div>
       </div>
 
-      <div class="kpi-card">
+      <!-- 3. FFF8還元 -> コンテスト＆FFF8コピペタブへ -->
+      <div class="kpi-card" onclick="navigateToTab('contest-templates')" title="タップしてFFF8還元フォーマットを開く">
         <div class="kpi-icon" style="background: rgba(124,58,237,0.15); color: #7C3AED;"><i class="fa-solid fa-gem"></i></div>
         <div style="flex:1;">
           <div class="kpi-val">FFF8還元</div>
@@ -421,7 +456,8 @@
         </div>
       </div>
 
-      <div class="kpi-card">
+      <!-- 4. 3大ルール -> SRP現場ガイド（ルール位置）へ -->
+      <div class="kpi-card" onclick="navigateToTab('srp-guide')" title="タップして現場3大禁止ルールを開く">
         <div class="kpi-icon" style="background: rgba(180,83,9,0.15); color: #B45309;"><i class="fa-solid fa-shield-halved"></i></div>
         <div style="flex:1;">
           <div class="kpi-val">3大ルール</div>
@@ -435,19 +471,19 @@
       <div class="card">
         <div class="card-title" style="color: var(--brand-blue);"><i class="fa-solid fa-chart-line"></i> AI Company 施策推進ステータス</div>
         <ul style="list-style: none; font-size: 0.9rem;">
-          <li style="padding: 10px 0; border-bottom: 1px solid var(--border-color); display:flex; justify-content:space-between;">
+          <li style="padding: 10px 0; border-bottom: 1px solid var(--border-color); display:flex; justify-content:space-between; cursor:pointer;" onclick="navigateToTab('agency-table')">
             <span><i class="fa-solid fa-check" style="color:#15803D;"></i> 広域主要代理店（コネクシオ/KCS/MXM/TGAIA/ITX/ラネット）</span>
             <span class="pill pill-green">9/1スタート完了</span>
           </li>
-          <li style="padding: 10px 0; border-bottom: 1px solid var(--border-color); display:flex; justify-content:space-between;">
+          <li style="padding: 10px 0; border-bottom: 1px solid var(--border-color); display:flex; justify-content:space-between; cursor:pointer;" onclick="navigateToTab('agency-table')">
             <span><i class="fa-solid fa-check" style="color:#15803D;"></i> 地場代理店（9法人ヒアリング展開）</span>
             <span class="pill pill-green">通常ルール適用中</span>
           </li>
-          <li style="padding: 10px 0; border-bottom: 1px solid var(--border-color); display:flex; justify-content:space-between;">
+          <li style="padding: 10px 0; border-bottom: 1px solid var(--border-color); display:flex; justify-content:space-between; cursor:pointer;" onclick="navigateToTab('agency-table')">
             <span><i class="fa-solid fa-star" style="color:#B45309;"></i> 特例代理店（モバイルコム）</span>
             <span class="pill pill-purple">💡【例外】金額トークOK</span>
           </li>
-          <li style="padding: 10px 0; display:flex; justify-content:space-between;">
+          <li style="padding: 10px 0; display:flex; justify-content:space-between; cursor:pointer;" onclick="navigateToTab('agency-table')">
             <span><i class="fa-solid fa-ban" style="color:#B91C1C;"></i> 不要代理店12法人の削除整理</span>
             <span class="pill pill-red">最新マスタ適用済</span>
           </li>
@@ -456,9 +492,9 @@
 
       <div class="card">
         <div class="card-title" style="color: var(--brand-indigo);"><i class="fa-solid fa-bullhorn"></i> ボーダー現場チーム要請・連絡事項</div>
-        <div style="background: var(--bg-main); padding: 14px; border-radius: var(--radius-md); font-size: 0.88rem;">
-          <b>📌 認知なし ＆ 例文なしテンプレ追加のお知らせ:</b><br>
-          販売コンテストおよびFFF8還元の「認知なし」バージョン、並びに例文が入っていない穴埋め用フォーマット（テンプレートのみ）を全カードに追加いたしました。用途に合わせてご活用ください。
+        <div style="background: var(--bg-main); padding: 14px; border-radius: var(--radius-md); font-size: 0.88rem; cursor:pointer;" onclick="navigateToTab('detail-format')">
+          <b>📌 ダッシュボード項目タップ連携機能のお知らせ:</b><br>
+          ダッシュボード上の「21法人」「認知あり」「FFF8還元」「3大ルール」をタップすると、対応する詳細ページへ直接ジャンプします。
         </div>
       </div>
     </div>
@@ -668,7 +704,7 @@ Google（Pixel 11シリーズ ／ 10a）
     </div>
   </div>
 
-  <!-- TAB 4: コンテスト ＆ FFF8コピペ (認知あり/なし ＆ 例文あり/なし 全完備) -->
+  <!-- TAB 4: コンテスト ＆ FFF8コピペ -->
   <div id="contest-templates" class="tab-content">
     <div class="grid-2">
       
@@ -676,7 +712,6 @@ Google（Pixel 11シリーズ ／ 10a）
       <div class="card" style="border-top: 4px solid var(--brand-blue);">
         <div class="card-title" style="color: var(--brand-blue);"><i class="fa-solid fa-trophy"></i> 販売コンテスト用 コピペテンプレート</div>
 
-        <!-- 1. 認知あり (サンプル文) -->
         <div class="copy-box">
           <div class="copy-header">
             <span class="pill pill-green">🏆 認知あり(参加) (サンプル文)</span>
@@ -685,7 +720,6 @@ Google（Pixel 11シリーズ ／ 10a）
           <div class="copy-text" id="txt-contest-ok">【販売コンテスト】認知あり(参加) / 【目標・進捗】目標30台に対し現在14台(46%)。 / 【取組】入口メイン通路に特設コーナー設置。 / 【温度感】首位獲得に向け意識高く非常に積極的。</div>
         </div>
 
-        <!-- 2. 認知あり (フォーマットのみ) -->
         <div class="copy-box">
           <div class="copy-header">
             <span class="pill pill-green">🏆 認知あり(参加) (フォーマットのみ)</span>
@@ -694,7 +728,6 @@ Google（Pixel 11シリーズ ／ 10a）
           <div class="copy-text" id="txt-contest-ok-fmt">【販売コンテスト】認知あり(参加) / 【目標・進捗】[目標台数/進捗率/順位] / 【取組】[POP展開/コーナー特設/獲得強化] / 【温度感】[高い/普通/低い]</div>
         </div>
 
-        <!-- 3. 認知なし (サンプル文) -->
         <div class="copy-box">
           <div class="copy-header">
             <span class="pill pill-red">🔴 認知なし (サンプル文)</span>
@@ -703,7 +736,6 @@ Google（Pixel 11シリーズ ／ 10a）
           <div class="copy-text" id="txt-contest-ng">【販売コンテスト】認知なし / 【原因】支店案内メール未確認。 / 【対応】コンテスト期間・達成特典・評価条件を店長へ説明し、スタッフ展開を依頼。</div>
         </div>
 
-        <!-- 4. 認知なし (フォーマットのみ) -->
         <div class="copy-box">
           <div class="copy-header">
             <span class="pill pill-red">🔴 認知なし (フォーマットのみ)</span>
@@ -712,7 +744,6 @@ Google（Pixel 11シリーズ ／ 10a）
           <div class="copy-text" id="txt-contest-ng-fmt">【販売コンテスト】認知なし / 【原因】[案内未確認/ルール不明など] / 【対応】[期間・特典・ルール説明/案内確認依頼]</div>
         </div>
 
-        <!-- 5. 課題あり (フォーマットのみ) -->
         <div class="copy-box">
           <div class="copy-header">
             <span class="pill pill-warn">💡 課題あり (フォーマットのみ)</span>
@@ -726,7 +757,6 @@ Google（Pixel 11シリーズ ／ 10a）
       <div class="card" style="border-top: 4px solid var(--purple-text);">
         <div class="card-title" style="color: var(--purple-text);"><i class="fa-solid fa-mobile-screen"></i> FFF8インセンティブ還元用 コピペテンプレート</div>
 
-        <!-- 1. FFF8還元 認知あり (サンプル文) -->
         <div class="copy-box">
           <div class="copy-header">
             <span class="pill pill-purple">📱 FFF8還元 認知あり (サンプル文)</span>
@@ -735,7 +765,6 @@ Google（Pixel 11シリーズ ／ 10a）
           <div class="copy-text" id="txt-fff8-ok">【FFF8還元施策】認知あり / 【認知範囲】店長・副店長ともに提案資料の内容を把握済み。 / 【代理店握り施策】認知あり。 / 【販売意欲】高く注力体制完了。</div>
         </div>
 
-        <!-- 2. FFF8還元 認知あり (フォーマットのみ) -->
         <div class="copy-box">
           <div class="copy-header">
             <span class="pill pill-purple">📱 FFF8還元 認知あり (フォーマットのみ)</span>
@@ -744,7 +773,6 @@ Google（Pixel 11シリーズ ／ 10a）
           <div class="copy-text" id="txt-fff8-ok-fmt">【FFF8還元施策】認知あり / 【認知範囲】[店長・副店長/スタッフ共有済] / 【代理店握り施策】[認知あり/資料確認済] / 【販売意欲】[高い/普通/低い]</div>
         </div>
 
-        <!-- 3. FFF8還元 認知なし (サンプル文) -->
         <div class="copy-box">
           <div class="copy-header">
             <span class="pill pill-red">🔴 FFF8還元 認知なし (サンプル文)</span>
@@ -753,7 +781,6 @@ Google（Pixel 11シリーズ ／ 10a）
           <div class="copy-text" id="txt-fff8-ng">【FFF8還元施策】認知なし / 【状況】支店からの提案資料案内の確認漏れ。 / 【対応】代理店本部・支店からの提案資料およびFFF8施策案内の確認を店長へ依頼。</div>
         </div>
 
-        <!-- 4. FFF8還元 認知なし (フォーマットのみ) -->
         <div class="copy-box">
           <div class="copy-header">
             <span class="pill pill-red">🔴 FFF8還元 認知なし (フォーマットのみ)</span>
@@ -823,6 +850,22 @@ function switchTab(tabId, btn) {
   
   document.getElementById(tabId).classList.add('active');
   btn.classList.add('active');
+}
+
+function navigateToTab(targetTabId) {
+  const btnIdMap = {
+    'agency-table': 'tab-btn-agency-table',
+    'srp-guide': 'tab-btn-srp-guide',
+    'contest-templates': 'tab-btn-contest-templates',
+    'detail-format': 'tab-btn-detail-format',
+    'dashboard': 'tab-btn-dashboard'
+  };
+  
+  const btn = document.getElementById(btnIdMap[targetTabId]);
+  if (btn) {
+    switchTab(targetTabId, btn);
+    window.scrollTo({ top: 120, behavior: 'smooth' });
+  }
 }
 
 function filterTable() {
