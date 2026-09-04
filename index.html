@@ -23,6 +23,7 @@
     --brand-indigo: #4F46E5;
     --brand-gradient: linear-gradient(135deg, #0F2C59 0%, #1E3A8A 40%, #4F46E5 100%);
     --purple-gradient: linear-gradient(135deg, #6D28D9 0%, #7C3AED 100%);
+    --green-gradient: linear-gradient(135deg, #059669 0%, #10B981 100%);
     
     --success-bg: #DCFCE7;
     --success-text: #15803D;
@@ -118,6 +119,7 @@
     font-size: 0.85rem;
     font-weight: 700;
     cursor: pointer;
+    text-decoration: none;
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -127,6 +129,7 @@
   .btn-action:hover {
     background: rgba(255, 255, 255, 0.3);
     transform: translateY(-2px);
+    color: white;
   }
 
   .nav-tabs-container {
@@ -182,8 +185,74 @@
   .tab-content.active { display: block; }
 
   /* -------------------------------------------------------------
-     KPI Card (Clickable Navigation)
+     MD Sheet Link Card (特設リンクカード)
   ------------------------------------------------------------- */
+  .md-sheet-card {
+    background: linear-gradient(135deg, #059669 0%, #10B981 100%);
+    color: white;
+    border-radius: var(--radius-lg);
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .md-sheet-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    filter: brightness(1.05);
+  }
+
+  .md-sheet-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .md-sheet-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(6px);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+  }
+
+  .md-sheet-title {
+    font-size: 1.15rem;
+    font-weight: 900;
+    line-height: 1.2;
+  }
+
+  .md-sheet-desc {
+    font-size: 0.85rem;
+    opacity: 0.9;
+    margin-top: 2px;
+  }
+
+  .btn-md-go {
+    background: white;
+    color: #059669;
+    padding: 10px 22px;
+    border-radius: var(--radius-full);
+    font-weight: 800;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+
   .kpi-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -403,6 +472,10 @@
     </div>
 
     <div class="header-actions">
+      <!-- スプレッドシートへの直接リンクボタン -->
+      <a href="https://docs.google.com/spreadsheets/d/1cxzXOD8T0cXfWhc1gJx56nBFJjFsjljCyDxW9x6G13g/edit?usp=sharing" target="_blank" class="btn-action" style="background: rgba(16, 185, 129, 0.25); border-color: rgba(16, 185, 129, 0.4);">
+        <i class="fa-solid fa-file-excel"></i> 📊 MD担当巡回シート
+      </a>
       <button class="btn-action" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i> <span id="themeText">ダーク</span></button>
       <button class="btn-action" onclick="window.print()"><i class="fa-solid fa-print"></i> 印刷</button>
     </div>
@@ -424,9 +497,23 @@
 
   <!-- TAB 1: AI Company ダッシュボード -->
   <div id="dashboard" class="tab-content active">
+
+    <!-- 特設リンクカード: MD担当巡回店舗リスト・進捗KPI管理 -->
+    <a href="https://docs.google.com/spreadsheets/d/1cxzXOD8T0cXfWhc1gJx56nBFJjFsjljCyDxW9x6G13g/edit?usp=sharing" target="_blank" class="md-sheet-card">
+      <div class="md-sheet-info">
+        <div class="md-sheet-icon"><i class="fa-solid fa-table-cells"></i></div>
+        <div>
+          <div class="md-sheet-title">📊 MD担当巡回店舗リスト・進捗KPI管理</div>
+          <div class="md-sheet-desc">Google スプレッドシート（巡回スケジュール・進捗管理・リアルタイム実績データ）</div>
+        </div>
+      </div>
+      <div class="btn-md-go">
+        スプレッドシートを開く <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </div>
+    </a>
+
     <!-- クリック（タップ）可能な KPI カード群 -->
     <div class="kpi-grid">
-      <!-- 1. 21法人 -> 代理店別早見表タブへ -->
       <div class="kpi-card" onclick="navigateToTab('agency-table')" title="タップして代理店別早見表を開く">
         <div class="kpi-icon" style="background: rgba(37,99,235,0.15); color: #2563EB;"><i class="fa-solid fa-building-user"></i></div>
         <div style="flex:1;">
@@ -436,7 +523,6 @@
         </div>
       </div>
 
-      <!-- 2. 認知あり -> SRP現場ガイドタブへ -->
       <div class="kpi-card" onclick="navigateToTab('srp-guide')" title="タップしてSRP現場ガイドを開く">
         <div class="kpi-icon" style="background: rgba(21,128,61,0.15); color: #15803D;"><i class="fa-solid fa-circle-check"></i></div>
         <div style="flex:1;">
@@ -446,7 +532,6 @@
         </div>
       </div>
 
-      <!-- 3. FFF8還元 -> コンテスト＆FFF8コピペタブへ -->
       <div class="kpi-card" onclick="navigateToTab('contest-templates')" title="タップしてFFF8還元フォーマットを開く">
         <div class="kpi-icon" style="background: rgba(124,58,237,0.15); color: #7C3AED;"><i class="fa-solid fa-gem"></i></div>
         <div style="flex:1;">
@@ -456,7 +541,6 @@
         </div>
       </div>
 
-      <!-- 4. 3大ルール -> SRP現場ガイド（ルール位置）へ -->
       <div class="kpi-card" onclick="navigateToTab('srp-guide')" title="タップして現場3大禁止ルールを開く">
         <div class="kpi-icon" style="background: rgba(180,83,9,0.15); color: #B45309;"><i class="fa-solid fa-shield-halved"></i></div>
         <div style="flex:1;">
@@ -492,9 +576,9 @@
 
       <div class="card">
         <div class="card-title" style="color: var(--brand-indigo);"><i class="fa-solid fa-bullhorn"></i> ボーダー現場チーム要請・連絡事項</div>
-        <div style="background: var(--bg-main); padding: 14px; border-radius: var(--radius-md); font-size: 0.88rem; cursor:pointer;" onclick="navigateToTab('detail-format')">
-          <b>📌 ダッシュボード項目タップ連携機能のお知らせ:</b><br>
-          ダッシュボード上の「21法人」「認知あり」「FFF8還元」「3大ルール」をタップすると、対応する詳細ページへ直接ジャンプします。
+        <div style="background: var(--bg-main); padding: 14px; border-radius: var(--radius-md); font-size: 0.88rem; margin-bottom: 10px; cursor:pointer;" onclick="window.open('https://docs.google.com/spreadsheets/d/1cxzXOD8T0cXfWhc1gJx56nBFJjFsjljCyDxW9x6G13g/edit?usp=sharing', '_blank')">
+          <b>📊 「MD担当巡回店舗リスト・進捗KPI管理」連携:</b><br>
+          緑色の特設バナーカードまたはヘッダー右上のボタンから、リアルタイム共有スプレッドシートへワンタップで移動できます。
         </div>
       </div>
     </div>
@@ -640,6 +724,64 @@ Google（Pixel 11シリーズ ／ 10a）
 ・Watch販売コンテスト状況（盛り上がり・進捗）：
 ・その他共有事項：</div>
         </div>
+      </div>
+    </div>
+
+    <!-- 記入サンプル -->
+    <div class="card" style="border-top: 4px solid var(--success-text);">
+      <div class="card-title" style="color: var(--success-text); justify-content: space-between;">
+        <span><i class="fa-solid fa-circle-info"></i> 💡 記入サンプル文（全体の参考に）</span>
+        <button class="btn-copy" onclick="copyText('txt-detail-sample', this)"><i class="fa-regular fa-copy"></i> サンプル文をコピー</button>
+      </div>
+
+      <div class="copy-box">
+        <div class="copy-text" id="txt-detail-sample">【自社】
+・対象端末：FFF8シリーズ、S26シリーズ、A57 5G
+・現場状況・主な客層：週末に20代〜40代のガジェット関心層およびiPhoneからの乗り換え検討層が多数来店。特にGalaxy FFF8の折りたたみ実機での大画面表示やマルチタスク機能に対する注目度が高い。
+・在庫ステータス（カラー/容量欠品等）：［ 一部欠品 ］ (FFF8 256GB ブラックが事前予約集中により9/2より欠品中。次回9/8に10台入荷予定のため現在予約対応に切り替え中)
+
+【店舗個別課題と改善策】
+・店頭での課題（案内不足・他社比較での弱み等）：8月配属の新人スタッフ2名がFFF8のヒンジ耐久性とカメラ夜景モードの訴求ポイントを把握しきれておらず、iPhone 17との比較時に接客で詰まり他社へ流出する事例が今週3件発生。
+・改善策／アクション：FSM主導で毎朝の朝礼時に1分間のロールプレイングを実施。さらに店舗入口の比較表POPに「折りたたみ時の強み3選」を手書き追記し、スタッフ全員の接客フックを統一した。
+
+【購入者インタビュー（Hip Share獲得事例）】※該当時のみ
+・対応スタッフ名：FSM 山田
+・前利用端末：iPhone 13 (2年半利用、バッテリー劣化と画面割れあり)
+・予約／購入端末：Galaxy FFF8 256GB (シルバー)
+・購入の決め手・動機：顧客は動画視聴と仕事でのマルチタスク用途を希望。前利用端末の下取り増額キャンペーンと代理店独自の還元施策により実質負担金が抑えられたこと、さらに実機での折りたたみ画面の操作性に感動し即日購入に至った。
+
+------------------------------------------------
+
+【他社動向】
+Apple（iPhone 18、17シリーズ）
+・店頭での動き・お客様の反応：新モデル発表控えの影響でiPhone 17シリーズの値下がり期待層が来店。価格改定POPに反応して指名買いする顧客が多い。
+・17シリーズ在庫状況：［ 潤沢 ］
+
+Google（Pixel 11シリーズ ／ 10a）
+・店頭での動き・お客様の反応：学割・若年層向けキャンペーンに惹かれた学生・親世代が来店。Pixel 10aの実質1円訴求POPが非常に強力で立ち止まり率が高い。
+・現場での勢いやフック（キャンペーン・施策等）：代理店独自での他社乗り換えポイント還元キャンペーン（15,000pt付与）を大きく打ち出しており勢いがある。
+・Pixel 10a 在庫状況：［ 潤沢 ］
+
+その他メーカー(Xiaomi)
+・店頭での動き・お客様の反応：サブ端末やコスパ重視層が120W急速充電のデモ機に注目。
+・現場での勢いやフック：単体購入時の即時値引き施策を展開中。
+
+------------------------------------------------
+
+【トレーニング実施報告】
+・利用資料：9月度DCM SRP施策 ＆ FFF8対抗トークガイド
+・実施形式：［ 対面TR ］
+・トレーニング内容：競合他社（iPhone/Pixel）と比較された際の下取り還元施策を絡めた切り返しトークと、実機デモ機を使った体験型アプローチの手順をレクチャー。
+・受講FSMの反応・現場の声（FSM VOC）：「下取り還元を組み合わせることで、高額帯のFFF8でも顧客の心理的ハードルを下げられる具体的な提案の流れが理解できた。今週末から即実践する」とのポジティブな反応を得た。
+
+------------------------------------------------
+
+【フリーエリア（Ambassador・コンテスト・共有事項）】
+・新S+ログイン状況：［ 完了 ］ (全常勤FSM 6名 ログイン確認済み)
+・ログインできなかった理由：なし
+・Ambassador活動状況：2期生Ambassadorが中心となり、9月コンテスト向けに独自作成した比較体験コーナーを設置。毎週の獲得進捗をバックヤードのボードで可視化し、チーム全体の意識を高めている。
+・Watch販売コンテスト状況：店舗目標20台に対し現在14台（進捗率70%）達成。スマホ購入時の抱き合わせ提案が定着し、現在代理店グループ内店舗ランキング2位と非常に盛り上がっている。
+・その他共有事項：9/10の週末イベントに向けて体験用ノベルティ（クリアファイル/ステッカー）が残りわずかのため、追加50セットの発送をお願いしたい。</div>
       </div>
     </div>
   </div>
