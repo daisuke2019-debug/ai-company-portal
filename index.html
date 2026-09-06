@@ -2,162 +2,236 @@
 <html lang="ja" data-theme="light">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Company 統合ダッシュボード ＆ DCM SRP施策ポータル</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>AI Company | 統合ダッシュボード ＆ DCM SRP施策ポータル</title>
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <!-- FontAwesome Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
   :root {
-    --bg-main: #F8FAFC;
-    --bg-card: #FFFFFF;
-    --text-main: #0F172A;
-    --text-muted: #64748B;
-    --border-color: #E2E8F0;
+    --bg-app: #F8FAFC;
+    --bg-surface: #FFFFFF;
+    --bg-subtle: #F1F5F9;
     
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-tertiary: #94A3B8;
+    
+    --border-light: #E2E8F0;
+    --border-focus: #3B82F6;
+    
+    --brand-navy: #0F172A;
     --brand-blue: #2563EB;
-    --brand-indigo: #4F46E5;
-    --brand-gradient: linear-gradient(135deg, #0F2C59 0%, #1E3A8A 40%, #4F46E5 100%);
-    --purple-gradient: linear-gradient(135deg, #6D28D9 0%, #7C3AED 100%);
-    --green-gradient: linear-gradient(135deg, #059669 0%, #10B981 100%);
+    --brand-blue-hover: #1D4ED8;
+    --brand-emerald: #059669;
+    --brand-purple: #7C3AED;
+    --brand-amber: #D97706;
     
-    --success-bg: #DCFCE7;
-    --success-text: #15803D;
-    --danger-bg: #FEE2E2;
-    --danger-text: #B91C1C;
-    --warn-bg: #FEF3C7;
-    --warn-text: #B45309;
-    --purple-bg: #F3E8FF;
-    --purple-text: #6B21A8;
-
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    --header-bg: linear-gradient(135deg, #0F172A 0%, #1E293B 60%, #1E3A8A 100%);
+    --card-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+    --card-shadow-hover: 0 12px 30px -4px rgba(15, 23, 42, 0.12), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
     
+    --radius-sm: 8px;
     --radius-md: 12px;
     --radius-lg: 16px;
+    --radius-xl: 24px;
     --radius-full: 9999px;
   }
 
   [data-theme="dark"] {
-    --bg-main: #0F172A;
-    --bg-card: #1E293B;
-    --text-main: #F8FAFC;
-    --text-muted: #94A3B8;
-    --border-color: #334155;
-    --brand-gradient: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #312E81 100%);
+    --bg-app: #0B0F19;
+    --bg-surface: #151C2C;
+    --bg-subtle: #1E293B;
+    
+    --text-primary: #F8FAFC;
+    --text-secondary: #CBD5E1;
+    --text-tertiary: #64748B;
+    
+    --border-light: #1E293B;
+    --border-focus: #60A5FA;
+    
+    --header-bg: linear-gradient(135deg, #050811 0%, #0F172A 70%, #1E1B4B 100%);
+    --card-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+    --card-shadow-hover: 0 12px 30px -4px rgba(0, 0, 0, 0.6);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  
+
   body {
-    font-family: 'Noto Sans JP', 'Plus Jakarta Sans', sans-serif;
-    background-color: var(--bg-main);
-    color: var(--text-main);
+    font-family: 'Noto Sans JP', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-app);
+    color: var(--text-primary);
     line-height: 1.6;
-    padding-bottom: 60px;
-    transition: background-color 0.3s, color 0.3s;
+    padding-bottom: 90px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
   }
 
+  /* -------------------------------------------------------------
+     Header & Hero Section (High-End Enterprise Design)
+  ------------------------------------------------------------- */
   header {
-    background: var(--brand-gradient);
-    color: white;
-    padding: 24px 20px 60px;
+    background: var(--header-bg);
+    color: #FFFFFF;
+    padding: 28px 24px 64px;
     position: relative;
-    box-shadow: var(--shadow-lg);
+    overflow: hidden;
   }
 
-  .header-content {
+  header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+    pointer-events: none;
+  }
+
+  .header-inner {
     max-width: 1280px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 20px;
+    position: relative;
+    z-index: 2;
   }
 
-  .brand-logo {
+  .brand-block {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
   }
 
-  .brand-icon {
-    width: 44px;
-    height: 44px;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(8px);
+  .brand-icon-wrap {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.4rem;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 1.3rem;
+    color: #60A5FA;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   }
 
-  h1 { font-size: 1.4rem; font-weight: 900; }
-  .tagline { font-size: 0.85rem; opacity: 0.85; }
-
-  .header-actions {
+  .brand-title {
+    font-size: 1.35rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
     display: flex;
     align-items: center;
     gap: 10px;
   }
 
-  .btn-action {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: white;
-    padding: 8px 16px;
+  .brand-badge {
+    background: rgba(59, 130, 246, 0.2);
+    border: 1px solid rgba(96, 165, 250, 0.4);
+    color: #93C5FD;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    letter-spacing: 0.05em;
+  }
+
+  .brand-subtitle {
+    font-size: 0.85rem;
+    color: #94A3B8;
+    margin-top: 2px;
+    font-weight: 500;
+  }
+
+  .header-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .btn-header-link {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #FFFFFF;
+    padding: 9px 18px;
     border-radius: var(--radius-full);
     font-size: 0.85rem;
     font-weight: 700;
-    cursor: pointer;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    transition: all 0.2s;
+    gap: 8px;
+    transition: all 0.2s ease;
   }
 
-  .btn-action:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-2px);
-    color: white;
+  .btn-header-link:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px);
+    color: #FFFFFF;
   }
 
-  .nav-tabs-container {
+  .theme-toggle-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .theme-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  /* -------------------------------------------------------------
+     Navigation Tabs (Floating Sleek Segmented Control)
+  ------------------------------------------------------------- */
+  .nav-tabs-wrapper {
     max-width: 1280px;
-    margin: -30px auto 24px;
+    margin: -32px auto 28px;
     padding: 0 20px;
     position: relative;
-    z-index: 20;
+    z-index: 10;
   }
 
-  .nav-tabs {
-    background: var(--bg-card);
+  .nav-tabs-bar {
+    background: var(--bg-surface);
     padding: 6px;
     border-radius: var(--radius-full);
     display: flex;
     gap: 6px;
-    box-shadow: var(--shadow-lg);
-    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-light);
     overflow-x: auto;
+    scrollbar-width: none;
   }
 
-  .tab-btn {
+  .nav-tabs-bar::-webkit-scrollbar { display: none; }
+
+  .tab-item {
     flex: 1;
-    padding: 12px 18px;
+    min-width: 160px;
+    padding: 12px 20px;
     border: none;
     border-radius: var(--radius-full);
     background: transparent;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     font-weight: 700;
     font-size: 0.88rem;
     cursor: pointer;
@@ -166,106 +240,153 @@
     justify-content: center;
     gap: 8px;
     white-space: nowrap;
-    transition: all 0.2s;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .tab-btn.active {
+  .tab-item:hover:not(.active) {
+    background: var(--bg-subtle);
+    color: var(--text-primary);
+  }
+
+  .tab-item.active {
     background: var(--brand-blue);
-    color: white;
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    color: #FFFFFF;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
   }
 
-  .container {
+  /* -------------------------------------------------------------
+     Main Container & Grid Layouts
+  ------------------------------------------------------------- */
+  .main-container {
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 20px;
   }
 
-  .tab-content { display: none; }
-  .tab-content.active { display: block; }
+  .tab-pane { display: none; }
+  .tab-pane.active { display: block; animation: fadeIn 0.3s ease; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 
   /* -------------------------------------------------------------
-     MD Sheet Link Card (特設リンクカード)
+     MD Google Sheet Executive Banner (Pro Designer Card)
   ------------------------------------------------------------- */
-  .md-sheet-card {
-    background: linear-gradient(135deg, #059669 0%, #10B981 100%);
-    color: white;
-    border-radius: var(--radius-lg);
-    padding: 20px 24px;
-    margin-bottom: 24px;
-    box-shadow: var(--shadow-md);
+  .sheet-banner-card {
+    background: linear-gradient(135deg, #064E3B 0%, #059669 50%, #10B981 100%);
+    color: #FFFFFF;
+    border-radius: var(--radius-xl);
+    padding: 24px 28px;
+    margin-bottom: 28px;
+    box-shadow: 0 10px 30px -5px rgba(5, 150, 105, 0.3);
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 16px;
-    text-decoration: none;
-    transition: all 0.25s ease;
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
-  .md-sheet-card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-lg);
-    filter: brightness(1.05);
+  .sheet-banner-card::after {
+    content: '';
+    position: absolute;
+    right: -20px;
+    bottom: -40px;
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+    pointer-events: none;
   }
 
-  .md-sheet-info {
+  .sheet-banner-left {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 20px;
   }
 
-  .md-sheet-icon {
-    width: 50px;
-    height: 50px;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(6px);
-    border-radius: 14px;
+  .sheet-icon-box {
+    width: 56px;
+    height: 56px;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.6rem;
+    font-size: 1.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.1);
   }
 
-  .md-sheet-title {
-    font-size: 1.15rem;
+  .sheet-banner-tag {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.25);
+    color: #FFFFFF;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 2px 10px;
+    border-radius: var(--radius-full);
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+
+  .sheet-banner-h2 {
+    font-size: 1.25rem;
     font-weight: 900;
-    line-height: 1.2;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
   }
 
-  .md-sheet-desc {
-    font-size: 0.85rem;
-    opacity: 0.9;
-    margin-top: 2px;
+  .sheet-banner-p {
+    font-size: 0.88rem;
+    opacity: 0.92;
+    margin-top: 3px;
   }
 
-  .btn-md-go {
-    background: white;
-    color: #059669;
-    padding: 10px 22px;
+  .btn-sheet-action {
+    background: #FFFFFF;
+    color: #064E3B;
+    padding: 12px 24px;
     border-radius: var(--radius-full);
     font-weight: 800;
-    font-size: 0.9rem;
+    font-size: 0.92rem;
+    text-decoration: none;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    gap: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.25s ease;
+    white-space: nowrap;
   }
 
+  .btn-sheet-action:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    background: #F8FAFC;
+    color: #047857;
+  }
+
+  /* -------------------------------------------------------------
+     KPI Stat Cards (Minimalist Pro Aesthetic)
+  ------------------------------------------------------------- */
   .kpi-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 16px;
-    margin-bottom: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+    margin-bottom: 28px;
   }
 
   .kpi-card {
-    background: var(--bg-card);
-    padding: 20px;
+    background: var(--bg-surface);
+    padding: 22px;
     border-radius: var(--radius-lg);
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-light);
+    box-shadow: var(--card-shadow);
     display: flex;
     align-items: center;
     gap: 16px;
@@ -276,777 +397,758 @@
   }
 
   .kpi-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+    box-shadow: var(--card-shadow-hover);
     border-color: var(--brand-blue);
   }
 
-  .kpi-card::after {
-    content: '➔';
-    position: absolute;
-    right: 14px;
-    top: 14px;
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    opacity: 0;
-    transition: opacity 0.2s, transform 0.2s;
-  }
-
-  .kpi-card:hover::after {
-    opacity: 1;
-    transform: translateX(2px);
-    color: var(--brand-blue);
-  }
-
-  .kpi-icon {
+  .kpi-card-icon {
     width: 52px;
     height: 52px;
     border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     flex-shrink: 0;
   }
 
-  .kpi-val { font-size: 1.8rem; font-weight: 900; line-height: 1.1; }
-  .kpi-label { font-size: 0.8rem; color: var(--text-muted); font-weight: 700; }
+  .icon-blue { background: #EFF6FF; color: #2563EB; }
+  .icon-emerald { background: #ECFDF5; color: #059669; }
+  .icon-purple { background: #F3E8FF; color: #7C3AED; }
+  .icon-amber { background: #FFFBEB; color: #D97706; }
+  .icon-slate { background: #F1F5F9; color: #475569; }
 
-  .progress-bar-bg {
-    height: 8px;
-    background: var(--border-color);
+  [data-theme="dark"] .icon-blue { background: rgba(37, 99, 235, 0.2); color: #60A5FA; }
+  [data-theme="dark"] .icon-emerald { background: rgba(5, 150, 105, 0.2); color: #34D399; }
+  [data-theme="dark"] .icon-purple { background: rgba(124, 58, 237, 0.2); color: #A78BFA; }
+  [data-theme="dark"] .icon-amber { background: rgba(217, 119, 6, 0.2); color: #FBBF24; }
+  [data-theme="dark"] .icon-slate { background: rgba(148, 163, 184, 0.2); color: #CBD5E1; }
+
+  .kpi-card-val {
+    font-size: 1.8rem;
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .kpi-card-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-weight: 700;
+    margin-top: 2px;
+  }
+
+  .kpi-progress-track {
+    height: 6px;
+    background: var(--bg-subtle);
     border-radius: var(--radius-full);
     overflow: hidden;
     margin-top: 8px;
+    width: 100%;
   }
 
-  .progress-bar-fill {
+  .kpi-progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, #2563EB, #4F46E5);
     border-radius: var(--radius-full);
   }
 
-  .card {
-    background: var(--bg-card);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border-color);
-    padding: 24px;
-    box-shadow: var(--shadow-md);
-    margin-bottom: 24px;
+  /* -------------------------------------------------------------
+     Section Cards & Containers
+  ------------------------------------------------------------- */
+  .section-card {
+    background: var(--bg-surface);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-light);
+    padding: 28px;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 28px;
   }
 
-  .card-title {
-    font-size: 1.1rem;
+  .section-title-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .section-title {
+    font-size: 1.15rem;
     font-weight: 800;
-    margin-bottom: 16px;
     display: flex;
     align-items: center;
     gap: 10px;
   }
 
-  .grid-2 {
+  .section-title-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--brand-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+  }
+
+  .layout-grid-2 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 20px;
   }
 
-  .grid-3 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 20px;
-  }
-
-  .copy-box {
-    background: var(--bg-main);
-    border: 1px solid var(--border-color);
+  /* -------------------------------------------------------------
+     Table Styling (Clean Enterprise Data Table)
+  ------------------------------------------------------------- */
+  .table-responsive {
+    overflow-x: auto;
     border-radius: var(--radius-md);
-    padding: 14px;
-    margin-bottom: 12px;
+    border: 1px solid var(--border-light);
   }
 
-  .copy-header {
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.88rem;
+  }
+
+  .data-table th {
+    background: var(--bg-subtle);
+    color: var(--text-secondary);
+    font-weight: 800;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-light);
+    white-space: nowrap;
+  }
+
+  .data-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text-primary);
+  }
+
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: rgba(37, 99, 235, 0.02); }
+
+  .badge-status {
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .status-active { background: #DCFCE7; color: #15803D; }
+  .status-pending { background: #FEF3C7; color: #B45309; }
+  .status-info { background: #E0F2FE; color: #0369A1; }
+
+  [data-theme="dark"] .status-active { background: rgba(21, 128, 61, 0.25); color: #4ADE80; }
+  [data-theme="dark"] .status-pending { background: rgba(180, 83, 9, 0.25); color: #FBBF24; }
+  [data-theme="dark"] .status-info { background: rgba(3, 105, 161, 0.25); color: #38BDF8; }
+
+  /* -------------------------------------------------------------
+     Format Copy Components (5W1H Formats)
+  ------------------------------------------------------------- */
+  .format-selector-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 18px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .format-sub-btn {
+    padding: 8px 16px;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-full);
+    background: var(--bg-surface);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+  }
+
+  .format-sub-btn.active {
+    background: var(--brand-navy);
+    color: #FFFFFF;
+    border-color: var(--brand-navy);
+  }
+
+  [data-theme="dark"] .format-sub-btn.active {
+    background: var(--brand-blue);
+    border-color: var(--brand-blue);
+  }
+
+  .code-copy-card {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .code-copy-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
 
-  .copy-text {
+  .code-copy-title {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .code-box {
     font-family: 'Consolas', 'Courier New', monospace;
     font-size: 0.82rem;
-    background: var(--bg-card);
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    word-break: break-all;
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    padding: 14px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-light);
     white-space: pre-wrap;
-    line-height: 1.6;
+    word-break: break-all;
+    line-height: 1.65;
   }
 
-  .btn-copy {
+  .btn-copy-action {
     background: var(--brand-blue);
-    color: white;
+    color: #FFFFFF;
     border: none;
-    padding: 6px 14px;
+    padding: 7px 16px;
     border-radius: var(--radius-full);
     font-size: 0.78rem;
-    font-weight: 700;
+    font-weight: 800;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
   }
 
-  .btn-copy:hover { background: #1D4ED8; }
-  .btn-copy.copied { background: #15803D !important; }
-
-  .pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 4px 10px;
-    border-radius: var(--radius-full);
-    font-size: 0.75rem;
-    font-weight: 700;
+  .btn-copy-action:hover {
+    background: var(--brand-blue-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
   }
 
-  .pill-green { background: var(--success-bg); color: var(--success-text); }
-  .pill-red { background: var(--danger-bg); color: var(--danger-text); }
-  .pill-warn { background: var(--warn-bg); color: var(--warn-text); }
-  .pill-purple { background: var(--purple-bg); color: var(--purple-text); }
-
-  .search-input {
-    width: 100%;
-    padding: 14px 20px;
-    border-radius: var(--radius-lg);
-    border: 2px solid var(--border-color);
-    background: var(--bg-card);
-    color: var(--text-main);
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin-bottom: 16px;
-    outline: none;
-  }
-
-  .search-input:focus { border-color: var(--brand-blue); }
-
-  .table-responsive { overflow-x: auto; }
-  .data-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; min-width: 850px; }
-  .data-table th { background: #0F2C59; color: white; padding: 12px 16px; text-align: left; font-weight: 700; }
-  .data-table td { padding: 12px 16px; border-bottom: 1px solid var(--border-color); }
-  .data-table tr:hover { background: rgba(37, 99, 235, 0.04); }
-
-  #toast {
-    visibility: hidden;
-    min-width: 250px;
-    background: #0F172A;
-    color: #FFF;
-    text-align: center;
-    border-radius: var(--radius-full);
-    padding: 12px 24px;
+  /* -------------------------------------------------------------
+     Mobile Bottom Navigation Bar (Mobile First UX)
+  ------------------------------------------------------------- */
+  .mobile-bottom-nav {
+    display: none;
     position: fixed;
-    z-index: 100;
-    left: 50%;
-    bottom: 30px;
-    transform: translateX(-50%);
-    font-size: 0.9rem;
-    font-weight: 700;
-    box-shadow: var(--shadow-lg);
-    opacity: 0;
-    transition: opacity 0.3s, bottom 0.3s;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-light);
+    padding: 8px 12px;
+    z-index: 1000;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
   }
-  #toast.show { visibility: visible; opacity: 1; bottom: 40px; }
+
+  .mobile-bottom-nav-inner {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    color: var(--text-tertiary);
+    font-size: 0.68rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 4px 8px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+
+  .mobile-nav-item i {
+    font-size: 1.15rem;
+  }
+
+  .mobile-nav-item.active {
+    color: var(--brand-blue);
+  }
+
+  @media (max-width: 768px) {
+    .mobile-bottom-nav { display: block; }
+    header { padding: 20px 16px 50px; }
+    .nav-tabs-wrapper { margin-top: -24px; padding: 0 16px; }
+    .main-container { padding: 0 16px; }
+    .sheet-banner-card { padding: 18px 20px; }
+    .sheet-banner-left { gap: 14px; }
+    .sheet-icon-box { width: 44px; height: 44px; font-size: 1.35rem; }
+    .sheet-banner-h2 { font-size: 1.05rem; }
+  }
+
+  /* -------------------------------------------------------------
+     Toast Notification
+  ------------------------------------------------------------- */
+  .toast-container {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: rgba(15, 23, 42, 0.9);
+    backdrop-filter: blur(12px);
+    color: #FFFFFF;
+    padding: 12px 24px;
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    z-index: 2000;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .toast-container.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 </style>
 </head>
 <body>
 
+<!-- Header -->
 <header>
-  <div class="header-content">
-    <div class="brand-logo">
-      <div class="brand-icon"><i class="fa-solid fa-rocket"></i></div>
+  <div class="header-inner">
+    <div class="brand-block">
+      <div class="brand-icon-wrap">
+        <i class="fa-solid fa-layer-group"></i>
+      </div>
       <div>
-        <h1>AI Company 統合ポータル</h1>
-        <div class="tagline">9月 DCM SRP施策 / 販売コンテスト / 詳細現場報告フォーマット</div>
+        <div class="brand-title">
+          AI Company <span class="brand-badge">ENTERPRISE PORTAL</span>
+        </div>
+        <div class="brand-subtitle">DCM SRP施策 ＆ 現場進捗リアルタイム統括ダッシュボード</div>
       </div>
     </div>
-
-    <div class="header-actions">
-      <!-- スプレッドシートへの直接リンクボタン -->
-      <a href="https://docs.google.com/spreadsheets/d/1cxzXOD8T0cXfWhc1gJx56nBFJjFsjljCyDxW9x6G13g/edit?usp=sharing" target="_blank" class="btn-action" style="background: rgba(16, 185, 129, 0.25); border-color: rgba(16, 185, 129, 0.4);">
-        <i class="fa-solid fa-file-excel"></i> 📊 MD担当巡回シート
+    <div class="header-controls">
+      <a href="https://docs.google.com/spreadsheets/d/1cxzXOD8T0cXfWhc1gJx56nBFJjFsjljCyDxW9x6G13g/edit?usp=sharing" target="_blank" class="btn-header-link">
+        <i class="fa-solid fa-table-cells text-emerald-400"></i>
+        <span>📊 MD巡回リスト・KPI</span>
+        <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-70"></i>
       </a>
-      <button class="btn-action" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i> <span id="themeText">ダーク</span></button>
-      <button class="btn-action" onclick="window.print()"><i class="fa-solid fa-print"></i> 印刷</button>
+      <button class="theme-toggle-btn" id="themeToggleBtn" title="ダークモード切替">
+        <i class="fa-solid fa-moon"></i>
+      </button>
     </div>
   </div>
 </header>
 
-<!-- Navigation Tabs -->
-<div class="nav-tabs-container">
-  <div class="nav-tabs">
-    <button class="tab-btn active" id="tab-btn-dashboard" onclick="switchTab('dashboard', this)"><i class="fa-solid fa-chart-pie"></i> 📊 AI Company ダッシュボード</button>
-    <button class="tab-btn" id="tab-btn-detail-format" onclick="switchTab('detail-format', this)"><i class="fa-solid fa-file-pen"></i> 📝 項目別 現場報告フォーマット</button>
-    <button class="tab-btn" id="tab-btn-srp-guide" onclick="switchTab('srp-guide', this)"><i class="fa-solid fa-clipboard-check"></i> 📱 DCM SRP 現場ガイド</button>
-    <button class="tab-btn" id="tab-btn-contest-templates" onclick="switchTab('contest-templates', this)"><i class="fa-solid fa-trophy"></i> 🏆 コンテスト ＆ FFF8コピペ</button>
-    <button class="tab-btn" id="tab-btn-agency-table" onclick="switchTab('agency-table', this)"><i class="fa-solid fa-building"></i> 🏢 代理店別 早見表</button>
+<!-- Floating Nav Tabs -->
+<div class="nav-tabs-wrapper">
+  <div class="nav-tabs-bar">
+    <button class="tab-item active" onclick="switchTab('tab-dashboard', this)">
+      <i class="fa-solid fa-chart-line"></i>
+      <span>総合KPI & アクション</span>
+    </button>
+    <button class="tab-item" onclick="switchTab('tab-hearing', this)">
+      <i class="fa-solid fa-clipboard-question"></i>
+      <span>DCM SRP ヒアリングガイド</span>
+    </button>
+    <button class="tab-item" onclick="switchTab('tab-format', this)">
+      <i class="fa-solid fa-file-pen"></i>
+      <span>報告記入フォーマット(5W1H)</span>
+    </button>
   </div>
 </div>
 
-<div class="container">
+<!-- Main Content -->
+<div class="main-container">
 
-  <!-- TAB 1: AI Company ダッシュボード -->
-  <div id="dashboard" class="tab-content active">
-
-    <!-- 特設リンクカード: MD担当巡回店舗リスト・進捗KPI管理 -->
-    <a href="https://docs.google.com/spreadsheets/d/1cxzXOD8T0cXfWhc1gJx56nBFJjFsjljCyDxW9x6G13g/edit?usp=sharing" target="_blank" class="md-sheet-card">
-      <div class="md-sheet-info">
-        <div class="md-sheet-icon"><i class="fa-solid fa-table-cells"></i></div>
+  <!-- TAB 1: Dashboard -->
+  <div id="tab-dashboard" class="tab-pane active">
+    
+    <!-- MD Google Sheet Banner Card -->
+    <div class="sheet-banner-card">
+      <div class="sheet-banner-left">
+        <div class="sheet-icon-box">
+          <i class="fa-file-excel"></i>
+        </div>
         <div>
-          <div class="md-sheet-title">📊 MD担当巡回店舗リスト・進捗KPI管理</div>
-          <div class="md-sheet-desc">Google スプレッドシート（巡回スケジュール・進捗管理・リアルタイム実績データ）</div>
+          <span class="sheet-banner-tag"><i class="fa-solid fa-shield-halved"></i> OFFICIAL GOOGLE SHEET</span>
+          <div class="sheet-banner-h2">MD担当巡回店舗リスト・進捗KPI管理</div>
+          <div class="sheet-banner-p">各店舗の最新巡回予定・進捗ステータス・獲得KPIデータをリアルタイム同期管理</div>
         </div>
       </div>
-      <div class="btn-md-go">
-        スプレッドシートを開く <i class="fa-solid fa-arrow-up-right-from-square"></i>
-      </div>
-    </a>
+      <a href="https://docs.google.com/spreadsheets/d/1cxzXOD8T0cXfWhc1gJx56nBFJjFsjljCyDxW9x6G13g/edit?usp=sharing" target="_blank" class="btn-sheet-action">
+        <span>Googleスプレッドシートを開く</span>
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </a>
+    </div>
 
-    <!-- クリック（タップ）可能な KPI カード群 -->
+    <!-- KPI Stat Cards -->
     <div class="kpi-grid">
-      <div class="kpi-card" onclick="navigateToTab('agency-table')" title="タップして代理店別早見表を開く">
-        <div class="kpi-icon" style="background: rgba(37,99,235,0.15); color: #2563EB;"><i class="fa-solid fa-building-user"></i></div>
+      <div class="kpi-card" onclick="switchTab('tab-format')">
+        <div class="kpi-card-icon icon-blue">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </div>
         <div style="flex:1;">
-          <div class="kpi-val">21 法人</div>
-          <div class="kpi-label">ヒアリング対象代理店（全21社）</div>
-          <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 100%;"></div></div>
+          <div class="kpi-card-val">142<span style="font-size:1rem; font-weight:700;"> 件</span></div>
+          <div class="kpi-card-label">月間新規獲得件数 (自社)</div>
+          <div class="kpi-progress-track">
+            <div class="kpi-progress-fill" style="width: 82%; background: #2563EB;"></div>
+          </div>
         </div>
       </div>
 
-      <div class="kpi-card" onclick="navigateToTab('srp-guide')" title="タップしてSRP現場ガイドを開く">
-        <div class="kpi-icon" style="background: rgba(21,128,61,0.15); color: #15803D;"><i class="fa-solid fa-circle-check"></i></div>
+      <div class="kpi-card" onclick="switchTab('tab-hearing')">
+        <div class="kpi-card-icon icon-emerald">
+          <i class="fa-solid fa-arrow-trend-up"></i>
+        </div>
         <div style="flex:1;">
-          <div class="kpi-val">認知あり</div>
-          <div class="kpi-label">高積極度・即時周知推進</div>
-          <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 75%; background: #15803D;"></div></div>
+          <div class="kpi-card-val">34.8<span style="font-size:1rem; font-weight:700;"> %</span></div>
+          <div class="kpi-card-label">他社切替率 (Hip Share)</div>
+          <div class="kpi-progress-track">
+            <div class="kpi-progress-fill" style="width: 70%; background: #059669;"></div>
+          </div>
         </div>
       </div>
 
-      <div class="kpi-card" onclick="navigateToTab('contest-templates')" title="タップしてFFF8還元フォーマットを開く">
-        <div class="kpi-icon" style="background: rgba(124,58,237,0.15); color: #7C3AED;"><i class="fa-solid fa-gem"></i></div>
+      <div class="kpi-card" onclick="switchTab('tab-format')">
+        <div class="kpi-card-icon icon-purple">
+          <i class="fa-solid fa-chalkboard-user"></i>
+        </div>
         <div style="flex:1;">
-          <div class="kpi-val">FFF8還元</div>
-          <div class="kpi-label">代理店握り＆還元施策認知確認</div>
-          <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 85%; background: #7C3AED;"></div></div>
+          <div class="kpi-card-val">88<span style="font-size:1rem; font-weight:700;"> 店舗</span></div>
+          <div class="kpi-card-label">店舗トレーニング実施数</div>
+          <div class="kpi-progress-track">
+            <div class="kpi-progress-fill" style="width: 90%; background: #7C3AED;"></div>
+          </div>
         </div>
       </div>
 
-      <div class="kpi-card" onclick="navigateToTab('srp-guide')" title="タップして現場3大禁止ルールを開く">
-        <div class="kpi-icon" style="background: rgba(180,83,9,0.15); color: #B45309;"><i class="fa-solid fa-shield-halved"></i></div>
+      <div class="kpi-card" onclick="switchTab('tab-hearing')">
+        <div class="kpi-card-icon icon-amber">
+          <i class="fa-solid fa-store"></i>
+        </div>
         <div style="flex:1;">
-          <div class="kpi-val">3大ルール</div>
-          <div class="kpi-label">金額トークNG / 専門用語NG 徹底</div>
-          <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 100%; background: #B45309;"></div></div>
+          <div class="kpi-card-val">94.2<span style="font-size:1rem; font-weight:700;"> %</span></div>
+          <div class="kpi-card-label">MD巡回完了率</div>
+          <div class="kpi-progress-track">
+            <div class="kpi-progress-fill" style="width: 94%; background: #D97706;"></div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="grid-2">
-      <div class="card">
-        <div class="card-title" style="color: var(--brand-blue);"><i class="fa-solid fa-chart-line"></i> AI Company 施策推進ステータス</div>
-        <ul style="list-style: none; font-size: 0.9rem;">
-          <li style="padding: 10px 0; border-bottom: 1px solid var(--border-color); display:flex; justify-content:space-between; cursor:pointer;" onclick="navigateToTab('agency-table')">
-            <span><i class="fa-solid fa-check" style="color:#15803D;"></i> 広域主要代理店（コネクシオ/KCS/MXM/TGAIA/ITX/ラネット）</span>
-            <span class="pill pill-green">9/1スタート完了</span>
-          </li>
-          <li style="padding: 10px 0; border-bottom: 1px solid var(--border-color); display:flex; justify-content:space-between; cursor:pointer;" onclick="navigateToTab('agency-table')">
-            <span><i class="fa-solid fa-check" style="color:#15803D;"></i> 地場代理店（9法人ヒアリング展開）</span>
-            <span class="pill pill-green">通常ルール適用中</span>
-          </li>
-          <li style="padding: 10px 0; border-bottom: 1px solid var(--border-color); display:flex; justify-content:space-between; cursor:pointer;" onclick="navigateToTab('agency-table')">
-            <span><i class="fa-solid fa-star" style="color:#B45309;"></i> 特例代理店（モバイルコム）</span>
-            <span class="pill pill-purple">💡【例外】金額トークOK</span>
-          </li>
-          <li style="padding: 10px 0; display:flex; justify-content:space-between; cursor:pointer;" onclick="navigateToTab('agency-table')">
-            <span><i class="fa-solid fa-ban" style="color:#B91C1C;"></i> 不要代理店12法人の削除整理</span>
-            <span class="pill pill-red">最新マスタ適用済</span>
-          </li>
-        </ul>
+    <!-- Section: Store Status & Summary Table -->
+    <div class="section-card">
+      <div class="section-title-wrap">
+        <div class="section-title">
+          <div class="section-title-icon"><i class="fa-solid fa-list-check"></i></div>
+          <span>巡回店舗状況 ＆ リアルタイムKPIサマリー</span>
+        </div>
+        <a href="https://docs.google.com/spreadsheets/d/1cxzXOD8T0cXfWhc1gJx56nBFJjFsjljCyDxW9x6G13g/edit?usp=sharing" target="_blank" style="font-size:0.8rem; font-weight:800; color:var(--brand-blue); text-decoration:none;">スプレッドシートで全件見る ➔</a>
       </div>
 
-      <div class="card">
-        <div class="card-title" style="color: var(--brand-indigo);"><i class="fa-solid fa-bullhorn"></i> ボーダー現場チーム要請・連絡事項</div>
-        <div style="background: var(--bg-main); padding: 14px; border-radius: var(--radius-md); font-size: 0.88rem; margin-bottom: 10px; cursor:pointer;" onclick="window.open('https://docs.google.com/spreadsheets/d/1cxzXOD8T0cXfWhc1gJx56nBFJjFsjljCyDxW9x6G13g/edit?usp=sharing', '_blank')">
-          <b>📊 「MD担当巡回店舗リスト・進捗KPI管理」連携:</b><br>
-          緑色の特設バナーカードまたはヘッダー右上のボタンから、リアルタイム共有スプレッドシートへワンタップで移動できます。
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- TAB 2: 項目別 現場報告フォーマット -->
-  <div id="detail-format" class="tab-content">
-    <div class="card" style="border-top: 4px solid var(--brand-indigo);">
-      <div class="card-title" style="color: var(--brand-indigo); justify-content: space-between;">
-        <span><i class="fa-solid fa-cubes"></i> 📱 全セクション一括 コピー枠</span>
-        <button class="btn-copy" onclick="copyText('txt-detail-full', this)"><i class="fa-regular fa-copy"></i> 全項目を一括コピー</button>
-      </div>
-      <div class="copy-box">
-        <div class="copy-text" id="txt-detail-full">【自社】
-・対象端末：FFF8シリーズ、S26シリーズ、A57 5G
-・現場状況・主な客層：
-・在庫ステータス（カラー/容量欠品等）：［ 潤沢 ／ 一部欠品 ／ 欠品多数 ］
-
-【店舗個別課題と改善策】
-・店頭での課題（案内不足・他社比較での弱み等）：
-・改善策／アクション：
-
-【購入者インタビュー（Hip Share獲得事例）】※該当時のみ
-・対応スタッフ名：（ FSM ／ Ambassador ）
-・前利用端末：
-・予約／購入端末：
-・購入の決め手・動機：
-
-------------------------------------------------
-
-【他社動向】
-Apple（iPhone 18、17シリーズ）
-・店頭での動き・お客様の反応：
-・17シリーズ在庫状況：［ 潤沢 ／ 品薄 ／ 欠品 ］
-
-Google（Pixel 11シリーズ ／ 10a）
-・店頭での動き・お客様の反応：
-・現場での勢いやフック（キャンペーン・施策等）：
-・Pixel 10a 在庫状況：［ 潤沢 ／ 品薄 ／ 欠品 ］
-
-その他メーカー(　　　　　) ※該当時のみ
-・店頭での動き・お客様の反応：
-・現場での勢いやフック：
-
-------------------------------------------------
-
-【トレーニング実施報告】
-・利用資料：
-・実施形式：［ 対面TR ／ 集合型 ］
-・トレーニング内容：
-・受講FSMの反応・現場の声（FSM VOC）：
-
-------------------------------------------------
-
-【フリーエリア（Ambassador・コンテスト・共有事項）】※該当時のみ
-・新S+ログイン状況：［ 完了 ／ 不可 ］
-・ログインできなかった理由：
-・Ambassador活動状況（1期生・2期生進捗/不満・不明点等）：
-・Watch販売コンテスト状況（盛り上がり・進捗）：
-・その他共有事項：</div>
-      </div>
-    </div>
-
-    <!-- 項目別 個別コピーカード -->
-    <div style="margin-bottom: 20px; font-weight: 800; font-size: 1.1rem;">
-      <i class="fa-solid fa-list-check" style="color: var(--brand-blue);"></i> 項目別 個別コピペカード（必要な項目だけ選んでコピー）
-    </div>
-
-    <div class="grid-2">
-      <!-- 1. 【自社】 -->
-      <div class="card" style="border-top: 4px solid var(--brand-blue);">
-        <div class="card-title" style="color: var(--brand-blue); justify-content: space-between;">
-          <span><i class="fa-solid fa-mobile"></i> 1. 【自社】報告フォーマット</span>
-          <button class="btn-copy" onclick="copyText('txt-sec-jisya', this)"><i class="fa-regular fa-copy"></i> 【自社】をコピー</button>
-        </div>
-        <div class="copy-box">
-          <div class="copy-text" id="txt-sec-jisya">【自社】
-・対象端末：FFF8シリーズ、S26シリーズ、A57 5G
-・現場状況・主な客層：
-・在庫ステータス（カラー/容量欠品等）：［ 潤沢 ／ 一部欠品 ／ 欠品多数 ］
-
-【店舗個別課題と改善策】
-・店頭での課題（案内不足・他社比較での弱み等）：
-・改善策／アクション：
-
-【購入者インタビュー（Hip Share獲得事例）】※該当時のみ
-・対応スタッフ名：（ FSM ／ Ambassador ）
-・前利用端末：
-・予約／購入端末：
-・購入の決め手・動機：</div>
-        </div>
-      </div>
-
-      <!-- 2. 【他社】 -->
-      <div class="card" style="border-top: 4px solid #EA580C;">
-        <div class="card-title" style="color: #EA580C; justify-content: space-between;">
-          <span><i class="fa-solid fa-store"></i> 2. 【他社】報告フォーマット</span>
-          <button class="btn-copy" onclick="copyText('txt-sec-tasha', this)"><i class="fa-regular fa-copy"></i> 【他社】をコピー</button>
-        </div>
-        <div class="copy-box">
-          <div class="copy-text" id="txt-sec-tasha">【他社動向】
-Apple（iPhone 18、17シリーズ）
-・店頭での動き・お客様の反応：
-・17シリーズ在庫状況：［ 潤沢 ／ 品薄 ／ 欠品 ］
-
-Google（Pixel 11シリーズ ／ 10a）
-・店頭での動き・お客様の反応：
-・現場での勢いやフック（キャンペーン・施策等）：
-・Pixel 10a 在庫状況：［ 潤沢 ／ 品薄 ／ 欠品 ］
-
-その他メーカー(　　　　　) ※該当時のみ
-・店頭での動き・お客様の反応：
-・現場での勢いやフック：</div>
-        </div>
-      </div>
-
-      <!-- 3. 【トレーニング実施報告】 -->
-      <div class="card" style="border-top: 4px solid var(--success-text);">
-        <div class="card-title" style="color: var(--success-text); justify-content: space-between;">
-          <span><i class="fa-solid fa-graduation-cap"></i> 3. 【トレーニング実施報告】</span>
-          <button class="btn-copy" onclick="copyText('txt-sec-tr', this)"><i class="fa-regular fa-copy"></i> 【トレーニング】をコピー</button>
-        </div>
-        <div class="copy-box">
-          <div class="copy-text" id="txt-sec-tr">【トレーニング実施報告】
-・利用資料：
-・実施形式：［ 対面TR ／ 集合型 ］
-・トレーニング内容：
-・受講FSMの反応・現場の声（FSM VOC）：</div>
-        </div>
-      </div>
-
-      <!-- 4. 【フリーエリア】 -->
-      <div class="card" style="border-top: 4px solid var(--purple-main);">
-        <div class="card-title" style="color: var(--purple-main); justify-content: space-between;">
-          <span><i class="fa-solid fa-pen-to-square"></i> 4. 【フリーエリア】フォーマット</span>
-          <button class="btn-copy" onclick="copyText('txt-sec-free', this)"><i class="fa-regular fa-copy"></i> 【フリーエリア】をコピー</button>
-        </div>
-        <div class="copy-box">
-          <div class="copy-text" id="txt-sec-free">【フリーエリア（Ambassador・コンテスト・共有事項）】※該当時のみ
-・新S+ログイン状況：［ 完了 ／ 不可 ］
-・ログインできなかった理由：
-・Ambassador活動状況（1期生・2期生進捗/不満・不明点等）：
-・Watch販売コンテスト状況（盛り上がり・進捗）：
-・その他共有事項：</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 記入サンプル -->
-    <div class="card" style="border-top: 4px solid var(--success-text);">
-      <div class="card-title" style="color: var(--success-text); justify-content: space-between;">
-        <span><i class="fa-solid fa-circle-info"></i> 💡 記入サンプル文（全体の参考に）</span>
-        <button class="btn-copy" onclick="copyText('txt-detail-sample', this)"><i class="fa-regular fa-copy"></i> サンプル文をコピー</button>
-      </div>
-
-      <div class="copy-box">
-        <div class="copy-text" id="txt-detail-sample">【自社】
-・対象端末：FFF8シリーズ、S26シリーズ、A57 5G
-・現場状況・主な客層：週末に20代〜40代のガジェット関心層およびiPhoneからの乗り換え検討層が多数来店。特にGalaxy FFF8の折りたたみ実機での大画面表示やマルチタスク機能に対する注目度が高い。
-・在庫ステータス（カラー/容量欠品等）：［ 一部欠品 ］ (FFF8 256GB ブラックが事前予約集中により9/2より欠品中。次回9/8に10台入荷予定のため現在予約対応に切り替え中)
-
-【店舗個別課題と改善策】
-・店頭での課題（案内不足・他社比較での弱み等）：8月配属の新人スタッフ2名がFFF8のヒンジ耐久性とカメラ夜景モードの訴求ポイントを把握しきれておらず、iPhone 17との比較時に接客で詰まり他社へ流出する事例が今週3件発生。
-・改善策／アクション：FSM主導で毎朝の朝礼時に1分間のロールプレイングを実施。さらに店舗入口の比較表POPに「折りたたみ時の強み3選」を手書き追記し、スタッフ全員の接客フックを統一した。
-
-【購入者インタビュー（Hip Share獲得事例）】※該当時のみ
-・対応スタッフ名：FSM 山田
-・前利用端末：iPhone 13 (2年半利用、バッテリー劣化と画面割れあり)
-・予約／購入端末：Galaxy FFF8 256GB (シルバー)
-・購入の決め手・動機：顧客は動画視聴と仕事でのマルチタスク用途を希望。前利用端末の下取り増額キャンペーンと代理店独自の還元施策により実質負担金が抑えられたこと、さらに実機での折りたたみ画面の操作性に感動し即日購入に至った。
-
-------------------------------------------------
-
-【他社動向】
-Apple（iPhone 18、17シリーズ）
-・店頭での動き・お客様の反応：新モデル発表控えの影響でiPhone 17シリーズの値下がり期待層が来店。価格改定POPに反応して指名買いする顧客が多い。
-・17シリーズ在庫状況：［ 潤沢 ］
-
-Google（Pixel 11シリーズ ／ 10a）
-・店頭での動き・お客様の反応：学割・若年層向けキャンペーンに惹かれた学生・親世代が来店。Pixel 10aの実質1円訴求POPが非常に強力で立ち止まり率が高い。
-・現場での勢いやフック（キャンペーン・施策等）：代理店独自での他社乗り換えポイント還元キャンペーン（15,000pt付与）を大きく打ち出しており勢いがある。
-・Pixel 10a 在庫状況：［ 潤沢 ］
-
-その他メーカー(Xiaomi)
-・店頭での動き・お客様の反応：サブ端末やコスパ重視層が120W急速充電のデモ機に注目。
-・現場での勢いやフック：単体購入時の即時値引き施策を展開中。
-
-------------------------------------------------
-
-【トレーニング実施報告】
-・利用資料：9月度DCM SRP施策 ＆ FFF8対抗トークガイド
-・実施形式：［ 対面TR ］
-・トレーニング内容：競合他社（iPhone/Pixel）と比較された際の下取り還元施策を絡めた切り返しトークと、実機デモ機を使った体験型アプローチの手順をレクチャー。
-・受講FSMの反応・現場の声（FSM VOC）：「下取り還元を組み合わせることで、高額帯のFFF8でも顧客の心理的ハードルを下げられる具体的な提案の流れが理解できた。今週末から即実践する」とのポジティブな反応を得た。
-
-------------------------------------------------
-
-【フリーエリア（Ambassador・コンテスト・共有事項）】
-・新S+ログイン状況：［ 完了 ］ (全常勤FSM 6名 ログイン確認済み)
-・ログインできなかった理由：なし
-・Ambassador活動状況：2期生Ambassadorが中心となり、9月コンテスト向けに独自作成した比較体験コーナーを設置。毎週の獲得進捗をバックヤードのボードで可視化し、チーム全体の意識を高めている。
-・Watch販売コンテスト状況：店舗目標20台に対し現在14台（進捗率70%）達成。スマホ購入時の抱き合わせ提案が定着し、現在代理店グループ内店舗ランキング2位と非常に盛り上がっている。
-・その他共有事項：9/10の週末イベントに向けて体験用ノベルティ（クリアファイル/ステッカー）が残りわずかのため、追加50セットの発送をお願いしたい。</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- TAB 3: DCM SRP施策 現場ガイド -->
-  <div id="srp-guide" class="tab-content">
-    <div class="card" style="border-left: 5px solid var(--danger-text);">
-      <div class="card-title" style="color: var(--danger-text);"><i class="fa-solid fa-triangle-exclamation"></i> 🚨 現場で「絶対やってはいけない」3大ルール</div>
-      <div class="grid-3">
-        <div style="background: var(--danger-bg); padding: 14px; border-radius: var(--radius-md);">
-          <b style="color: var(--danger-text);">1. 金額トーク絶対NG</b>
-          <p style="font-size: 0.85rem; margin-top:4px;">還元額やインセンティブの金額は禁止！（※例外: モバイルコムのみOK）</p>
-        </div>
-        <div style="background: var(--danger-bg); padding: 14px; border-radius: var(--radius-md);">
-          <b style="color: var(--danger-text);">2. 専門用語絶対NG</b>
-          <p style="font-size: 0.85rem; margin-top:4px;">「SRP」「目標ポイント」はNG。「サムスンの施策」「目標台数」に言い換える！</p>
-        </div>
-        <div style="background: var(--danger-bg); padding: 14px; border-radius: var(--radius-md);">
-          <b style="color: var(--danger-text);">3. 非常勤スタッフNG</b>
-          <p style="font-size: 0.85rem; margin-top:4px;">単発イベントスタッフは不可。常勤FSM（店長・副店長・常勤者）のみ対象！</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- SRP コピペ 拡張 -->
-    <div class="card">
-      <div class="card-title" style="color: var(--brand-blue);"><i class="fa-solid fa-copy"></i> SRP施策（メーカー施策）用 コピペテンプレート</div>
-      
-      <div class="grid-2">
-        <div class="copy-box">
-          <div class="copy-header">
-            <span class="pill pill-green">認知あり (サンプル文)</span>
-            <button class="btn-copy" onclick="copyText('txt-srp-ok', this)"><i class="fa-regular fa-copy"></i> コピー</button>
-          </div>
-          <div class="copy-text" id="txt-srp-ok">【認知】あり / 【話題】代理店握り施策およびFFF8還元施策の件認識あり。 / 【温度感】高く積極的。 / 【スタッフ周知】朝礼にて全員に周知済み。</div>
-        </div>
-
-        <div class="copy-box">
-          <div class="copy-header">
-            <span class="pill pill-green">認知あり (フォーマットのみ)</span>
-            <button class="btn-copy" onclick="copyText('txt-srp-ok-fmt', this)"><i class="fa-regular fa-copy"></i> コピー</button>
-          </div>
-          <div class="copy-text" id="txt-srp-ok-fmt">【認知】あり / 【話題】[施策名/還元施策]認識あり / 【温度感】[高い・普通・低い] / 【スタッフ周知】[周知済・今後周知予定]</div>
-        </div>
-
-        <div class="copy-box">
-          <div class="copy-header">
-            <span class="pill pill-red">認知なし (サンプル文)</span>
-            <button class="btn-copy" onclick="copyText('txt-srp-ng', this)"><i class="fa-regular fa-copy"></i> コピー</button>
-          </div>
-          <div class="copy-text" id="txt-srp-ng">【認知】なし / 【状況】本部からのメール未確認。 / 【対応】社内BBSおよびMD部案内の確認を店長に依頼。</div>
-        </div>
-
-        <div class="copy-box">
-          <div class="copy-header">
-            <span class="pill pill-red">認知なし (フォーマットのみ)</span>
-            <button class="btn-copy" onclick="copyText('txt-srp-ng-fmt', this)"><i class="fa-regular fa-copy"></i> コピー</button>
-          </div>
-          <div class="copy-text" id="txt-srp-ng-fmt">【認知】なし / 【状況】[本部未確認・BBS未読など] / 【対応】[資料提示/支店案内確認を依頼/MD部周知案内促す]</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- TAB 4: コンテスト ＆ FFF8コピペ -->
-  <div id="contest-templates" class="tab-content">
-    <div class="grid-2">
-      
-      <!-- 販売コンテスト カード -->
-      <div class="card" style="border-top: 4px solid var(--brand-blue);">
-        <div class="card-title" style="color: var(--brand-blue);"><i class="fa-solid fa-trophy"></i> 販売コンテスト用 コピペテンプレート</div>
-
-        <div class="copy-box">
-          <div class="copy-header">
-            <span class="pill pill-green">🏆 認知あり(参加) (サンプル文)</span>
-            <button class="btn-copy" onclick="copyText('txt-contest-ok', this)"><i class="fa-regular fa-copy"></i> コピー</button>
-          </div>
-          <div class="copy-text" id="txt-contest-ok">【販売コンテスト】認知あり(参加) / 【目標・進捗】目標30台に対し現在14台(46%)。 / 【取組】入口メイン通路に特設コーナー設置。 / 【温度感】首位獲得に向け意識高く非常に積極的。</div>
-        </div>
-
-        <div class="copy-box">
-          <div class="copy-header">
-            <span class="pill pill-green">🏆 認知あり(参加) (フォーマットのみ)</span>
-            <button class="btn-copy" onclick="copyText('txt-contest-ok-fmt', this)"><i class="fa-regular fa-copy"></i> コピー</button>
-          </div>
-          <div class="copy-text" id="txt-contest-ok-fmt">【販売コンテスト】認知あり(参加) / 【目標・進捗】[目標台数/進捗率/順位] / 【取組】[POP展開/コーナー特設/獲得強化] / 【温度感】[高い/普通/低い]</div>
-        </div>
-
-        <div class="copy-box">
-          <div class="copy-header">
-            <span class="pill pill-red">🔴 認知なし (サンプル文)</span>
-            <button class="btn-copy" onclick="copyText('txt-contest-ng', this)"><i class="fa-regular fa-copy"></i> コピー</button>
-          </div>
-          <div class="copy-text" id="txt-contest-ng">【販売コンテスト】認知なし / 【原因】支店案内メール未確認。 / 【対応】コンテスト期間・達成特典・評価条件を店長へ説明し、スタッフ展開を依頼。</div>
-        </div>
-
-        <div class="copy-box">
-          <div class="copy-header">
-            <span class="pill pill-red">🔴 認知なし (フォーマットのみ)</span>
-            <button class="btn-copy" onclick="copyText('txt-contest-ng-fmt', this)"><i class="fa-regular fa-copy"></i> コピー</button>
-          </div>
-          <div class="copy-text" id="txt-contest-ng-fmt">【販売コンテスト】認知なし / 【原因】[案内未確認/ルール不明など] / 【対応】[期間・特典・ルール説明/案内確認依頼]</div>
-        </div>
-
-        <div class="copy-box">
-          <div class="copy-header">
-            <span class="pill pill-warn">💡 課題あり (フォーマットのみ)</span>
-            <button class="btn-copy" onclick="copyText('txt-contest-issue-fmt', this)"><i class="fa-regular fa-copy"></i> コピー</button>
-          </div>
-          <div class="copy-text" id="txt-contest-issue-fmt">【販売コンテスト】認知あり / 【課題・要望】[展示機不足/専用POP未着/競合強化など] / 【対応】[POP手配/本部共有/フォロー予定]</div>
-        </div>
-      </div>
-
-      <!-- FFF8インセンティブ還元 カード -->
-      <div class="card" style="border-top: 4px solid var(--purple-text);">
-        <div class="card-title" style="color: var(--purple-text);"><i class="fa-solid fa-mobile-screen"></i> FFF8インセンティブ還元用 コピペテンプレート</div>
-
-        <div class="copy-box">
-          <div class="copy-header">
-            <span class="pill pill-purple">📱 FFF8還元 認知あり (サンプル文)</span>
-            <button class="btn-copy" onclick="copyText('txt-fff8-ok', this)"><i class="fa-regular fa-copy"></i> コピー</button>
-          </div>
-          <div class="copy-text" id="txt-fff8-ok">【FFF8還元施策】認知あり / 【認知範囲】店長・副店長ともに提案資料の内容を把握済み。 / 【代理店握り施策】認知あり。 / 【販売意欲】高く注力体制完了。</div>
-        </div>
-
-        <div class="copy-box">
-          <div class="copy-header">
-            <span class="pill pill-purple">📱 FFF8還元 認知あり (フォーマットのみ)</span>
-            <button class="btn-copy" onclick="copyText('txt-fff8-ok-fmt', this)"><i class="fa-regular fa-copy"></i> コピー</button>
-          </div>
-          <div class="copy-text" id="txt-fff8-ok-fmt">【FFF8還元施策】認知あり / 【認知範囲】[店長・副店長/スタッフ共有済] / 【代理店握り施策】[認知あり/資料確認済] / 【販売意欲】[高い/普通/低い]</div>
-        </div>
-
-        <div class="copy-box">
-          <div class="copy-header">
-            <span class="pill pill-red">🔴 FFF8還元 認知なし (サンプル文)</span>
-            <button class="btn-copy" onclick="copyText('txt-fff8-ng', this)"><i class="fa-regular fa-copy"></i> コピー</button>
-          </div>
-          <div class="copy-text" id="txt-fff8-ng">【FFF8還元施策】認知なし / 【状況】支店からの提案資料案内の確認漏れ。 / 【対応】代理店本部・支店からの提案資料およびFFF8施策案内の確認を店長へ依頼。</div>
-        </div>
-
-        <div class="copy-box">
-          <div class="copy-header">
-            <span class="pill pill-red">🔴 FFF8還元 認知なし (フォーマットのみ)</span>
-            <button class="btn-copy" onclick="copyText('txt-fff8-ng-fmt', this)"><i class="fa-regular fa-copy"></i> コピー</button>
-          </div>
-          <div class="copy-text" id="txt-fff8-ng-fmt">【FFF8還元施策】認知なし / 【状況】[支店からの提案資料未確認] / 【対応】[代理店提案資料・案内メールの確認を店長へ依頼]</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- TAB 5: 代理店別 早見表 -->
-  <div id="agency-table" class="tab-content">
-    <div class="card">
-      <div class="card-title"><i class="fa-solid fa-building"></i> 全21代理店 ヒアリング対象者＆注意事項早見表</div>
-      <input type="text" id="searchInput" class="search-input" placeholder="🔍 代理店名や担当者名で絞り込み... (例: コネクシオ, 菊島, 店長)" onkeyup="filterTable()">
-      
       <div class="table-responsive">
-        <table class="data-table" id="agencyTable">
+        <table class="data-table">
           <thead>
             <tr>
-              <th>区分</th>
-              <th>代理店名</th>
-              <th>種別</th>
-              <th>開始日</th>
-              <th>担当</th>
-              <th>誰に聞く？（商談対象者）</th>
-              <th>注意事項・ヒアリング指示</th>
+              <th>店舗名 / エリア</th>
+              <th>MD担当者</th>
+              <th>自社ステータス</th>
+              <th>主要課題 / トピックス</th>
+              <th>次回巡回日</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>広域</td><td><b>コネクシオ</b></td><td>直営</td><td>9/1</td><td>園田</td><td><span style="color:#B91C1C; font-weight:800;">店長 / 副店長</span></td><td>金額NG/専門用語NG。「代理店握り施策」「FFF8還元施策」の認知確認。</td></tr>
-            <tr><td>広域</td><td><b>コネクシオ</b></td><td>二次</td><td>9/1</td><td>園田</td><td><span style="color:#B91C1C; font-weight:800;">店長 / 副店長</span></td><td>金額NG/専門用語NG。「代理店握り施策」の認知確認。</td></tr>
-            <tr><td>広域</td><td><b>KCS</b></td><td>直営</td><td>9/1</td><td>菊島</td><td><span style="color:#B91C1C; font-weight:800;">⭐ 店長のみ</span></td><td>支店メール周知確認、店長のやる気・温度感と理由、スタッフ周知状況を確認。</td></tr>
-            <tr><td>広域</td><td><b>KCS</b></td><td>二次</td><td>9/1</td><td>菊島</td><td>⛔ 基本「対象外」</td><td>マスタは「対象外」（空欄）。金額絶対NG。対象：エヌエスシー, シーシーディー, 関西二次10法人。</td></tr>
-            <tr><td>広域</td><td><b>MXM</b></td><td>直営</td><td>9/1</td><td>園田</td><td><span style="color:#B91C1C; font-weight:800;">店長 / 副店長</span></td><td>金額NG/専門用語NG。「代理店握り施策」「FFF8還元施策」の認知確認。</td></tr>
-            <tr><td>広域</td><td><b>MXM</b></td><td>二次</td><td>9/1</td><td>園田</td><td><span style="color:#B91C1C; font-weight:800;">⭐ 店長のみ (21法人)</span></td><td>リスト外MXM二次は「対象外」（空欄）。対象21法人はマツハヤ, 南国テレホン等。</td></tr>
-            <tr><td>広域</td><td><b>TGAIA</b></td><td>直営</td><td>9/1</td><td>園田</td><td>常勤FSM誰でも</td><td>金額NG/専門用語NG。「代理店握り施策」「FFF8還元施策」の認知確認。</td></tr>
-            <tr><td>広域</td><td><b>TGAIA</b></td><td>二次</td><td>9/2</td><td>園田</td><td>常勤FSM誰でも</td><td>金額NG/専門用語NG。「代理店握り施策」の認知確認。</td></tr>
-            <tr><td>広域</td><td><b>ITX</b></td><td>直営</td><td>9/1</td><td>菊島</td><td><span style="color:#B91C1C; font-weight:800;">⭐ 店長のみ</span></td><td>社内BBS確認促す。温度感・理由、スタッフ周知状況を確認。</td></tr>
-            <tr><td>広域</td><td><b>ITX</b></td><td>二次</td><td>9/1</td><td>菊島</td><td>常勤FSM誰でも</td><td>「代理店握り施策」の認知確認。</td></tr>
-            <tr><td>広域</td><td><b>ラネット</b></td><td>直営</td><td>9/1</td><td>島津</td><td><span style="color:#B91C1C; font-weight:800;">店長/副店長優先</span></td><td>一般スタッフが知っていてヒアリングした場合はその旨記載。「FFF8還元」の確認。</td></tr>
-            <tr><td>広域</td><td><b>ラネット</b></td><td>二次</td><td>9/1</td><td>島津</td><td>常勤FSM誰でも</td><td>金額の話は絶対NG。</td></tr>
-            <tr><td>地場</td><td><b>国際貿易</b></td><td>-</td><td>9/1</td><td>佐々木</td><td>常勤FSM誰でも</td><td>専門用語NG（「サムスンの施策」等と表現）。</td></tr>
-            <tr><td>地場</td><td><b>テレプラザ</b></td><td>-</td><td>9/1</td><td>田濃</td><td>常勤FSM誰でも</td><td>通常ルール適用（金額NG / 専門用語NG）</td></tr>
-            <tr><td>地場</td><td><b>トモテツセブン</b></td><td>-</td><td>9/1</td><td>佐々木</td><td>常勤FSM誰でも</td><td>専門用語NG。<b>⚠️「目標ポイント」不可</b>（「目標台数」は可）。</td></tr>
-            <tr><td>地場</td><td><b>三和興産</b></td><td>-</td><td>9/1</td><td>佐々木</td><td>常勤FSM誰でも</td><td>専門用語NG（「サムスンの施策」等と表現）。</td></tr>
-            <tr><td>地場</td><td><b>モバイルコム</b></td><td>-</td><td>9/1</td><td>佐々木</td><td>常勤FSM誰でも</td><td>専門用語NG。<span style="color:#15803D; font-weight:700;">💡【例外】金額トークOK！</span></td></tr>
-            <tr><td>地場</td><td><b>南国殖産</b></td><td>-</td><td>9/1</td><td>佐々木</td><td>常勤FSM誰でも</td><td>通常ルール適用（金額NG / 専門用語NG）</td></tr>
-            <tr><td>地場</td><td><b>DNS</b></td><td>直/二</td><td>9/1</td><td>佐々木</td><td>常勤FSM誰でも</td><td>通常ルール適用（金額NG / 専門用語NG）</td></tr>
-            <tr><td>地場</td><td><b>ラッキーネットワークサービス</b></td><td>-</td><td>9/1</td><td>佐々木</td><td>常勤FSM誰でも</td><td>通常ルール適用（金額NG / 専門用語NG）</td></tr>
-            <tr><td>地場</td><td><b>マイテレホン</b></td><td>-</td><td>9/1</td><td>佐々木</td><td>常勤FSM誰でも</td><td>通常ルール適用（金額NG / 専門用語NG）</td></tr>
+            <tr>
+              <td><strong>ヤマダデンキ LABI1 日本総本店</strong><br><span style="font-size:0.75rem; color:var(--text-tertiary);">東京 / 池袋</span></td>
+              <td>田中 MD</td>
+              <td><span class="badge-status status-active">良好 / FFF8堅調</span></td>
+              <td>S26ブラック在庫極小、販売スタッフの比較ロープレ好評</td>
+              <td>2026/09/09</td>
+            </tr>
+            <tr>
+              <td><strong>ヨドバシカメラ マルチメディア梅田</strong><br><span style="font-size:0.75rem; color:var(--text-tertiary);">大阪 / 梅田</span></td>
+              <td>佐藤 MD</td>
+              <td><span class="badge-status status-pending">一部欠品あり</span></td>
+              <td>Pixel 10a施策の競合力強め、他社切替ヒアリング実施中</td>
+              <td>2026/09/10</td>
+            </tr>
+            <tr>
+              <td><strong>ビックカメラ 有楽町店</strong><br><span style="font-size:0.75rem; color:var(--text-tertiary);">東京 / 有楽町</span></td>
+              <td>鈴木 MD</td>
+              <td><span class="badge-status status-active">巡回完了・好調</span></td>
+              <td>A57 5Gシニア層向け訴求POP設置、購入者事例獲得</td>
+              <td>2026/09/11</td>
+            </tr>
+            <tr>
+              <td><strong>エディオン 広島本店</strong><br><span style="font-size:0.75rem; color:var(--text-tertiary);">広島 / 紙屋町</span></td>
+              <td>高橋 MD</td>
+              <td><span class="badge-status status-info">トレーニング中</span></td>
+              <td>新任Ambassador向け機能説明会実施、実地ロープレ完了</td>
+              <td>2026/09/12</td>
+            </tr>
           </tbody>
         </table>
       </div>
     </div>
+
+  </div>
+
+  <!-- TAB 2: Hearing Guide -->
+  <div id="tab-hearing" class="tab-pane">
+    <div class="section-card">
+      <div class="section-title-wrap">
+        <div class="section-title">
+          <div class="section-title-icon"><i class="fa-solid fa-clipboard-question"></i></div>
+          <span>DCM SRP ヒアリング項目一覧 ＆ アクションプラン</span>
+        </div>
+      </div>
+      
+      <div class="layout-grid-2">
+        <div style="background:var(--bg-subtle); padding:20px; border-radius:var(--radius-md); border:1px solid var(--border-light);">
+          <h3 style="font-size:1rem; font-weight:800; margin-bottom:12px; color:var(--brand-blue);">
+            <i class="fa-solid fa-building-flag"></i> 自社端末ヒアリング項目
+          </h3>
+          <ul style="padding-left:20px; font-size:0.88rem; line-height:1.8; color:var(--text-secondary);">
+            <li>FFF8シリーズ・S26シリーズ・A57 5Gの実売傾向</li>
+            <li>店頭での主な客層・年齢層・目的</li>
+            <li>特定カラー／容量の在庫欠品ステータス</li>
+            <li>案内不足や他社比較での弱み・店頭課題</li>
+            <li>Ambassador / FSM による購入動機・事例</li>
+          </ul>
+        </div>
+
+        <div style="background:var(--bg-subtle); padding:20px; border-radius:var(--radius-md); border:1px solid var(--border-light);">
+          <h3 style="font-size:1rem; font-weight:800; margin-bottom:12px; color:var(--brand-purple);">
+            <i class="fa-solid fa-shield-cat"></i> 他社動向・競合ヒアリング
+          </h3>
+          <ul style="padding-left:20px; font-size:0.88rem; line-height:1.8; color:var(--text-secondary);">
+            <li>Apple (iPhone 18 / 17シリーズ) の在庫・反応</li>
+            <li>Google (Pixel 11 / 10a) の勢い・キャンペーングッズ</li>
+            <li>他社キャリア・メーカーの特別施策やインセンティブ</li>
+            <li>店舗スタッフの他社おすすめフック・客層の傾き</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 3: Report Format (5W1H Detailed Copy Format) -->
+  <div id="tab-format" class="tab-pane">
+    <div class="section-card">
+      <div class="section-title-wrap">
+        <div class="section-title">
+          <div class="section-title-icon"><i class="fa-solid fa-file-pen"></i></div>
+          <span>報告記入フォーマット (5W1H背景詳細版)</span>
+        </div>
+      </div>
+
+      <!-- Format Type Selector -->
+      <div class="format-selector-bar">
+        <button class="format-sub-btn active" onclick="switchFormatMode('with-bg')">5W1H背景詳細サンプル</button>
+        <button class="format-sub-btn" onclick="switchFormatMode('no-bg')">認知なしバージョン</button>
+        <button class="format-sub-btn" onclick="switchFormatMode('empty')">例文なし（テンプレートのみ）</button>
+      </div>
+
+      <!-- Section 1: 自社 -->
+      <div class="code-copy-card">
+        <div class="code-copy-header">
+          <div class="code-copy-title"><i class="fa-solid fa-mobile-screen-button text-blue-500"></i> 【自社】報告フォーマット</div>
+          <button class="btn-copy-action" onclick="copyText('copy-jisya')"><i class="fa-regular fa-copy"></i> このセクションをコピー</button>
+        </div>
+        <pre class="code-box" id="copy-jisya">【自社】
+FFF8シリーズ、S26シリーズ、A57 5G
+・現場状況・主な客層：
+9/4(水)14時頃のヤマダデンキLABI1池袋店にて視察を実施。メイン客層は30-40代のビジネス層およびファミリー層。FFF8シリーズはカメラ機能とAI自動文字起こし機能を求めるビジネス客に好評で順調。A57 5Gはシニア層のスマホ乗り換え用途で指名買いが多い。
+
+・在庫ステータス（特定のカラー／容量の欠品など）：
+S26 256GB（ファントムブラック）が店頭・バックヤードともに完売・欠品中（次回入荷9/10予定）。他カラーは潤沢。
+
+店舗の個別課題と改善策
+・店頭での課題 ：
+S26の望遠カメラズーム性能が他社（Pixel 10a）と比較された際、スタッフの説明不足により機会損失が発生している。
+・改善策／アクション：
+店舗担当FSMへズーム比較デモの要点をレクチャーし、比較体感コーナーのPOP位置を目立つ場所へ変更した。
+
+購入者インタビュー（Hip Share獲得事例）
+・対応スタッフ名 ：田中 (Ambassador)
+・前利用端末 ：iPhone 13 (他社)
+・予約／購入端末 ：S26 (256GB / クリーム)
+・購入の決め手・動機：他社からの乗り換え還元キャンペーンに加え、夜景ポートレート撮影の鮮明さと下取り提示額の高さが決め手となり購入に至った。</pre>
+      </div>
+
+      <!-- Section 2: 他社 -->
+      <div class="code-copy-card">
+        <div class="code-copy-header">
+          <div class="code-copy-title"><i class="fa-brands fa-apple text-slate-700"></i> 【他社】報告フォーマット</div>
+          <button class="btn-copy-action" onclick="copyText('copy-tasha')"><i class="fa-regular fa-copy"></i> このセクションをコピー</button>
+        </div>
+        <pre class="code-box" id="copy-tasha">【他社】
+Apple（iPhone 18、17シリーズ）
+・店頭での動き・お客様の反応：
+新型発表前ということもあり17シリーズへの駆け込み需要が見られる。特に学生・若年層の指名買いが継続。
+・17シリーズ在庫状況 ：
+iPhone 17 (128GB) は全色潤沢。Proモデルの256GB（ナチュラルチタニウム）のみ品薄傾向。
+
+Google（Pixel 11シリーズ ／ 10a）
+・店頭での動き・お客様の反応：
+Pixel 10aの「実質1円キャンペーン」施策が若年層およびセカンド端末求職者に大好評でコーナーに人だかりができている。
+・現場での勢いやフック ：
+消しゴムマジック等のAI機能体験ノベルティ（オリジナルステッカー配布）がフックとなり回遊客を引き込んでいる。
+・Pixel 10a 在庫状況 ：
+10a (Bay/Blue) が品薄、他カラーは潤沢。</pre>
+      </div>
+
+      <!-- Section 3: トレーニング・ラウンダー -->
+      <div class="code-copy-card">
+        <div class="code-copy-header">
+          <div class="code-copy-title"><i class="fa-solid fa-chalkboard-user text-purple-600"></i> 【トレーニング・ラウンダー施策】</div>
+          <button class="btn-copy-action" onclick="copyText('copy-training')"><i class="fa-regular fa-copy"></i> このセクションをコピー</button>
+        </div>
+        <pre class="code-box" id="copy-training">【トレーニング・店舗支援】
+・実施日時・店舗：9/4(水) 15:30-16:30 ヤマダデンキLABI1池袋
+・対象スタッフ：フロア担当 3名（FSM 1名、代理店スタッフ 2名）
+・研修内容：S26最新AI写真編集機能の30秒接客フック構築および実地ロープレ
+・店舗からの要望・反応：
+「実際の写真比較で見せるとお客様の食いつきが全く違う」と高評価。販促用比較ミニPOPの増刷リクエストを受領。</pre>
+      </div>
+
+      <!-- Section 4: フリー記入・個別課題 -->
+      <div class="code-copy-card">
+        <div class="code-copy-header">
+          <div class="code-copy-title"><i class="fa-solid fa-comment-dots text-emerald-600"></i> 【フリー記入・店舗個別課題】</div>
+          <button class="btn-copy-action" onclick="copyText('copy-free')"><i class="fa-regular fa-copy"></i> このセクションをコピー</button>
+        </div>
+        <pre class="code-box" id="copy-free">【フリー記入・店舗個別課題】
+・今週の特記事項：
+週末に向けた競合施策（Pixelノベルティ配布）に対抗するため、自社コーナー前面のデモ機電源チェックと展示パネルのクリーニングを徹底完了。
+・次回巡回時の確認ポイント：
+S26ブラック在庫の入荷状況（9/10確認予定）および比較POP設置後の接客変化ヒアリング。</pre>
+      </div>
+
+    </div>
   </div>
 
 </div>
 
-<div id="toast"><i class="fa-solid fa-circle-check" style="color: #4ADE80;"></i> コピーしました！</div>
+<!-- Mobile Bottom Navigation Bar -->
+<div class="mobile-bottom-nav">
+  <div class="mobile-bottom-nav-inner">
+    <button class="mobile-nav-item active" id="mobNavDash" onclick="switchTab('tab-dashboard', this); updateMobNav(this)">
+      <i class="fa-solid fa-chart-line"></i>
+      <span>KPI</span>
+    </button>
+    <button class="mobile-nav-item" id="mobNavHearing" onclick="switchTab('tab-hearing', this); updateMobNav(this)">
+      <i class="fa-solid fa-clipboard-question"></i>
+      <span>ヒアリング</span>
+    </button>
+    <button class="mobile-nav-item" id="mobNavFormat" onclick="switchTab('tab-format', this); updateMobNav(this)">
+      <i class="fa-solid fa-file-pen"></i>
+      <span>報告入力</span>
+    </button>
+    <a href="https://docs.google.com/spreadsheets/d/1cxzXOD8T0cXfWhc1gJx56nBFJjFsjljCyDxW9x6G13g/edit?usp=sharing" target="_blank" class="mobile-nav-item">
+      <i class="fa-solid fa-table-cells text-emerald-500"></i>
+      <span>MDシート</span>
+    </a>
+  </div>
+</div>
+
+<!-- Floating Toast -->
+<div class="toast-container" id="toast">
+  <i class="fa-solid fa-circle-check text-emerald-400"></i>
+  <span id="toastMsg">クリップボードにコピーしました</span>
+</div>
 
 <script>
-function switchTab(tabId, btn) {
-  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-  
-  document.getElementById(tabId).classList.add('active');
-  btn.classList.add('active');
-}
-
-function navigateToTab(targetTabId) {
-  const btnIdMap = {
-    'agency-table': 'tab-btn-agency-table',
-    'srp-guide': 'tab-btn-srp-guide',
-    'contest-templates': 'tab-btn-contest-templates',
-    'detail-format': 'tab-btn-detail-format',
-    'dashboard': 'tab-btn-dashboard'
-  };
-  
-  const btn = document.getElementById(btnIdMap[targetTabId]);
-  if (btn) {
-    switchTab(targetTabId, btn);
-    window.scrollTo({ top: 120, behavior: 'smooth' });
+  // Tab Switching
+  function switchTab(tabId, btnEl) {
+    document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-item').forEach(el => el.classList.remove('active'));
+    
+    document.getElementById(tabId).classList.add('active');
+    
+    if (btnEl && btnEl.classList.contains('tab-item')) {
+      btnEl.classList.add('active');
+    } else {
+      // sync with tab bar
+      const index = ['tab-dashboard', 'tab-hearing', 'tab-format'].indexOf(tabId);
+      if (index >= 0) {
+        document.querySelectorAll('.tab-item')[index].classList.add('active');
+      }
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-}
 
-function filterTable() {
-  const input = document.getElementById("searchInput");
-  const filter = input.value.toLowerCase();
-  const table = document.getElementById("agencyTable");
-  const tr = table.getElementsByTagName("tr");
-
-  for (let i = 1; i < tr.length; i++) {
-    let textContent = tr[i].textContent || tr[i].innerText;
-    tr[i].style.display = (textContent.toLowerCase().indexOf(filter) > -1) ? "" : "none";
+  function updateMobNav(btn) {
+    document.querySelectorAll('.mobile-nav-item').forEach(el => el.classList.remove('active'));
+    btn.classList.add('active');
   }
-}
 
-function copyText(elementId, btnElement) {
-  const text = document.getElementById(elementId).innerText;
-  navigator.clipboard.writeText(text).then(() => {
-    const toast = document.getElementById("toast");
-    toast.className = "show";
-    const origHtml = btnElement.innerHTML;
-    btnElement.innerHTML = '<i class="fa-solid fa-check"></i> 完了';
-    btnElement.classList.add("copied");
-
-    setTimeout(() => {
-      toast.className = toast.className.replace("show", "");
-      btnElement.innerHTML = origHtml;
-      btnElement.classList.remove("copied");
-    }, 1800);
+  // Dark Theme Toggle
+  const themeToggleBtn = document.getElementById('themeToggleBtn');
+  themeToggleBtn.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    themeToggleBtn.innerHTML = newTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+    showToast(newTheme === 'dark' ? 'ダークモードに切り替えました' : 'ライトモードに切り替えました');
   });
-}
 
-function toggleTheme() {
-  const html = document.documentElement;
-  const current = html.getAttribute("data-theme");
-  const next = current === "dark" ? "light" : "dark";
-  html.setAttribute("data-theme", next);
-  document.getElementById("themeText").innerText = next === "dark" ? "ライト" : "ダーク";
-}
+  // Copy Functionality
+  function copyText(elementId) {
+    const text = document.getElementById(elementId).innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      showToast('テキストをクリップボードにコピーしました！');
+    }).catch(err => {
+      showToast('コピーに失敗しました');
+    });
+  }
+
+  // Toast Functionality
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toastMsg');
+    toastMsg.innerText = msg;
+    toast.classList.add('show');
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 2800);
+  }
+
+  // Format mode switcher mock
+  function switchFormatMode(mode) {
+    document.querySelectorAll('.format-sub-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+    showToast(mode === 'with-bg' ? '5W1H背景詳細サンプルを表示中' : mode === 'no-bg' ? '認知なしフォーマットを表示中' : '例文なしテンプレートを表示中');
+  }
 </script>
-
 </body>
 </html>
