@@ -541,6 +541,15 @@
     transition: opacity 0.3s, bottom 0.3s;
   }
   #toast.show { visibility: visible; opacity: 1; bottom: 40px; }
+@media (max-width: 768px) {
+    header { padding: 18px 14px 44px; }
+    .nav-tabs-container { margin: -18px auto 16px; padding: 0 12px; }
+    .nav-menu-header { gap: 6px; margin-bottom: 6px; }
+    .nav-menu-badge { font-size: 0.74rem; padding: 3px 10px; }
+    .nav-menu-subtext { font-size: 0.72rem; padding: 3px 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .nav-tabs { padding: 6px; gap: 6px; border-width: 2px; }
+    .tab-btn { min-width: 140px; padding: 10px 12px; font-size: 0.82rem; }
+  }
 </style>
 </head>
 <body>
@@ -569,8 +578,8 @@
 <!-- Navigation Tabs (強烈に目立つメニュー切り替えバー) -->
 <div class="nav-tabs-container">
   <div class="nav-menu-header">
-    <span class="nav-menu-badge"><i class="fa-solid fa-hand-pointer"></i> ページ切替メニュー</span>
-    <span class="nav-menu-subtext">👆 クリック／タップで目的のページへ移動できます</span>
+    <span class="nav-menu-badge"><i class="fa-solid fa-circle-chevron-down"></i> ページ切替メニュー</span>
+    <span class="nav-menu-subtext">👇 下のタブをタップして目的のページへ移動（左右スワイプ可 👉）</span>
   </div>
   <div class="nav-tabs">
     <button class="tab-btn active" id="tab-btn-dashboard" onclick="switchTab('dashboard', this)">
