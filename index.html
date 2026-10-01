@@ -1003,6 +1003,7 @@ Galaxy Coach(ネガティブ)
 
   <!-- TAB 3: DCM SRP施策 現場ガイド -->
   <div id="srp-guide" class="tab-content">
+    <!-- 現場3大ルール -->
     <div class="card" style="border-left: 5px solid var(--danger-text);">
       <div class="card-title" style="color: var(--danger-text);"><i class="fa-solid fa-triangle-exclamation"></i> 🚨 現場で「絶対やってはいけない」3大ルール</div>
       <div class="grid-3">
@@ -1021,7 +1022,7 @@ Galaxy Coach(ネガティブ)
       </div>
     </div>
 
-    <!-- SRP コピペ 拡張 -->
+    <!-- SRP施策 用 コピペテンプレート -->
     <div class="card">
       <div class="card-title" style="color: var(--brand-blue);"><i class="fa-solid fa-copy"></i> SRP施策（メーカー施策）用 コピペテンプレート</div>
       
@@ -1031,7 +1032,7 @@ Galaxy Coach(ネガティブ)
             <span class="pill pill-green">認知あり (サンプル文)</span>
             <button class="btn-copy" onclick="copyText('txt-srp-ok', this)"><i class="fa-regular fa-copy"></i> コピー</button>
           </div>
-          <div class="copy-text" id="txt-srp-ok">【認知】あり / 【話題】代理店握り施策およびFFF8還元施策の件認識あり。 / 【温度感】高く積極的。 / 【スタッフ周知】朝礼にて全員に周知済み。</div>
+          <div class="copy-text" id="txt-srp-ok">【認知】あり / 【話題】代理店握り施策およびFFF8還元施策の件認知あり。 / 【温度感】高く積極的。 / 【スタッフ周知】朝礼にて全員に周知済み。</div>
         </div>
 
         <div class="copy-box">
@@ -1039,7 +1040,7 @@ Galaxy Coach(ネガティブ)
             <span class="pill pill-green">認知あり (フォーマットのみ)</span>
             <button class="btn-copy" onclick="copyText('txt-srp-ok-fmt', this)"><i class="fa-regular fa-copy"></i> コピー</button>
           </div>
-          <div class="copy-text" id="txt-srp-ok-fmt">【認知】あり / 【話題】[施策名/還元施策]認識あり / 【温度感】[高い・普通・低い] / 【スタッフ周知】[周知済・今後周知予定]</div>
+          <div class="copy-text" id="txt-srp-ok-fmt">【認知】あり / 【話題】[施策名/還元施策]認知あり / 【温度感】[高い・普通・低い] / 【スタッフ周知】[周知済・今後周知予定]</div>
         </div>
 
         <div class="copy-box">
@@ -1059,37 +1060,12 @@ Galaxy Coach(ネガティブ)
         </div>
       </div>
     </div>
-  </div>
 
-        <div class="copy-box">
-          <div class="copy-header">
-            <span class="pill pill-red">🔴 認知なし (サンプル文)</span>
-            <button class="btn-copy" onclick="copyText('txt-contest-ng', this)"><i class="fa-regular fa-copy"></i> コピー</button>
-          </div>
-          <div class="copy-text" id="txt-contest-ng">【販売コンテスト】認知なし / 【原因】支店案内メール未確認。 / 【対応】コンテスト期間・達成特典・評価条件を店長へ説明し、スタッフ展開を依頼。</div>
-        </div>
+    <!-- FFF8インセンティブ還元用 コピペテンプレート -->
+    <div class="card" style="border-top: 4px solid var(--purple-text); margin-top: 24px;">
+      <div class="card-title" style="color: var(--purple-text);"><i class="fa-solid fa-mobile-screen"></i> FFF8インセンティブ還元用 コピペテンプレート</div>
 
-        <div class="copy-box">
-          <div class="copy-header">
-            <span class="pill pill-red">🔴 認知なし (フォーマットのみ)</span>
-            <button class="btn-copy" onclick="copyText('txt-contest-ng-fmt', this)"><i class="fa-regular fa-copy"></i> コピー</button>
-          </div>
-          <div class="copy-text" id="txt-contest-ng-fmt">【販売コンテスト】認知なし / 【原因】[案内未確認/ルール不明など] / 【対応】[期間・特典・ルール説明/案内確認依頼]</div>
-        </div>
-
-        <div class="copy-box">
-          <div class="copy-header">
-            <span class="pill pill-warn">💡 課題あり (フォーマットのみ)</span>
-            <button class="btn-copy" onclick="copyText('txt-contest-issue-fmt', this)"><i class="fa-regular fa-copy"></i> コピー</button>
-          </div>
-          <div class="copy-text" id="txt-contest-issue-fmt">【販売コンテスト】認知あり / 【課題・要望】[展示機不足/専用POP未着/競合強化など] / 【対応】[POP手配/本部共有/フォロー予定]</div>
-        </div>
-      </div>
-
-      <!-- FFF8インセンティブ還元 カード -->
-      <div class="card" style="border-top: 4px solid var(--purple-text);">
-        <div class="card-title" style="color: var(--purple-text);"><i class="fa-solid fa-mobile-screen"></i> FFF8インセンティブ還元用 コピペテンプレート</div>
-
+      <div class="grid-2">
         <div class="copy-box">
           <div class="copy-header">
             <span class="pill pill-purple">📱 FFF8還元 認知あり (サンプル文)</span>
@@ -1119,23 +1095,10 @@ Galaxy Coach(ネガティブ)
             <span class="pill pill-red">🔴 FFF8還元 認知なし (フォーマットのみ)</span>
             <button class="btn-copy" onclick="copyText('txt-fff8-ng-fmt', this)"><i class="fa-regular fa-copy"></i> コピー</button>
           </div>
-          <div class="copy-text" id="txt-fff8-ng-fmt">【FFF8還元施策】認知なし / 【状況】[支店からの提案資料未確認] / 【対応】[代理店提案資料・案内メールの確認を店長へ依頼]</div>
+          <div class="copy-text" id="txt-fff8-ng-fmt">【FFF8還元施策】認知なし / 【状況】[案内確認漏れ/提案資料不備など] / 【対応】[資料案内確認依頼/提案資料共有]</div>
         </div>
       </div>
     </div>
-  
-
-    <!-- FFF8インセンティブ還元用 コピペテンプレート -->
-    <div class="card" style="border-top: 4px solid var(--purple-text);">
-        <div class="card-title" style="color: var(--purple-text);"><i class="fa-solid fa-mobile-screen"></i> FFF8インセンティブ還元用 コピペテンプレート</div>
-
-        <div class="copy-box">
-          <div class="copy-header">
-            <span class="pill pill-purple">📱 FFF8還元 認知あり (サンプル文)</span>
-            <button class="btn-copy" onclick="copyText('txt-fff8-ok', this)"><i class="fa-regular fa-copy"></i> コピー</button>
-          </div>
-          <div class="copy-text" id="txt-fff8-ok">【FFF8還元施策】認知あり / 【認知範囲】店長・副店長ともに提案資料の内容を把握済み。 / 【代理店握り施策】認知あり。 / 【販売意欲】高く注力体制完了。</div>
-        </div>
   </div>
 
   <!-- TAB 5: 代理店別 早見表 -->
