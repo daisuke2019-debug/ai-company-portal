@@ -635,6 +635,127 @@
   color: #2563EB;
 }
 
+
+/* === Hamburger Button & Slide-in Drawer Menu === */
+.btn-hamburger {
+  background: #2563EB;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-right: 10px;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+}
+.btn-hamburger:hover {
+  background: #1D4ED8;
+  transform: scale(1.04);
+}
+
+.drawer-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(4px);
+  z-index: 9998;
+}
+
+.drawer-menu {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 280px;
+  height: 100%;
+  background: #FFFFFF;
+  z-index: 9999;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+  transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.drawer-menu.open {
+  left: 0;
+}
+.drawer-overlay.open {
+  display: block;
+}
+
+.drawer-header {
+  padding: 18px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #F8FAFC;
+}
+
+.drawer-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #64748B;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.drawer-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.drawer-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #F8FAFC;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #334155;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+.drawer-item i {
+  font-size: 1.15rem;
+}
+.drawer-item.active, .drawer-item:hover {
+  background: #EFF6FF;
+  border-color: #93C5FD;
+  color: #1D4ED8;
+}
+
+.drawer-footer {
+  padding: 16px;
+  border-top: 1px solid var(--border-color);
+  background: #F8FAFC;
+}
+.drawer-footer-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #059669;
+  text-decoration: none;
+}
+
 </style>
 </head>
 <body>
@@ -642,6 +763,9 @@
 <header>
   <div class="header-content">
     <div class="brand-logo">
+      <button class="btn-hamburger" id="hamburgerBtn" onclick="toggleDrawer()" title="メニューを開く">
+        <i class="fa-solid fa-bars"></i>
+      </button>
       <div class="brand-icon"><i class="fa-solid fa-rocket"></i></div>
       <div>
         <h1>AI Company 統合ポータル</h1>
@@ -1560,6 +1684,38 @@ window.switchTab = function(tabId, btnElement) {
   });
 };
 
+
+// === Left Drawer Navigation JS ===
+function toggleDrawer() {
+  const drawer = document.getElementById("drawerMenu");
+  const overlay = document.getElementById("drawerOverlay");
+  if (drawer && overlay) {
+    drawer.classList.toggle("open");
+    overlay.classList.toggle("open");
+  }
+}
+
+function selectDrawerTab(tabId, elem) {
+  // Call main switchTab
+  if (window.switchTab) {
+    const mainBtn = document.getElementById("tab-btn-" + tabId);
+    window.switchTab(tabId, mainBtn || elem);
+  }
+
+  // Highlight drawer items
+  const dItems = document.querySelectorAll(".drawer-item");
+  dItems.forEach(item => {
+    if (item.id === "ditem-" + tabId) {
+      item.classList.add("active");
+    } else {
+      item.classList.remove("active");
+    }
+  });
+
+  // Close drawer
+  toggleDrawer();
+}
+
 </script>
 
 
@@ -1609,6 +1765,44 @@ window.switchTab = function(tabId, btnElement) {
         <i class="fa-regular fa-copy"></i> 完成文をコピー
       </button>
     </div>
+  </div>
+</div>
+
+
+<!-- ☰ 左側スライドイン ドロワーメニュー (スマホ対応) -->
+<div id="drawerOverlay" class="drawer-overlay" onclick="toggleDrawer()"></div>
+<div id="drawerMenu" class="drawer-menu">
+  <div class="drawer-header">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <i class="fa-solid fa-rocket" style="color:#3B82F6; font-size:1.3rem;"></i>
+      <span style="font-weight:900; font-size:1.05rem; color:#0F172A;">ページ切替メニュー</span>
+    </div>
+    <button type="button" onclick="toggleDrawer()" class="drawer-close-btn"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+
+  <div class="drawer-body">
+    <button class="drawer-item active" id="ditem-dashboard" onclick="selectDrawerTab('dashboard', this)">
+      <i class="fa-solid fa-chart-pie text-blue-500"></i>
+      <span>📊 ダッシュボード</span>
+    </button>
+    <button class="drawer-item" id="ditem-detail-format" onclick="selectDrawerTab('detail-format', this)">
+      <i class="fa-solid fa-file-pen text-emerald-500"></i>
+      <span>📝 現場報告フォーマット</span>
+    </button>
+    <button class="drawer-item" id="ditem-srp-guide" onclick="selectDrawerTab('srp-guide', this)">
+      <i class="fa-solid fa-clipboard-check text-purple-500"></i>
+      <span>📱 DCM SRP 現場ガイド</span>
+    </button>
+    <button class="drawer-item" id="ditem-agency-table" onclick="selectDrawerTab('agency-table', this)">
+      <i class="fa-solid fa-building text-sky-500"></i>
+      <span>🏢 代理店別 早見表</span>
+    </button>
+  </div>
+
+  <div class="drawer-footer">
+    <a href="https://docs.google.com/spreadsheets/d/1cxzXOD8T0cXfWhc1gJx56nBFJjFsjljCyDxW9x6G13g/edit?usp=sharing" target="_blank" class="drawer-footer-link">
+      <i class="fa-solid fa-file-excel text-emerald-600"></i> MD担当巡回スプレッドシート
+    </a>
   </div>
 </div>
 
