@@ -968,7 +968,7 @@
         </div>
       </div>
 
-      <div class="kpi-card" onclick="navigateToTab('contest-templates')" title="タップしてFFF8還元フォーマットを開く">
+      <div class="kpi-card" onclick="navigateToTab('srp-guide')" title="タップしてFFF8還元ガイドを開く">
         <div class="kpi-icon" style="background: rgba(124,58,237,0.15); color: #7C3AED;"><i class="fa-solid fa-gem"></i></div>
         <div style="flex:1;">
           <div class="kpi-val">FFF8還元</div>
@@ -1580,21 +1580,53 @@ function switchTab(tabId, btn) {
   btn.classList.add('active');
 }
 
+
+// === Robust Navigation JS (Fix KPI Card Clicks) ===
+function switchTab(tabId, btnElement) {
+  // Hide all tab contents
+  const contents = document.querySelectorAll(".tab-content");
+  contents.forEach(content => {
+    content.classList.remove("active");
+  });
+
+  // Show target tab content
+  const targetContent = document.getElementById(tabId);
+  if (targetContent) {
+    targetContent.classList.add("active");
+  }
+
+  // Highlight Drawer items
+  const dItems = document.querySelectorAll(".drawer-item");
+  dItems.forEach(item => {
+    if (item.id === "ditem-" + tabId) {
+      item.classList.add("active");
+    } else {
+      item.classList.remove("active");
+    }
+  });
+
+  // Highlight Bottom Nav items
+  const bItems = document.querySelectorAll(".bottom-nav-item");
+  bItems.forEach(item => {
+    if (item.id === "bnav-" + tabId) {
+      item.classList.add("active");
+    } else {
+      item.classList.remove("active");
+    }
+  });
+}
+
 function navigateToTab(targetTabId) {
-  const btnIdMap = {
-    'agency-table': 'tab-btn-agency-table',
-    'srp-guide': 'tab-btn-srp-guide',
-    'contest-templates': 'tab-btn-contest-templates',
-    'detail-format': 'tab-btn-detail-format',
-    'dashboard': 'tab-btn-dashboard'
-  };
+  // Directly switch tab without relying on deleted top tab buttons
+  switchTab(targetTabId, null);
   
-  const btn = document.getElementById(btnIdMap[targetTabId]);
-  if (btn) {
-    switchTab(targetTabId, btn);
-    window.scrollTo({ top: 120, behavior: 'smooth' });
+  // Smooth scroll to main container or specific card
+  const container = document.querySelector(".container");
+  if (container) {
+    container.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 }
+
 
 function filterTable() {
   const input = document.getElementById("searchInput");
