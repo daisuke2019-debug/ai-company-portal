@@ -550,6 +550,91 @@
     .nav-tabs { padding: 6px; gap: 6px; border-width: 2px; }
     .tab-btn { min-width: 140px; padding: 10px 12px; font-size: 0.82rem; }
   }
+
+/* === Feature 1, 2, 3 Additions === */
+.tag-filter-btn {
+  background: #F1F5F9;
+  color: #475569;
+  border: 1px solid #CBD5E1;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.tag-filter-btn:hover, .tag-filter-btn.active {
+  background: #2563EB;
+  color: #FFFFFF;
+  border-color: #2563EB;
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+}
+
+.btn-smart-gen {
+  background: #FFFBEB;
+  color: #B45309;
+  border: 1px solid #FDE68A;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  cursor: pointer;
+  margin-left: 6px;
+  transition: all 0.15s ease;
+}
+.btn-smart-gen:hover {
+  background: #FEF3C7;
+  color: #78350F;
+}
+
+/* Mobile Bottom Navigation Bar */
+.mobile-bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid var(--border-color);
+  z-index: 999;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 768px) {
+  .mobile-bottom-nav {
+    display: flex;
+  }
+  body {
+    padding-bottom: 70px;
+  }
+}
+
+.bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: #64748B;
+  font-size: 0.72rem;
+  font-weight: 700;
+  gap: 3px;
+  cursor: pointer;
+  flex: 1;
+  height: 100%;
+}
+.bottom-nav-item i {
+  font-size: 1.15rem;
+}
+.bottom-nav-item.active {
+  color: #2563EB;
+}
+
 </style>
 </head>
 <body>
@@ -605,6 +690,43 @@
 
   <!-- TAB 1: AI Company ダッシュボード -->
   <div id="dashboard" class="tab-content active">
+
+    <!-- 📢 今月の最重要アクション ガイド (Top Notification) -->
+    <div class="card" style="border-left: 5px solid #2563EB; background: linear-gradient(135deg, #EFF6FF 0%, #FFFFFF 100%); margin-bottom: 24px; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);">
+      <div class="card-title" style="color: #1D4ED8; justify-content: space-between; border-bottom: 1px solid #BFDBFE; padding-bottom: 10px;">
+        <span style="font-weight: 800; font-size: 1.05rem;"><i class="fa-solid fa-bullhorn text-blue-600"></i> 📢 10月最重要現場アクション ＆ フォーカス方針</span>
+        <span class="pill" style="background: #DBEAFE; color: #1E40AF; font-size: 0.78rem; font-weight: 800; padding: 3px 10px; border-radius: 999px;">10月SRP方針</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-top: 12px;">
+        <div style="background: #FFFFFF; padding: 14px 16px; border-radius: var(--radius-md); border: 1px solid #DBEAFE;">
+          <div style="font-weight: 800; color: #1E3A8A; margin-bottom: 6px; font-size: 0.9rem;">
+            <i class="fa-solid fa-circle-check" style="color: #2563EB;"></i> 1. ドコモ代理店 SRP認知ヒアリング
+          </div>
+          <p style="font-size: 0.82rem; color: var(--text-main); line-height: 1.6; margin: 0;">
+            全22パターンのドコモ直営・二次代理店へのSRP認知状況を確認。支店・本部メールやBBSの確認状況を丁寧にヒアリング。
+          </p>
+        </div>
+
+        <div style="background: #FFFFFF; padding: 14px 16px; border-radius: var(--radius-md); border: 1px solid #DBEAFE;">
+          <div style="font-weight: 800; color: #1E3A8A; margin-bottom: 6px; font-size: 0.9rem;">
+            <i class="fa-solid fa-circle-check" style="color: #2563EB;"></i> 2. FFF8 インセンティブ施策の周知確認
+          </div>
+          <p style="font-size: 0.82rem; color: var(--text-main); line-height: 1.6; margin: 0;">
+            店長・副店長ともに提案資料の内容を把握できているか、代理店握り施策の認知度と販売意欲をヒアリング。
+          </p>
+        </div>
+
+        <div style="background: #FFFFFF; padding: 14px 16px; border-radius: var(--radius-md); border: 1px solid #DBEAFE;">
+          <div style="font-weight: 800; color: #B91C1C; margin-bottom: 6px; font-size: 0.9rem;">
+            <i class="fa-solid fa-triangle-exclamation" style="color: #DC2626;"></i> 3. 現場3大禁止ルールの徹底
+          </div>
+          <p style="font-size: 0.82rem; color: var(--text-main); line-height: 1.6; margin: 0;">
+            <b>金額トーク絶対NG</b>（例外:モバイルコム）、<b>専門用語NG</b>（「サムスンの施策」と言い換え）、<b>常勤FSM対象</b>を厳守。
+          </p>
+        </div>
+      </div>
+    </div>
 
     <!-- 特設リンクカード: MD担当巡回店舗リスト・進捗KPI管理 -->
     <a href="https://docs.google.com/spreadsheets/d/1cxzXOD8T0cXfWhc1gJx56nBFJjFsjljCyDxW9x6G13g/edit?usp=sharing" target="_blank" class="md-sheet-card">
@@ -752,7 +874,7 @@
     <div class="card" style="border-top: 4px solid var(--brand-indigo);">
       <div class="card-title" style="color: var(--brand-indigo); justify-content: space-between;">
         <span><i class="fa-solid fa-cubes"></i> 📱 全セクション一括 コピー枠</span>
-        <button class="btn-copy" onclick="copyText('txt-detail-full', this)"><i class="fa-regular fa-copy"></i> 全項目を一括コピー</button>
+        <button class="btn-copy" onclick="copyText('txt-detail-full', this)"><i class="fa-regular fa-copy"></i> 全項目を一括コピー</button> <button class="btn-smart-gen" onclick="openSmartCopyModal('txt-detail-full')"><i class="fa-solid fa-wand-magic-sparkles"></i> 編集してコピー</button>
       </div>
       <div class="copy-box">
         <div class="copy-text" id="txt-detail-full">【自社】
@@ -826,7 +948,7 @@ Galaxy Coach(ネガティブ)
       <div class="card" style="border-top: 4px solid var(--brand-blue);">
         <div class="card-title" style="color: var(--brand-blue); justify-content: space-between;">
           <span><i class="fa-solid fa-mobile"></i> 1. 【自社】報告フォーマット</span>
-          <button class="btn-copy" onclick="copyText('txt-sec-jisya', this)"><i class="fa-regular fa-copy"></i> 【自社】をコピー</button>
+          <button class="btn-copy" onclick="copyText('txt-sec-jisya', this)"><i class="fa-regular fa-copy"></i> 【自社】をコピー</button> <button class="btn-smart-gen" onclick="openSmartCopyModal('txt-sec-jisya')"><i class="fa-solid fa-wand-magic-sparkles"></i> 編集してコピー</button>
         </div>
         <div class="copy-box">
           <div class="copy-text" id="txt-sec-jisya">【自社】
@@ -847,7 +969,7 @@ Galaxy Coach(ネガティブ)
       <div class="card" style="border-top: 4px solid #EA580C;">
         <div class="card-title" style="color: #EA580C; justify-content: space-between;">
           <span><i class="fa-solid fa-store"></i> 2. 【他社】報告フォーマット</span>
-          <button class="btn-copy" onclick="copyText('txt-sec-tasha', this)"><i class="fa-regular fa-copy"></i> 【他社】をコピー</button>
+          <button class="btn-copy" onclick="copyText('txt-sec-tasha', this)"><i class="fa-regular fa-copy"></i> 【他社】をコピー</button> <button class="btn-smart-gen" onclick="openSmartCopyModal('txt-sec-tasha')"><i class="fa-solid fa-wand-magic-sparkles"></i> 編集してコピー</button>
         </div>
         <div class="copy-box">
           <div class="copy-text" id="txt-sec-tasha">【他社動向】
@@ -874,7 +996,7 @@ Google（Pixel 11シリーズ ／ 10a）
       <div class="card" style="border-top: 4px solid var(--success-text);">
         <div class="card-title" style="color: var(--success-text); justify-content: space-between;">
           <span><i class="fa-solid fa-graduation-cap"></i> 3. 【トレーニング実施報告】</span>
-          <button class="btn-copy" onclick="copyText('txt-sec-tr', this)"><i class="fa-regular fa-copy"></i> 【トレーニング】をコピー</button>
+          <button class="btn-copy" onclick="copyText('txt-sec-tr', this)"><i class="fa-regular fa-copy"></i> 【トレーニング】をコピー</button> <button class="btn-smart-gen" onclick="openSmartCopyModal('txt-sec-tr')"><i class="fa-solid fa-wand-magic-sparkles"></i> 編集してコピー</button>
         </div>
         <div class="copy-box">
           <div class="copy-text" id="txt-sec-tr">【トレーニング実施報告】
@@ -889,7 +1011,7 @@ Google（Pixel 11シリーズ ／ 10a）
       <div class="card" style="border-top: 4px solid var(--purple-main);">
         <div class="card-title" style="color: var(--purple-main); justify-content: space-between;">
           <span><i class="fa-solid fa-pen-to-square"></i> 4. 【フリーエリア】フォーマット</span>
-          <button class="btn-copy" onclick="copyText('txt-sec-free', this)"><i class="fa-regular fa-copy"></i> 【フリーエリア】をコピー</button>
+          <button class="btn-copy" onclick="copyText('txt-sec-free', this)"><i class="fa-regular fa-copy"></i> 【フリーエリア】をコピー</button> <button class="btn-smart-gen" onclick="openSmartCopyModal('txt-sec-free')"><i class="fa-solid fa-wand-magic-sparkles"></i> 編集してコピー</button>
         </div>
         <div class="copy-box">
           <div class="copy-text" id="txt-sec-free">【フリーエリア（Ambassador・コンテスト・共有事項）】※該当時のみ
@@ -903,7 +1025,7 @@ Google（Pixel 11シリーズ ／ 10a）
       <div class="card" style="border-top: 4px solid #059669;">
         <div class="card-title" style="color: #059669; justify-content: space-between;">
           <span><i class="fa-solid fa-face-smile"></i> 5. 【自社VOC F】 Galaxy Coach(ポジティブ)</span>
-          <button class="btn-copy" onclick="copyText('txt-sec-voc-f', this)"><i class="fa-regular fa-copy"></i> 【VOC F】をコピー</button>
+          <button class="btn-copy" onclick="copyText('txt-sec-voc-f', this)"><i class="fa-regular fa-copy"></i> 【VOC F】をコピー</button> <button class="btn-smart-gen" onclick="openSmartCopyModal('txt-sec-voc-f')"><i class="fa-solid fa-wand-magic-sparkles"></i> 編集してコピー</button>
         </div>
         <div class="copy-box">
           <div class="copy-text" id="txt-sec-voc-f">【自社VOC F】
@@ -916,7 +1038,7 @@ Galaxy Coach(ポジティブ)
       <div class="card" style="border-top: 4px solid #DC2626;">
         <div class="card-title" style="color: #DC2626; justify-content: space-between;">
           <span><i class="fa-solid fa-face-meh"></i> 6. 【自社VOC G】 Galaxy Coach(ネガティブ)</span>
-          <button class="btn-copy" onclick="copyText('txt-sec-voc-g', this)"><i class="fa-regular fa-copy"></i> 【VOC G】をコピー</button>
+          <button class="btn-copy" onclick="copyText('txt-sec-voc-g', this)"><i class="fa-regular fa-copy"></i> 【VOC G】をコピー</button> <button class="btn-smart-gen" onclick="openSmartCopyModal('txt-sec-voc-g')"><i class="fa-solid fa-wand-magic-sparkles"></i> 編集してコピー</button>
         </div>
         <div class="copy-box">
           <div class="copy-text" id="txt-sec-voc-g">【自社VOC G】
@@ -931,7 +1053,7 @@ Galaxy Coach(ネガティブ)
     <div class="card" style="border-top: 4px solid var(--success-text);">
       <div class="card-title" style="color: var(--success-text); justify-content: space-between;">
         <span><i class="fa-solid fa-circle-info"></i> 💡 記入サンプル文（全体の参考に）</span>
-        <button class="btn-copy" onclick="copyText('txt-detail-sample', this)"><i class="fa-regular fa-copy"></i> サンプル文をコピー</button>
+        <button class="btn-copy" onclick="copyText('txt-detail-sample', this)"><i class="fa-regular fa-copy"></i> サンプル文をコピー</button> <button class="btn-smart-gen" onclick="openSmartCopyModal('txt-detail-sample')"><i class="fa-solid fa-wand-magic-sparkles"></i> 編集してコピー</button>
       </div>
 
       <div class="copy-box">
@@ -1030,7 +1152,7 @@ Galaxy Coach(ネガティブ)
         <div class="copy-box">
           <div class="copy-header">
             <span class="pill pill-green">認知あり (サンプル文)</span>
-            <button class="btn-copy" onclick="copyText('txt-srp-ok', this)"><i class="fa-regular fa-copy"></i> コピー</button>
+            <button class="btn-copy" onclick="copyText('txt-srp-ok', this)"><i class="fa-regular fa-copy"></i> コピー</button> <button class="btn-smart-gen" onclick="openSmartCopyModal('txt-srp-ok')"><i class="fa-solid fa-wand-magic-sparkles"></i> 編集してコピー</button>
           </div>
           <div class="copy-text" id="txt-srp-ok">【認知】あり / 【話題】代理店握り施策およびFFF8還元施策の件認知あり。 / 【温度感】高く積極的。 / 【スタッフ周知】朝礼にて全員に周知済み。</div>
         </div>
@@ -1038,7 +1160,7 @@ Galaxy Coach(ネガティブ)
         <div class="copy-box">
           <div class="copy-header">
             <span class="pill pill-green">認知あり (フォーマットのみ)</span>
-            <button class="btn-copy" onclick="copyText('txt-srp-ok-fmt', this)"><i class="fa-regular fa-copy"></i> コピー</button>
+            <button class="btn-copy" onclick="copyText('txt-srp-ok-fmt', this)"><i class="fa-regular fa-copy"></i> コピー</button> <button class="btn-smart-gen" onclick="openSmartCopyModal('txt-srp-ok-fmt')"><i class="fa-solid fa-wand-magic-sparkles"></i> 編集してコピー</button>
           </div>
           <div class="copy-text" id="txt-srp-ok-fmt">【認知】あり / 【話題】[施策名/還元施策]認知あり / 【温度感】[高い・普通・低い] / 【スタッフ周知】[周知済・今後周知予定]</div>
         </div>
@@ -1046,7 +1168,7 @@ Galaxy Coach(ネガティブ)
         <div class="copy-box">
           <div class="copy-header">
             <span class="pill pill-red">認知なし (サンプル文)</span>
-            <button class="btn-copy" onclick="copyText('txt-srp-ng', this)"><i class="fa-regular fa-copy"></i> コピー</button>
+            <button class="btn-copy" onclick="copyText('txt-srp-ng', this)"><i class="fa-regular fa-copy"></i> コピー</button> <button class="btn-smart-gen" onclick="openSmartCopyModal('txt-srp-ng')"><i class="fa-solid fa-wand-magic-sparkles"></i> 編集してコピー</button>
           </div>
           <div class="copy-text" id="txt-srp-ng">【認知】なし / 【状況】本部からのメール未確認。 / 【対応】社内BBSおよびMD部案内の確認を店長に依頼。</div>
         </div>
@@ -1054,7 +1176,7 @@ Galaxy Coach(ネガティブ)
         <div class="copy-box">
           <div class="copy-header">
             <span class="pill pill-red">認知なし (フォーマットのみ)</span>
-            <button class="btn-copy" onclick="copyText('txt-srp-ng-fmt', this)"><i class="fa-regular fa-copy"></i> コピー</button>
+            <button class="btn-copy" onclick="copyText('txt-srp-ng-fmt', this)"><i class="fa-regular fa-copy"></i> コピー</button> <button class="btn-smart-gen" onclick="openSmartCopyModal('txt-srp-ng-fmt')"><i class="fa-solid fa-wand-magic-sparkles"></i> 編集してコピー</button>
           </div>
           <div class="copy-text" id="txt-srp-ng-fmt">【認知】なし / 【状況】[本部未確認・BBS未読など] / 【対応】[資料提示/支店案内確認を依頼/MD部周知案内促す]</div>
         </div>
@@ -1069,7 +1191,7 @@ Galaxy Coach(ネガティブ)
         <div class="copy-box">
           <div class="copy-header">
             <span class="pill pill-purple">📱 FFF8還元 認知あり (サンプル文)</span>
-            <button class="btn-copy" onclick="copyText('txt-fff8-ok', this)"><i class="fa-regular fa-copy"></i> コピー</button>
+            <button class="btn-copy" onclick="copyText('txt-fff8-ok', this)"><i class="fa-regular fa-copy"></i> コピー</button> <button class="btn-smart-gen" onclick="openSmartCopyModal('txt-fff8-ok')"><i class="fa-solid fa-wand-magic-sparkles"></i> 編集してコピー</button>
           </div>
           <div class="copy-text" id="txt-fff8-ok">【FFF8還元施策】認知あり / 【認知範囲】店長・副店長ともに提案資料の内容を把握済み。 / 【代理店握り施策】認知あり。 / 【販売意欲】高く注力体制完了。</div>
         </div>
@@ -1077,7 +1199,7 @@ Galaxy Coach(ネガティブ)
         <div class="copy-box">
           <div class="copy-header">
             <span class="pill pill-purple">📱 FFF8還元 認知あり (フォーマットのみ)</span>
-            <button class="btn-copy" onclick="copyText('txt-fff8-ok-fmt', this)"><i class="fa-regular fa-copy"></i> コピー</button>
+            <button class="btn-copy" onclick="copyText('txt-fff8-ok-fmt', this)"><i class="fa-regular fa-copy"></i> コピー</button> <button class="btn-smart-gen" onclick="openSmartCopyModal('txt-fff8-ok-fmt')"><i class="fa-solid fa-wand-magic-sparkles"></i> 編集してコピー</button>
           </div>
           <div class="copy-text" id="txt-fff8-ok-fmt">【FFF8還元施策】認知あり / 【認知範囲】[店長・副店長/スタッフ共有済] / 【代理店握り施策】[認知あり/資料確認済] / 【販売意欲】[高い/普通/低い]</div>
         </div>
@@ -1085,7 +1207,7 @@ Galaxy Coach(ネガティブ)
         <div class="copy-box">
           <div class="copy-header">
             <span class="pill pill-red">🔴 FFF8還元 認知なし (サンプル文)</span>
-            <button class="btn-copy" onclick="copyText('txt-fff8-ng', this)"><i class="fa-regular fa-copy"></i> コピー</button>
+            <button class="btn-copy" onclick="copyText('txt-fff8-ng', this)"><i class="fa-regular fa-copy"></i> コピー</button> <button class="btn-smart-gen" onclick="openSmartCopyModal('txt-fff8-ng')"><i class="fa-solid fa-wand-magic-sparkles"></i> 編集してコピー</button>
           </div>
           <div class="copy-text" id="txt-fff8-ng">【FFF8還元施策】認知なし / 【状況】支店からの提案資料案内の確認漏れ。 / 【対応】代理店本部・支店からの提案資料およびFFF8施策案内の確認を店長へ依頼。</div>
         </div>
@@ -1093,7 +1215,7 @@ Galaxy Coach(ネガティブ)
         <div class="copy-box">
           <div class="copy-header">
             <span class="pill pill-red">🔴 FFF8還元 認知なし (フォーマットのみ)</span>
-            <button class="btn-copy" onclick="copyText('txt-fff8-ng-fmt', this)"><i class="fa-regular fa-copy"></i> コピー</button>
+            <button class="btn-copy" onclick="copyText('txt-fff8-ng-fmt', this)"><i class="fa-regular fa-copy"></i> コピー</button> <button class="btn-smart-gen" onclick="openSmartCopyModal('txt-fff8-ng-fmt')"><i class="fa-solid fa-wand-magic-sparkles"></i> 編集してコピー</button>
           </div>
           <div class="copy-text" id="txt-fff8-ng-fmt">【FFF8還元施策】認知なし / 【状況】[案内確認漏れ/提案資料不備など] / 【対応】[資料案内確認依頼/提案資料共有]</div>
         </div>
@@ -1188,6 +1310,29 @@ Galaxy Coach(ネガティブ)
     <div class="card">
       <div class="card-title"><i class="fa-solid fa-building"></i> 📋 10月SRP ドコモ代理店 ヒアリング対象者＆注意事項早見表</div>
       <input type="text" id="searchInput" class="search-input" placeholder="🔍 代理店名やキーワードで絞り込み... (例: コネクシオ, 店長, 直営)" onkeyup="filterTable()">
+
+      <!-- 🔍 ワンタップ絞り込みタグ ＆ クリアボタン -->
+      <div style="display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 14px;">
+        <span style="font-size: 0.8rem; font-weight: 800; color: var(--text-muted); margin-right: 4px;"><i class="fa-solid fa-filter"></i> クイック絞り込み:</span>
+        <button type="button" class="tag-filter-btn active" onclick="filterByTag('', this)">すべて</button>
+        <button type="button" class="tag-filter-btn" onclick="filterByTag('直営', this)">直営</button>
+        <button type="button" class="tag-filter-btn" onclick="filterByTag('二次', this)">二次</button>
+        <button type="button" class="tag-filter-btn" onclick="filterByTag('広域', this)">広域</button>
+        <button type="button" class="tag-filter-btn" onclick="filterByTag('地場', this)">地場</button>
+
+        <span style="border-left: 1px solid var(--border-color); height: 16px; margin: 0 4px;"></span>
+
+        <button type="button" class="tag-filter-btn" onclick="filterByTag('コネクシオ', this)">コネクシオ</button>
+        <button type="button" class="tag-filter-btn" onclick="filterByTag('KCS', this)">KCS</button>
+        <button type="button" class="tag-filter-btn" onclick="filterByTag('MXM', this)">MXM</button>
+        <button type="button" class="tag-filter-btn" onclick="filterByTag('TGAIA', this)">TGAIA</button>
+        <button type="button" class="tag-filter-btn" onclick="filterByTag('ITX', this)">ITX</button>
+        <button type="button" class="tag-filter-btn" onclick="filterByTag('ラネット', this)">ラネット</button>
+
+        <button type="button" id="btnClearSearch" onclick="clearSearch()" style="margin-left: auto; font-size: 0.78rem; background: #F1F5F9; color: #475569; border: 1px solid #CBD5E1; padding: 4px 10px; border-radius: 6px; cursor: pointer; font-weight: 700;">
+          <i class="fa-solid fa-xmark"></i> リセット
+        </button>
+      </div>
       
       <div class="table-responsive">
         <table class="data-table" id="agencyTable">
@@ -1295,7 +1440,177 @@ function toggleTheme() {
   html.setAttribute("data-theme", next);
   document.getElementById("themeText").innerText = next === "dark" ? "ライト" : "ダーク";
 }
+
+// === Feature 1: Quick Tag Filter & Reset ===
+function filterByTag(tagValue, btnElem) {
+  const input = document.getElementById("searchInput");
+  input.value = tagValue;
+  filterTable();
+
+  // Highlight active tag button
+  const btns = document.querySelectorAll(".tag-filter-btn");
+  btns.forEach(b => b.classList.remove("active"));
+  if (btnElem) {
+    btnElem.classList.add("active");
+  }
+}
+
+function clearSearch() {
+  const input = document.getElementById("searchInput");
+  input.value = "";
+  filterTable();
+
+  const btns = document.querySelectorAll(".tag-filter-btn");
+  btns.forEach(b => b.classList.remove("active"));
+  if (btns.length > 0) btns[0].classList.add("active");
+}
+
+// === Feature 2: Smart Interactive Copy Modal ===
+let currentModalElemId = "";
+
+function openSmartCopyModal(elemId) {
+  currentModalElemId = elemId;
+  const rawText = document.getElementById(elemId).innerText;
+  const modal = document.getElementById("smartCopyModal");
+  const fieldsContainer = document.getElementById("modalFormFields");
+  fieldsContainer.innerHTML = "";
+
+  // Extract placeholders matching [pattern]
+  const regex = /\[([^\]]+)\]/g;
+  let match;
+  const placeholders = [];
+  while ((match = regex.exec(rawText)) !== null) {
+    if (!placeholders.includes(match[1])) {
+      placeholders.push(match[1]);
+    }
+  }
+
+  if (placeholders.length === 0) {
+    fieldsContainer.innerHTML = '<p style="font-size:0.85rem; color:#64748B;">このテンプレートに置き換え用の標準項目はありません。プレビューを確認してコピーしてください。</p>';
+  } else {
+    placeholders.forEach((ph, idx) => {
+      const fieldDiv = document.createElement("div");
+      fieldDiv.style.marginBottom = "12px";
+      fieldDiv.innerHTML = `
+        <label style="display:block; font-size:0.8rem; font-weight:800; color:#334155; margin-bottom:4px;">
+          項目 (${idx+1}): <span style="color:#2563EB;">[${ph}]</span>
+        </label>
+        <input type="text" class="smart-input-field" data-ph="${ph}" placeholder="入力または例を選択..." oninput="updateModalPreview()" style="width:100%; padding:8px 12px; border:1px solid #CBD5E1; border-radius:6px; font-size:0.85rem;">
+      `;
+      fieldsContainer.appendChild(fieldDiv);
+    });
+  }
+
+  modal.style.display = "flex";
+  updateModalPreview();
+}
+
+function closeSmartCopyModal() {
+  document.getElementById("smartCopyModal").style.display = "none";
+}
+
+function updateModalPreview() {
+  if (!currentModalElemId) return;
+  let text = document.getElementById(currentModalElemId).innerText;
+  const inputs = document.querySelectorAll(".smart-input-field");
+
+  inputs.forEach(input => {
+    const ph = input.getAttribute("data-ph");
+    const val = input.value.trim();
+    if (val) {
+      text = text.replace(new RegExp("\\[" + escapeRegExp(ph) + "\\]", "g"), val);
+    }
+  });
+
+  document.getElementById("modalPreviewText").innerText = text;
+}
+
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function copySmartModalText(btnElem) {
+  const text = document.getElementById("modalPreviewText").innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const origHtml = btnElem.innerHTML;
+    btnElem.innerHTML = '<i class="fa-solid fa-check"></i> コピー完了！';
+    btnElem.style.background = "#16A34A";
+
+    setTimeout(() => {
+      btnElem.innerHTML = origHtml;
+      btnElem.style.background = "#2563EB";
+      closeSmartCopyModal();
+    }, 1200);
+  });
+}
+
+// Sync Bottom Nav active state with main tab switches
+const origSwitchTab = window.switchTab;
+window.switchTab = function(tabId, btnElement) {
+  if (origSwitchTab) origSwitchTab(tabId, btnElement);
+
+  // Sync Bottom Nav buttons
+  const bnavItems = document.querySelectorAll(".bottom-nav-item");
+  bnavItems.forEach(item => {
+    if (item.id === "bnav-" + tabId) {
+      item.classList.add("active");
+    } else {
+      item.classList.remove("active");
+    }
+  });
+};
+
 </script>
+
+
+<!-- 📱 モバイル固定 ボトムナビゲーション -->
+<div class="mobile-bottom-nav">
+  <button class="bottom-nav-item active" id="bnav-dashboard" onclick="switchTab('dashboard', this)">
+    <i class="fa-solid fa-chart-pie"></i>
+    <span>TOP</span>
+  </button>
+  <button class="bottom-nav-item" id="bnav-agency-table" onclick="switchTab('agency-table', this)">
+    <i class="fa-solid fa-building"></i>
+    <span>早見表</span>
+  </button>
+  <button class="bottom-nav-item" id="bnav-srp-guide" onclick="switchTab('srp-guide', this)">
+    <i class="fa-solid fa-clipboard-check"></i>
+    <span>ガイド</span>
+  </button>
+  <button class="bottom-nav-item" id="bnav-detail-format" onclick="switchTab('detail-format', this)">
+    <i class="fa-solid fa-file-pen"></i>
+    <span>フォーマット</span>
+  </button>
+</div>
+
+
+<!-- ⚡ スマートコピペ生成 モーダル -->
+<div id="smartCopyModal" class="modal-backdrop" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15,23,42,0.6); z-index:9999; backdrop-filter:blur(4px); align-items:center; justify-content:center;">
+  <div style="background:#FFFFFF; width:92%; max-width:540px; border-radius:16px; padding:24px; box-shadow:0 20px 25px -5px rgba(0,0,0,0.2); position:relative; max-height:90vh; overflow-y:auto;">
+    <div style="display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #E2E8F0; padding-bottom:12px; margin-bottom:16px;">
+      <h3 style="font-size:1.05rem; font-weight:900; color:#0F172A; margin:0; display:flex; align-items:center; gap:8px;">
+        <i class="fa-solid fa-wand-magic-sparkles text-amber-500"></i> スマート報告文カスタマイズ
+      </h3>
+      <button type="button" onclick="closeSmartCopyModal()" style="background:none; border:none; font-size:1.3rem; color:#64748B; cursor:pointer; padding:4px;">✕</button>
+    </div>
+
+    <div id="modalFormFields">
+      <!-- Dynamic Input Fields will be populated here -->
+    </div>
+
+    <div style="margin-top:16px; background:#F8FAFC; border:1px solid #E2E8F0; padding:12px; border-radius:8px;">
+      <label style="font-size:0.78rem; font-weight:800; color:#475569; display:block; margin-bottom:6px;">📄 完成文プレビュー:</label>
+      <div id="modalPreviewText" style="font-size:0.86rem; color:#0F172A; font-family:monospace; white-space:pre-wrap; background:#FFFFFF; padding:10px; border:1px solid #CBD5E1; border-radius:6px; min-height:60px;"></div>
+    </div>
+
+    <div style="display:flex; gap:10px; margin-top:20px; justify-content:flex-end;">
+      <button type="button" onclick="closeSmartCopyModal()" style="background:#E2E8F0; color:#475569; border:none; padding:8px 16px; border-radius:8px; font-weight:700; cursor:pointer;">キャンセル</button>
+      <button type="button" onclick="copySmartModalText(this)" style="background:#2563EB; color:#FFFFFF; border:none; padding:8px 20px; border-radius:8px; font-weight:800; cursor:pointer; display:flex; align-items:center; gap:6px;">
+        <i class="fa-regular fa-copy"></i> 完成文をコピー
+      </button>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
