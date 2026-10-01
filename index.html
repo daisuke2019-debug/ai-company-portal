@@ -757,30 +757,44 @@
 }
 
 
-/* === Menu Guide Pointer Badge === */
-.menu-guide-pointer {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+
+/* === Menu Guide Pointer (Positioned Below Header Logo) === */
+.menu-guide-below {
+  width: 100%;
+  max-width: 1280px;
+  margin: 10px auto 0;
   background: #FEF08A;
   color: #854D0E;
   border: 1px solid #FDE68A;
-  font-size: 0.8rem;
+  font-size: 0.84rem;
   font-weight: 900;
-  padding: 5px 12px;
-  border-radius: 999px;
+  padding: 6px 14px;
+  border-radius: 8px;
   cursor: pointer;
-  margin-right: 12px;
-  box-shadow: 0 4px 12px rgba(234, 179, 8, 0.4);
-  animation: pulsePointLeft 2s infinite ease-in-out;
-  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 3px 10px rgba(234, 179, 8, 0.35);
+  animation: pulsePointUp 2.2s infinite ease-in-out;
 }
-.menu-guide-pointer i {
-  font-size: 0.95rem;
+.menu-guide-below i {
+  font-size: 1rem;
   color: #B45309;
 }
-@keyframes pulsePointLeft {
-  0%, 100% { transform: translateX(0) scale(1); }
+
+@keyframes pulsePointUp {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-3px) scale(1.02); box-shadow: 0 5px 14px rgba(234, 179, 8, 0.5); }
+}
+
+@media (max-width: 640px) {
+  .menu-guide-below {
+    font-size: 0.78rem;
+    padding: 5px 10px;
+  }
+}
+
   50% { transform: translateX(-4px) scale(1.04); box-shadow: 0 6px 16px rgba(234, 179, 8, 0.6); }
 }
 
@@ -802,14 +816,16 @@
       <button class="btn-hamburger" id="hamburgerBtn" onclick="toggleDrawer()" title="メニューを開く">
         <i class="fa-solid fa-bars"></i>
       </button>
-      <div class="menu-guide-pointer" onclick="toggleDrawer()">
-        <i class="fa-solid fa-hand-point-left"></i> メニューはこちら
-      </div>
       
       <div>
         <h1>AI Company 統合ポータル</h1>
         <div class="tagline">9月 DCM SRP施策 / 販売コンテスト / 詳細現場報告フォーマット</div>
       </div>
+    </div>
+
+    <!-- ハンバーガーメニュー案内 (直下に配置) -->
+    <div class="menu-guide-below" onclick="toggleDrawer()">
+      <i class="fa-solid fa-hand-point-up"></i> 左上の［ ☰ メニュー ］をタップしてページ切替
     </div>
 
     <div class="header-actions">
