@@ -756,6 +756,42 @@
   text-decoration: none;
 }
 
+
+/* === Menu Guide Pointer Badge === */
+.menu-guide-pointer {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #FEF08A;
+  color: #854D0E;
+  border: 1px solid #FDE68A;
+  font-size: 0.8rem;
+  font-weight: 900;
+  padding: 5px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  margin-right: 12px;
+  box-shadow: 0 4px 12px rgba(234, 179, 8, 0.4);
+  animation: pulsePointLeft 2s infinite ease-in-out;
+  white-space: nowrap;
+}
+.menu-guide-pointer i {
+  font-size: 0.95rem;
+  color: #B45309;
+}
+@keyframes pulsePointLeft {
+  0%, 100% { transform: translateX(0) scale(1); }
+  50% { transform: translateX(-4px) scale(1.04); box-shadow: 0 6px 16px rgba(234, 179, 8, 0.6); }
+}
+
+@media (max-width: 640px) {
+  .menu-guide-pointer {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    margin-right: 6px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -766,6 +802,9 @@
       <button class="btn-hamburger" id="hamburgerBtn" onclick="toggleDrawer()" title="メニューを開く">
         <i class="fa-solid fa-bars"></i>
       </button>
+      <div class="menu-guide-pointer" onclick="toggleDrawer()">
+        <i class="fa-solid fa-hand-point-left"></i> メニューはこちら
+      </div>
       
       <div>
         <h1>AI Company 統合ポータル</h1>
