@@ -594,10 +594,6 @@
       <i class="fa-solid fa-clipboard-check tab-icon text-purple-400"></i>
       <span>📱 DCM SRP 現場ガイド</span>
     </button>
-    <button class="tab-btn" id="tab-btn-contest-templates" onclick="switchTab('contest-templates', this)">
-      <i class="fa-solid fa-trophy tab-icon text-amber-400"></i>
-      <span>📱 報告コピペ</span>
-    </button>
     <button class="tab-btn" id="tab-btn-agency-table" onclick="switchTab('agency-table', this)">
       <i class="fa-solid fa-building tab-icon text-sky-400"></i>
       <span>🏢 代理店別 早見表</span>
@@ -1065,18 +1061,6 @@ Galaxy Coach(ネガティブ)
     </div>
   </div>
 
-  <!-- TAB 4: コンテスト ＆ FFF8コピペ -->
-  <div id="contest-templates" class="tab-content">
-    <div class="grid-2">
-
-        <div class="copy-box">
-          <div class="copy-header">
-            <span class="pill pill-green">🏆 認知あり(参加) (フォーマットのみ)</span>
-            <button class="btn-copy" onclick="copyText('txt-contest-ok-fmt', this)"><i class="fa-regular fa-copy"></i> コピー</button>
-          </div>
-          <div class="copy-text" id="txt-contest-ok-fmt">【販売コンテスト】認知あり(参加) / 【目標・進捗】[目標台数/進捗率/順位] / 【取組】[POP展開/コーナー特設/獲得強化] / 【温度感】[高い/普通/低い]</div>
-        </div>
-
         <div class="copy-box">
           <div class="copy-header">
             <span class="pill pill-red">🔴 認知なし (サンプル文)</span>
@@ -1139,6 +1123,19 @@ Galaxy Coach(ネガティブ)
         </div>
       </div>
     </div>
+  
+
+    <!-- FFF8インセンティブ還元用 コピペテンプレート -->
+    <div class="card" style="border-top: 4px solid var(--purple-text);">
+        <div class="card-title" style="color: var(--purple-text);"><i class="fa-solid fa-mobile-screen"></i> FFF8インセンティブ還元用 コピペテンプレート</div>
+
+        <div class="copy-box">
+          <div class="copy-header">
+            <span class="pill pill-purple">📱 FFF8還元 認知あり (サンプル文)</span>
+            <button class="btn-copy" onclick="copyText('txt-fff8-ok', this)"><i class="fa-regular fa-copy"></i> コピー</button>
+          </div>
+          <div class="copy-text" id="txt-fff8-ok">【FFF8還元施策】認知あり / 【認知範囲】店長・副店長ともに提案資料の内容を把握済み。 / 【代理店握り施策】認知あり。 / 【販売意欲】高く注力体制完了。</div>
+        </div>
   </div>
 
   <!-- TAB 5: 代理店別 早見表 -->
