@@ -1,0 +1,54 @@
+{
+  "last_updated": "2026/07/19 21:22:54",
+  "total_jpy": 22482,
+  "items": [
+    {
+      "service_name": "Canva",
+      "billing_date": "2026/06/16",
+      "amount": 1500,
+      "currency": "JPY",
+      "account": "jimin-gemini@ai-gemini.biz",
+      "summary": "Canvaプロ チームプラン 月額利用料（決済未完了） ※推測料金"
+    },
+    {
+      "service_name": "Google Cloud Platform",
+      "billing_date": "2026/07/01",
+      "amount": 152,
+      "currency": "JPY",
+      "account": "jimin-gemini@ai-gemini.biz",
+      "summary": "Google Cloud Platform & APIs お支払い受領（CLOUD LTJ2J7）"
+    },
+    {
+      "service_name": "Google Workspace",
+      "billing_date": "2026/07/01",
+      "amount": 1020,
+      "currency": "JPY",
+      "account": "jimin-gemini@ai-gemini.biz",
+      "summary": "Google Workspace 月額利用料 ※推測料金"
+    },
+    {
+      "service_name": "Google Play (Google One)",
+      "billing_date": "2026/07/02",
+      "amount": 14500,
+      "currency": "JPY",
+      "account": "daisuke19832019@gmail.com",
+      "summary": "Google AI Ultra (20 TB) (Google One) 月額定期購入"
+    },
+    {
+      "service_name": "Amazon.co.jp",
+      "billing_date": "2026/07/14",
+      "amount": 2310,
+      "currency": "JPY",
+      "account": "daisuke19832019@gmail.com",
+      "summary": "書籍「AI仕事最速大全 NotebookLM即戦力スキル」の購入（決済一時保留にともなう支払情報更新の案内）"
+    },
+    {
+      "service_name": "Google Workspace (ドメイン登録)",
+      "billing_date": "2026/07/23",
+      "amount": 3000,
+      "currency": "JPY",
+      "account": "daisuke19832019@gmail.com",
+      "summary": "※推測料金 ドメイン「ai-gemini.biz」の年間自動更新料"
+    }
+  ]
+}

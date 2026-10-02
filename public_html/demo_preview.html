@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>📌 チーム共有ボード (完全画像リアル表示デモ)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .masonry-grid { column-count: 1; column-gap: 1rem; }
+    @media (min-width: 640px) { .masonry-grid { column-count: 2; } }
+    @media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
+    .note-card { break-inside: avoid; margin-bottom: 1rem; cursor: default; transition: all 0.3s ease; }
+    .color-radio:checked + label { ring-width: 2px; ring-color: #4b5563; border-color: transparent; transform: scale(1.1); }
+    .auto-link { color: #2563eb; text-decoration: underline; }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans min-h-screen text-gray-800 p-4">
+
+  <div class="max-w-5xl mx-auto">
+    <!-- ヘッダー -->
+    <div class="flex items-center justify-between mb-6 bg-white p-4 rounded-xl shadow-sm border">
+      <div class="flex items-center gap-3">
+        <h1 class="text-2xl font-bold text-gray-800 flex items-center gap-2">📌 チーム共有ボード</h1>
+        <span class="cursor-pointer text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full text-xs font-bold border border-blue-200" title="編集モード">🔓 編集モード (パスワード解錠済み)</span>
+      </div>
+      <div class="flex items-center gap-2">
+         <span class="text-xs text-gray-500 font-bold">リアルタイム同期中</span>
+         <span class="w-3 h-3 rounded-full bg-green-500 animate-pulse"></span>
+      </div>
+    </div>
+
+    <!-- 投稿フォーム (デモ) -->
+    <div class="bg-white p-5 rounded-xl shadow-md mb-8 border border-gray-200">
+      <div class="flex gap-2 mb-2">
+        <input type="text" value="【現場連絡】全店舗共有" class="bg-transparent text-xs font-bold border-b border-gray-200 outline-none w-1/3 text-blue-600">
+      </div>
+      <input type="text" value="9月度 販促POP展開 ＆ SRP9月施策ヒアリング共有" class="w-full text-lg font-bold bg-transparent outline-none mb-2 text-gray-800">
+      <textarea rows="3" class="w-full text-sm bg-transparent outline-none resize-none mb-3 text-gray-600">全店スタッフの皆様お疲れ様です！
+9月度のドコモ・au・ソフトバンク向けSRP施策のヒアリング結果シートおよび、最新Galaxy POPの展開指示書をGoogleドライブへ格納完了しました。
+
+添付の写真・PDFを確認し、本日中にPOP設置をお願いいたします！
+不明点は下記コメントまたは担当SVまでご連絡ください。</textarea>
+      
+      <div class="flex justify-between items-center pt-3 border-t">
+        <div class="flex gap-2">
+           <span class="w-6 h-6 rounded-full bg-yellow-100 border border-yellow-300 block shadow-sm"></span>
+           <span class="w-6 h-6 rounded-full bg-blue-100 border border-blue-300 block shadow-sm"></span>
+           <span class="w-6 h-6 rounded-full bg-green-100 border border-green-300 block shadow-sm"></span>
+           <span class="w-6 h-6 rounded-full bg-red-100 border border-red-300 block shadow-sm"></span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-xs text-gray-500 bg-gray-100 px-3 py-1.5 rounded-lg border font-bold">📎 現場写真・PDF添付 (Googleドライブ自動同期)</span>
+          <button class="bg-slate-900 hover:bg-black text-white font-bold py-2 px-6 rounded-full shadow text-sm">投稿する</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- メモ一覧 (デモ表示) -->
+    <div class="text-xs font-bold text-gray-400 mb-3 uppercase tracking-wider">ピン留めされた重要な共有メモ</div>
+    
+    <div class="masonry-grid mb-6">
+      
+      <!-- メモ1: 黄色 -->
+      <div class="note-card bg-yellow-100 rounded-xl shadow-md border border-yellow-200 p-4">
+        <div class="flex justify-between items-start mb-2">
+          <span class="bg-yellow-800 text-white text-[10px] px-2 py-0.5 rounded-full font-bold">重要・緊急</span>
+          <span class="text-blue-600">📌</span>
+        </div>
+        <h3 class="font-bold text-base mb-1 text-gray-900">🚨 パスワード使い回し廃止のお知らせ</h3>
+        <p class="text-xs text-gray-700 leading-relaxed mb-3">
+          本日より個人Googleアカウントの使い回しを全面禁止とします。
+          閲覧は共有URLにアクセスするだけでログイン不要です！
+          編集時は左上の 🔒 を押し、現場共有パスワード「kyukyu3131」を入力してください。
+        </p>
+        <div class="text-[10px] text-gray-500 font-bold border-t border-yellow-200 pt-2 flex justify-between">
+          <span>投稿者: 現場統括オペラ</span>
+          <span>たった今更新</span>
+        </div>
+      </div>
+
+      <!-- メモ2: 青色 (本物の高画質写真を直接埋め込み表示！) -->
+      <div class="note-card bg-blue-50 rounded-xl shadow-md border border-blue-200 overflow-hidden">
+        <div class="bg-slate-800 text-white text-xs p-2.5 font-bold flex justify-between items-center">
+          <span>📷 Galaxy S26 POP設置見本写真</span>
+          <span class="text-blue-300">📌</span>
+        </div>
+        <div class="p-3">
+          <p class="text-xs text-gray-700 mb-2 font-bold">店舗正面カウンターのA3掲示見本です。プライスカードの右隣に設置してください。</p>
+          <div class="rounded-lg overflow-hidden border shadow-sm">
+            <!-- 100%リアルな画像を直接表示 -->
+            <img src="/drafts/note_articles/images/note_image_1.jpg" class="w-full h-auto object-cover block" alt="POP設置見本">
+          </div>
+        </div>
+      </div>
+
+      <!-- メモ3: 緑色 -->
+      <div class="note-card bg-green-100 rounded-xl shadow-md border border-green-200 p-4">
+        <div class="flex justify-between items-start mb-2">
+          <span class="bg-green-800 text-white text-[10px] px-2 py-0.5 rounded-full font-bold">マスタ照合</span>
+          <span class="text-blue-600">📌</span>
+        </div>
+        <h3 class="font-bold text-base mb-1 text-gray-900">📊 ドコモ/au 9月契約実績チェック完了</h3>
+        <p class="text-xs text-gray-700 leading-relaxed mb-2">
+          全21代理店のプラン契約マスタ照合が完了しました。
+          不整合0件。巡回報告書PDFはGoogleドライブへ格納済みです。
+        </p>
+        <a href="#" class="text-xs text-blue-600 underline font-bold">https://drive.google.com/folder/...</a>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>

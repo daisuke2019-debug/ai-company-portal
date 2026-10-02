@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>【Note完成稿プレビュー】30〜50人の現場で個人Googleアカウントの使い回しをやめ、月額0円で「Keep風共有ボード」を自作した話</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans min-h-screen py-10 px-4">
+
+  <div class="max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-200">
+    
+    <span class="text-xs font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">Note 投稿原稿 (画像表示プレビュー版)</span>
+    
+    <h1 class="text-2xl md:text-3xl font-extrabold text-gray-900 mt-4 mb-6 leading-tight">
+      30〜50人の現場で個人Googleアカウントの使い回しをやめ、月額0円で「Keep風共有ボード」を自作した話
+    </h1>
+
+    <div class="space-y-4 text-sm md:text-base leading-relaxed text-gray-700">
+      <p>「現場の人数が増えてきたけれど、情報の共有をどうしよう…」</p>
+      <p>組織やチームが30〜50人規模に拡大したとき、現場で真っ先に直面したのがこの問題でした。</p>
+      <p>当時は会社共有のGoogleアカウントがなく、パートさんや外部スタッフを含めた現場メンバーで、個人アカウントを使い回しながら作業共有や連絡を行っていました。</p>
+      <p>ですが、人数が増えるにつれて限界が見え始めます。</p>
+
+      <ul class="list-disc pl-6 space-y-1 text-gray-800 font-medium">
+        <li>誰がどこを変更したか分からなくなる</li>
+        <li>誤ってファイルを消してしまうリスク</li>
+        <li>LINEで共有すると、重要なメモや写真がどんどん上に流れて消える</li>
+      </ul>
+
+      <p>かといって、SlackやGoogle Workspaceなどの法人向け有償サービスを全員分（30〜50人分）契約しようとすると、毎月数万円〜十数万円の固定費がずっと発生し続けます。現場の運用費としては、さすがにこの固定費は重すぎました。</p>
+      <p class="font-bold text-gray-900">「有償ツールを契約せずに、誰もが直感的に使えて、アカウント管理の手間もかからない仕組みを作れないか？」</p>
+      <p>そう考えて開発したのが、今回紹介する「Google Keep風 チーム共有ボード」です。</p>
+
+      <hr class="my-6">
+
+      <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+        <h2 class="font-bold text-base text-slate-800 mb-2">3秒でわかる！この記事のまとめ</h2>
+        <ol class="list-decimal pl-5 space-y-1 text-xs md:text-sm text-slate-700 font-medium">
+          <li>課題：30〜50人の現場で個人Googleアカウントを共有するのは限界。でもSlackやWorkspaceを全員分契約すると月数万円の固定費がかかる。</li>
+          <li>解決策：Googleアカウント不要・パスワード1つで閲覧/編集できる「Keep風リアルタイム共有ボード」を自作。</li>
+          <li>仕組み：テキストの爆速同期は「Firebase」、重い写真保存は「Googleドライブ（GAS）」に任せる月額0円ハイブリッド構成。</li>
+        </ol>
+      </div>
+
+      <h2 class="text-xl font-bold text-gray-900 pt-4 border-t">どんなアプリを作ったのか？</h2>
+      <p>一言で言うと、「Googleアカウントなし・パスワード1つで閲覧も編集もできる、リアルタイム共有掲示板」です。</p>
+
+      <!-- 画像① -->
+      <div class="my-6 bg-slate-100 p-2 rounded-xl border text-center">
+        <img src="/drafts/note_articles/images/note_image_1.jpg" class="rounded-lg shadow-sm w-full h-auto block" alt="チーム共有ボード全体画面">
+        <span class="text-xs text-gray-500 mt-2 block font-bold">▲ 【画像①】実際に動いているチーム共有ボードの全体画面</span>
+      </div>
+
+      <p>このアプリには、以下のような特徴があります。</p>
+
+      <h3 class="font-bold text-base text-gray-900">1. Googleログイン不要</h3>
+      <p>アクセスした人はアカウントログインなしですぐ閲覧できます。左上の「鍵アイコン」から共有パスワードを入れた人だけが「編集モード」に切り替わり、メモの追加や画像の添付ができます。</p>
+
+      <!-- 画像② -->
+      <div class="my-6 bg-slate-100 p-2 rounded-xl border text-center">
+        <img src="/drafts/note_articles/images/note_image_2.jpg" class="rounded-lg shadow-sm w-full h-auto block" alt="鍵アイコンとパスワード切り替え">
+        <span class="text-xs text-gray-500 mt-2 block font-bold">▲ 【画像②】左上の鍵アイコンと権限切り替え画面</span>
+      </div>
+
+      <h3 class="font-bold text-base text-gray-900">2. 画面をまたぐリアルタイム同期</h3>
+      <p>誰かがパソコンやスマホでメモを投稿・編集すると、ページを再読み込みしなくても、他のメンバーの画面上に一瞬で反映されます。</p>
+
+      <!-- 画像③ -->
+      <div class="my-6 bg-slate-100 p-2 rounded-xl border text-center">
+        <img src="/drafts/note_articles/images/note_image_3.jpg" class="rounded-lg shadow-sm w-full h-auto block" alt="メモカードと写真添付詳細">
+        <span class="text-xs text-gray-500 mt-2 block font-bold">▲ 【画像③】カラフルな付箋メモと現場写真添付の詳細</span>
+      </div>
+
+      <p class="font-bold text-blue-600 bg-blue-50 p-4 rounded-xl border border-blue-200 text-center">
+        ※原稿の全文（HTML/GAS全コードおよび超初心者向けFirebaseナビ）は `drafts/note_articles/team_board_note.md` に全て収録されています！
+      </p>
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>AI Company BOARD 取締役会 決定事項 1枚シート</title>
+<style>
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+  body {
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+    margin: 0;
+    padding: 24px;
+    background: #f8fafc;
+    color: #1e293b;
+    box-sizing: border-box;
+    width: 297mm;
+    height: 210mm;
+    overflow: hidden;
+  }
+  .header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #1e1b4b, #4338ca);
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .header-title {
+    font-size: 20px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .header-meta {
+    font-size: 11px;
+    color: #c7d2fe;
+    text-align: right;
+  }
+
+  /* CEO & BOARD トップカード */
+  .top-banner {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .top-card {
+    background: #ffffff;
+    border: 2px solid #6366f1;
+    border-radius: 10px;
+    padding: 8px 16px;
+    text-align: center;
+    width: 280px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .top-card h3 {
+    margin: 0;
+    font-size: 14px;
+    color: #312e81;
+  }
+  .top-card p {
+    margin: 2px 0 0 0;
+    font-size: 10px;
+    color: #64748b;
+  }
+
+  /* 全6議題 グリッドツリー構造 */
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .agenda-card {
+    background: #ffffff;
+    border-radius: 10px;
+    border-top: 4px solid #4f46e5;
+    padding: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .agenda-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 6px;
+    margin-bottom: 8px;
+  }
+  .agenda-num {
+    font-size: 11px;
+    font-weight: 800;
+    background: #e0e7ff;
+    color: #3730a3;
+    padding: 2px 8px;
+    border-radius: 6px;
+  }
+  .agenda-title {
+    font-size: 13px;
+    font-weight: 800;
+    color: #0f172a;
+  }
+  .agenda-body {
+    font-size: 10.5px;
+    line-height: 1.45;
+    color: #334155;
+  }
+  .agenda-body ul {
+    margin: 4px 0;
+    padding-left: 14px;
+  }
+  .agenda-body li {
+    margin-bottom: 3px;
+  }
+  .badge-done {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 800;
+    background: #dcfce7;
+    color: #15803d;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-top: 4px;
+  }
+
+  .footer-bar {
+    margin-top: 14px;
+    text-align: center;
+    font-size: 10px;
+    color: #94a3b8;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 6px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header-bar">
+  <div class="header-title">👑 AI Company BOARD 取締役会 1枚全議題サマリーシート</div>
+  <div class="header-meta">
+    発行日: 2026年09月26日 | 議長: Dai CEO<br>出席: BOARD役員8名 (グラヴィ, ユンジョン, ルカ, ヒダリ, オペラ, まーけ, フィナ, クオリ)
+  </div>
+</div>
+
+<div class="top-banner">
+  <div class="top-card">
+    <h3>👑 Dai CEO ＆ 👔 BOARD 役員8名</h3>
+    <p>合言葉「役員召集」「ボーダー8」で即時一括着席・全自動連携体制確立</p>
+  </div>
+</div>
+
+<div class="grid-container">
+  
+  <!-- 議題1 -->
+  <div class="agenda-card" style="border-top-color: #3b82f6;">
+    <div>
+      <div class="agenda-header">
+        <span class="agenda-title">1️⃣ 𝕏 AIトレンド自動リサーチ</span>
+        <span class="agenda-num">第1議題</span>
+      </div>
+      <div class="agenda-body">
+        <ul>
+          <li><strong>仕様</strong>: 費用0円のWebフェッチ＆Gemini解析エンジン（x_trend_researcher.py）開発。</li>
+          <li><strong>自動化</strong>: デイリーバッチ（run_daily_research.bat）へ組み込み完了。</li>
+          <li><strong>効果</strong>: 𝕏上の最新AIバズ投稿を毎朝全自動でレポート蓄積。</li>
+        </ul>
+      </div>
+    </div>
+    <div><span class="badge-done">✔ 実装完了・稼働中</span></div>
+  </div>
+
+  <!-- 議題2 -->
+  <div class="agenda-card" style="border-top-color: #8b5cf6;">
+    <div>
+      <div class="agenda-header">
+        <span class="agenda-title">2️⃣ Gemini Notebook 中央ブレイン化</span>
+        <span class="agenda-num">第2議題</span>
+      </div>
+      <div class="agenda-body">
+        <ul>
+          <li><strong>仕様</strong>: CEOのNotebookLM/Drive資料を全49名のエージェントの共有「知能の軸」へ同期。</li>
+          <li><strong>最適化</strong>: Context Caching技術でトークンコストを85%カット。</li>
+          <li><strong>効果</strong>: 全社がCEOの意図・思考に100%合致して自律行動。</li>
+        </ul>
+      </div>
+    </div>
+    <div><span class="badge-done">✔ アーキテクチャ設計完了</span></div>
+  </div>
+
+  <!-- 議題3 -->
+  <div class="agenda-card" style="border-top-color: #ec4899;">
+    <div>
+      <div class="agenda-header">
+        <span class="agenda-title">3️⃣ ジミンちゃん🐶 AI情熱大陸動画</span>
+        <span class="agenda-num">第3議題</span>
+      </div>
+      <div class="agenda-body">
+        <ul>
+          <li><strong>台本</strong>: 『この男、無職でひも男である…一番好きな部位はイチボ』。</li>
+          <li><strong>音声・BGM</strong>: クリア低音ナレーション ✕ 情熱大陸原曲バイオリンメインサビ（ダッキングMIX）。</li>
+          <li><strong>連携</strong>: おしゃべりペット / AIリップシンク用パッキング。</li>
+        </ul>
+      </div>
+    </div>
+    <div><span class="badge-done">✔ 完全完成 (音量適正)</span></div>
+  </div>
+
+  <!-- 議題4 -->
+  <div class="agenda-card" style="border-top-color: #10b981;">
+    <div>
+      <div class="agenda-header">
+        <span class="agenda-title">4️⃣ AI部屋背景自動差し替え</span>
+        <span class="agenda-num">第4議題</span>
+      </div>
+      <div class="agenda-body">
+        <ul>
+          <li><strong>仕様</strong>: グリーンバック不要のAI自動背景切り抜き（SAM/Matting）。部屋の片付け不要。</li>
+          <li><strong>AI背景</strong>: 北欧風高級インテリアリビング等の映える背景画像を全自動生成＆ストック。</li>
+        </ul>
+      </div>
+    </div>
+    <div><span class="badge-done">✔ サンプル生成＆構築完了</span></div>
+  </div>
+
+  <!-- 議題5 -->
+  <div class="agenda-card" style="border-top-color: #f59e0b;">
+    <div>
+      <div class="agenda-header">
+        <span class="agenda-title">5️⃣ Gemini Spark ✕ 自律エージェント</span>
+        <span class="agenda-num">第5議題</span>
+      </div>
+      <div class="agenda-body">
+        <ul>
+          <li><strong>Phase 1</strong>: 全49名個別専任スキル（SKILL.md）化。</li>
+          <li><strong>Phase 2</strong>: コ・ユンジョン（EA）を司令塔にしたSpark自動分配。</li>
+          <li><strong>Phase 3</strong>: イベント駆動型バックグラウンド完全自律化。</li>
+        </ul>
+      </div>
+    </div>
+    <div><span class="badge-done">✔ ロードマップ確定・着手</span></div>
+  </div>
+
+  <!-- 議題6 -->
+  <div class="agenda-card" style="border-top-color: #06b6d4;">
+    <div>
+      <div class="agenda-header">
+        <span class="agenda-title">6️⃣ 取締役会決定事項の可視化＆保存</span>
+        <span class="agenda-num">第6議題</span>
+      </div>
+      <div class="agenda-body">
+        <ul>
+          <li><strong>永続保存</strong>: research_reports/board_meeting_report_20260926.md へ保存。</li>
+          <li><strong>1枚シート</strong>: A4横1枚の極小グラフィカルPDFとしてPDF出力・配布。</li>
+        </ul>
+      </div>
+    </div>
+    <div><span class="badge-done">✔ 1枚PDF作成完了</span></div>
+  </div>
+
+</div>
+
+<div class="footer-bar">
+  AI Company BOARD Executive Committee | Executive Orchestration System v2.0
+</div>
+
+</body>
+</html>
