@@ -28,26 +28,26 @@ function createAICompanyUrlsGoogleDoc() {
 
   const data = [
     {
-      category: "🏢 【カテゴリー①】経営・全社員組織図・武器庫 メインポータル",
+      category: "👑 【カテゴリー①】経営・全社員組織図・全社武器庫 統合ポータル",
       items: [
         {
           name: "1. AI Company Visual Portal（完全版 組織図・武器庫ポータル）",
           desc: "Dai CEO、BOARD役員8名、AI社員全49名（全50名）組織図、実務データマップ、全武器庫統合ポータル。",
           url: "https://daisuke2019-debug.github.io/ai-company-portal/public_html/index.html"
-        },
-        {
-          name: "2. AI Company 統合ダッシュボード ＆ DCM SRP施策ポータル",
-          desc: "10月 DCM SRP施策ガイド、店舗巡回マスタ入力ルール、KPI報奨金カード、統合ダッシュボード。",
-          url: "https://daisuke2019-debug.github.io/ai-company-portal/index.html"
         }
       ]
     },
     {
-      category: "📊 【カテゴリー②】店舗巡回本部 ＆ マスタミス検証 専用ポータル",
+      category: "📊 【カテゴリー②】現場SV・店舗巡回支援本部 管轄ポータル群 （オペラSV統括 責任管理）",
       items: [
         {
+          name: "2. AI Company 統合ダッシュボード ＆ DCM SRP施策ポータル",
+          desc: "【管轄: 現場SV・店舗巡回支援本部】10月 DCM SRP施策ガイド、店舗巡回マスタ入力ルール、KPI報奨金カード、現場巡回統合ダッシュボード。",
+          url: "https://daisuke2019-debug.github.io/ai-company-portal/index.html"
+        },
+        {
           name: "3. 店舗マスタミス自動カウント ＆ リアルタイムドラッグ＆ドロップWebポータル",
-          desc: "エクセル・報告書のリアルタイムドラッグ＆ドロップ検証、店舗マスタミス自動カウント、アラート表示ポータル。",
+          desc: "【管轄: 現場SV・店舗巡回支援本部】エクセル・報告書のリアルタイムドラッグ＆ドロップ検証、店舗マスタミス自動カウント、アラート表示ポータル。",
           url: "https://daisuke2019-debug.github.io/master-miss-portal/"
         }
       ]

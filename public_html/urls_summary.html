@@ -9,6 +9,8 @@
         :root {
             --primary: #1e3a8a;
             --accent: #2563eb;
+            --sv-amber: #d97706;
+            --sv-bg: #fffbe6;
             --bg-page: #f1f5f9;
             --card-bg: #ffffff;
             --text-dark: #0f172a;
@@ -105,6 +107,17 @@
             border-radius: 0 6px 6px 0;
         }
 
+        .category-title-sv {
+            background-color: var(--sv-bg);
+            color: var(--sv-amber);
+            padding: 8px 14px;
+            border-left: 5px solid var(--sv-amber);
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin: 30px 0 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+
         .url-card {
             background: #ffffff;
             border: 1px solid #e2e8f0;
@@ -159,6 +172,16 @@
             border: 1px solid #86efac;
         }
 
+        .badge-dept {
+            background-color: #fef3c7;
+            color: #b45309;
+            font-size: 0.72rem;
+            padding: 2px 8px;
+            border-radius: 9999px;
+            font-weight: 700;
+            border: 1px solid #fde68a;
+        }
+
         .footer {
             margin-top: 50px;
             padding-top: 20px;
@@ -172,7 +195,7 @@
 <body>
 
     <div class="action-bar no-print">
-        <div style="font-weight: 700; color: var(--text-muted);">📄 Google ドキュメント 統合まとめシート</div>
+        <div style="font-weight: 700; color: var(--text-muted);">📄 Google ドキュメント 統合まとめシート（管轄分類更新版）</div>
         <button class="btn-print" onclick="window.print()">🖨️ PDF / 1枚印刷</button>
     </div>
 
@@ -182,12 +205,12 @@
             <div class="meta-info">
                 <span><strong>発行組織</strong>: AI Company 代表取締役社長室 (EA秘書室)</span>
                 <span><strong>作成責任者</strong>: コ・ユンジョン (EA秘書)</span>
-                <span><strong>更新日</strong>: 2026年10月6日</span>
+                <span><strong>更新日</strong>: 2026年10月7日 (組織管轄最新化)</span>
             </div>
         </div>
 
         <!-- カテゴリー① -->
-        <div class="category-title">🏢 【カテゴリー①】経営・全社員組織図・武器庫 メインポータル</div>
+        <div class="category-title">👑 【カテゴリー①】経営・全社員組織図・全社武器庫 統合ポータル</div>
         
         <div class="url-card">
             <div class="url-name">
@@ -198,23 +221,25 @@
             <a href="https://daisuke2019-debug.github.io/ai-company-portal/public_html/index.html" target="_blank" class="url-link">🔗 https://daisuke2019-debug.github.io/ai-company-portal/public_html/index.html</a>
         </div>
 
+
+        <!-- カテゴリー② -->
+        <div class="category-title-sv">📊 【カテゴリー②】現場SV・店舗巡回支援本部 管轄ポータル群 （オペラSV統括 責任管理）</div>
+
         <div class="url-card">
             <div class="url-name">
                 2. AI Company 統合ダッシュボード ＆ DCM SRP施策ポータル
                 <span class="badge-status">● 200 OK 正常稼働</span>
+                <span class="badge-dept">📊 現場SV・店舗巡回支援本部</span>
             </div>
-            <div class="url-desc">10月 DCM SRP施策ガイド、店舗巡回マスタ入力ルール、KPI報奨金カード、統合ダッシュボード。</div>
+            <div class="url-desc">10月 DCM SRP施策ガイド、店舗巡回マスタ入力ルール、KPI報奨金カード、現場巡回統合ダッシュボード。</div>
             <a href="https://daisuke2019-debug.github.io/ai-company-portal/index.html" target="_blank" class="url-link">🔗 https://daisuke2019-debug.github.io/ai-company-portal/index.html</a>
         </div>
-
-
-        <!-- カテゴリー② -->
-        <div class="category-title">📊 【カテゴリー②】店舗巡回本部 ＆ マスタミス検証 専用ポータル</div>
 
         <div class="url-card">
             <div class="url-name">
                 3. 店舗マスタミス自動カウント ＆ リアルタイムドラッグ＆ドロップWebポータル
                 <span class="badge-status">● 200 OK 正常稼働</span>
+                <span class="badge-dept">📊 現場SV・店舗巡回支援本部</span>
             </div>
             <div class="url-desc">エクセル・報告書のリアルタイムドラッグ＆ドロップ検証、店舗マスタミス自動カウント、アラート表示ポータル。</div>
             <a href="https://daisuke2019-debug.github.io/master-miss-portal/" target="_blank" class="url-link">🔗 https://daisuke2019-debug.github.io/master-miss-portal/</a>
