@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【公式】AI Company 組織・Webツール・アセット区分け統括一覧</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <title>【公式最新版】AI Company 全 Web サイト ＆ アセット区分け統括一覧</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #0f172a;
@@ -31,10 +31,10 @@
 
         .paper {
             width: 100%;
-            max-width: 950px;
+            max-width: 980px;
             background: white;
             padding: 40px;
-            border-radius: 20px;
+            border-radius: 24px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             border: 2px solid var(--border);
         }
@@ -48,13 +48,13 @@
         .section-title {
             font-size: 18px;
             font-weight: 900;
-            padding: 12px 18px;
-            border-radius: 12px;
-            margin-top: 30px;
+            padding: 14px 20px;
+            border-radius: 14px;
+            margin-top: 35px;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: space-between;
         }
 
         .asset-primary {
@@ -98,6 +98,7 @@
             color: var(--accent);
             font-weight: 700;
             text-decoration: none;
+            word-break: break-all;
         }
 
         .url-link:hover {
@@ -107,45 +108,49 @@
         .badge {
             font-size: 11px;
             font-weight: 900;
-            padding: 3px 8px;
+            padding: 4px 10px;
             border-radius: 6px;
             display: inline-block;
         }
-        .badge-gold { background: #fef3c7; color: #92400e; }
-        .badge-blue { background: #dbeafe; color: #1e40af; }
+        .badge-gold { background: #fef3c7; color: #92400e; border: 1px solid #f59e0b; }
+        .badge-blue { background: #dbeafe; color: #1e40af; border: 1px solid #3b82f6; }
+        .badge-green { background: #dcfce7; color: #15803d; border: 1px solid #22c55e; }
     </style>
 </head>
 <body>
 
     <div class="paper">
         <div class="header-box">
-            <h1 style="margin:0; font-size:24px; font-weight:900;">【公式】AI Company 組織・Webツール・アセット区分け統括一覧</h1>
+            <h1 style="margin:0; font-size:24px; font-weight:900;">【公式最新版】AI Company 全 Web サイト ＆ アセット区分け統括一覧</h1>
             <p style="margin:8px 0 0 0; color:var(--text-muted); font-weight:700; font-size:13px;">
-                ※我が社第一資産（全AI社員ポータル）と、現場仕事で共有する実務ツール（現場SV・店舗巡回支援本部）を明確に切り離し保全管理
+                ※我が社第一資産（全AI社員ポータル）と、現場仕事で共有する実務ツール（現場SV・店舗巡回支援本部）を明確に分離・切り離し保全
             </p>
         </div>
 
         <!-- 👑 1. 我が社 第一資産 -->
         <div class="section-title asset-primary">
             <span>👑 1. AI Company 我が社 第一資産 (最高経営・全AI社員アセット)</span>
-            <span class="badge badge-gold">完全独立保全</span>
+            <span class="badge badge-gold">完全独立保全 AREA</span>
         </div>
-        <p style="font-size:13px; color:#92400e; font-weight:700; margin-top:-5px;">
-            ※現場SVの実務共有ツールとは100%完全に切り離し、専用独立URLにて永久保全。
+        <p style="font-size:13px; color:#92400e; font-weight:700; margin-top:-5px; margin-bottom:15px;">
+            ※現場SVの実務共有ツールとは100%完全に切り離し、専用の独立URL・専用フォルダにて永久保全。
         </p>
         <table>
             <thead>
                 <tr>
-                    <th>アセット名・機能</th>
-                    <th>専用独立 URL</th>
-                    <th>管理区分・役割</th>
+                    <th style="width:30%;">アセット名・機能</th>
+                    <th style="width:50%;">専用独立 Web URL</th>
+                    <th style="width:20%;">管理区分・状態</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><strong>Visual Portal (全AI社員ポータル)</strong><br><small style="color:var(--text-muted)">全49名・50名AI社員組織ビジュアル</small></td>
-                    <td><a href="https://daisuke2019-debug.github.io/ai-company-portal/public_html/ai-company-visual-portal/index.html" target="_blank" class="url-link">🔗 専用独立URLを開く</a></td>
-                    <td><span class="badge badge-gold">Dai CEO直属 / 第一資産</span></td>
+                    <td><strong>Visual Portal (全AI社員ポータル)</strong><br><small style="color:var(--text-muted)">全49名・50名AI社員 組織ビジュアルポータル</small></td>
+                    <td>
+                        <a href="https://daisuke2019-debug.github.io/ai-company-portal/public_html/ai-company-visual-portal/index.html" target="_blank" class="url-link">🔗 Dedicated Folder URL</a><br>
+                        <a href="https://daisuke2019-debug.github.io/ai-company-portal/public_html/ai_company_visual_portal.html" target="_blank" class="url-link">🔗 Dedicated Direct File URL</a>
+                    </td>
+                    <td><span class="badge badge-gold">Dai CEO 直属<br>第一資産永久保全</span></td>
                 </tr>
             </tbody>
         </table>
@@ -153,60 +158,70 @@
         <!-- 🏬 2. 現場SV・店舗巡回支援本部 (仕事共有ツール) -->
         <div class="section-title asset-sv">
             <span>🏬 2. 現場SV・店舗巡回支援本部 (実務・仕事共有ツール)</span>
-            <span class="badge badge-blue">オペラSV統括ライン</span>
+            <span class="badge badge-blue">オペラSV 統括ライン</span>
         </div>
-        <p style="font-size:13px; color:#1e40af; font-weight:700; margin-top:-5px;">
-            ※Dai CEOが普段のお仕事（サムスンSV・店舗巡回・DCM SRP施策）で現場と共有・運用している実務専用ツール。
+        <p style="font-size:13px; color:#1e40af; font-weight:700; margin-top:-5px; margin-bottom:15px;">
+            ※Dai CEOが普段のお仕事（サムスンSV・店舗巡回・DCM SRP施策）で現場・チームと共有・運用している実務専用ツール。
         </p>
         <table>
             <thead>
                 <tr>
-                    <th>ツール名・機能</th>
-                    <th>共有 Web URL</th>
-                    <th>ファイルパス / 管理部署</th>
+                    <th style="width:30%;">ツール名・機能</th>
+                    <th style="width:50%;">現場共有 Web URL</th>
+                    <th style="width:20%;">管理部署・状態</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td><strong>AI Company 統合ダッシュボード</strong><br><small style="color:var(--text-muted)">DCM SRP施策・データ統合管理</small></td>
-                    <td><a href="https://daisuke2019-debug.github.io/ai-company-portal/index.html" target="_blank" class="url-link">🔗 共有ダッシュボードを開く</a></td>
-                    <td><code>index.html</code><br><span class="badge badge-blue">現場SV・店舗巡回支援本部</span></td>
+                    <td><a href="https://daisuke2019-debug.github.io/ai-company-portal/index.html" target="_blank" class="url-link">🔗 https://daisuke2019-debug.github.io/ai-company-portal/index.html</a></td>
+                    <td><span class="badge badge-blue">現場SV・店舗巡回支援本部</span><br><span class="badge badge-green">稼働中</span></td>
                 </tr>
                 <tr>
-                    <td><strong>店舗マスタチェック指摘ポータル</strong><br><small style="color:var(--text-muted)">現場店舗のマスタチェック・指摘カウント</small></td>
-                    <td><a href="https://daisuke2019-debug.github.io/ai-company-portal/01_Portal_Web/master-miss-portal/index.html" target="_blank" class="url-link">🔗 指摘ポータルを開く</a></td>
-                    <td><code>01_Portal_Web/master-miss-portal/index.html</code><br><span class="badge badge-blue">現場SV・店舗巡回支援本部</span></td>
+                    <td><strong>店舗マスタチェック指摘ポータル</strong><br><small style="color:var(--text-muted)">現場店舗のマスタチェック・指摘件数カウント</small></td>
+                    <td><a href="https://daisuke2019-debug.github.io/ai-company-portal/01_Portal_Web/master-miss-portal/index.html" target="_blank" class="url-link">🔗 https://daisuke2019-debug.github.io/ai-company-portal/01_Portal_Web/master-miss-portal/index.html</a></td>
+                    <td><span class="badge badge-blue">現場SV・店舗巡回支援本部</span><br><span class="badge badge-green">修復完了・正常動作</span></td>
                 </tr>
             </tbody>
         </table>
 
         <!-- 🛠️ 3. Webツール・ボード資料系 -->
         <div class="section-title asset-tools">
-            <span>🛠️ 3. その他 Webツール・BOARD資料・Noteコンテンツ</span>
+            <span>🛠️ 3. その他 Webツール ＆ BOARD資料 ＆ Noteコンテンツ系</span>
         </div>
         <table>
             <thead>
                 <tr>
-                    <th>名称</th>
-                    <th>Web URL</th>
-                    <th>概要</th>
+                    <th style="width:30%;">名称・タイトル</th>
+                    <th style="width:50%;">Web URL</th>
+                    <th style="width:20%;">概要</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td><strong>BOARD 決定事項 1枚シート</strong></td>
-                    <td><a href="https://daisuke2019-debug.github.io/ai-company-portal/public_html/board_summary_singlepage.html" target="_blank" class="url-link">🔗 1枚シートを見る</a></td>
-                    <td>取締役会アジェンダ・決定事項ダッシュボード</td>
+                    <td><a href="https://daisuke2019-debug.github.io/ai-company-portal/public_html/board_summary_singlepage.html" target="_blank" class="url-link">🔗 board_summary_singlepage.html</a></td>
+                    <td>取締役会決定事項・サマリー</td>
                 </tr>
                 <tr>
                     <td><strong>BOARD 議題 構造ツリー図</strong></td>
-                    <td><a href="https://daisuke2019-debug.github.io/ai-company-portal/public_html/board_tree_visual.html" target="_blank" class="url-link">🔗 ツリー図を見る</a></td>
-                    <td>取締役会全6議題の決定構造ツリー</td>
+                    <td><a href="https://daisuke2019-debug.github.io/ai-company-portal/public_html/board_tree_visual.html" target="_blank" class="url-link">🔗 board_tree_visual.html</a></td>
+                    <td>取締役会全6議題構造ツリー</td>
                 </tr>
                 <tr>
                     <td><strong>画像注釈＆手順書作成スタジオ</strong></td>
-                    <td><a href="https://daisuke2019-debug.github.io/ai-company-portal/public_html/manual_annotator.html" target="_blank" class="url-link">🔗 スタジオを開く</a></td>
-                    <td>マニュアル画像注釈・編集Webアプリ</td>
+                    <td><a href="https://daisuke2019-debug.github.io/ai-company-portal/public_html/manual_annotator.html" target="_blank" class="url-link">🔗 manual_annotator.html</a></td>
+                    <td>マニュアル用画像注釈Webアプリ</td>
+                </tr>
+                <tr>
+                    <td><strong>チーム共有ボード (デモ)</strong></td>
+                    <td><a href="https://daisuke2019-debug.github.io/ai-company-portal/public_html/demo_preview.html" target="_blank" class="url-link">🔗 demo_preview.html</a></td>
+                    <td>現場共有ボードデモアプリ</td>
+                </tr>
+                <tr>
+                    <td><strong>Note第1弾 プレビュー</strong></td>
+                    <td><a href="https://daisuke2019-debug.github.io/ai-company-portal/public_html/note_first_post_preview.html" target="_blank" class="url-link">🔗 note_first_post_preview.html</a></td>
+                    <td>Note初投稿プレビュー</td>
                 </tr>
             </tbody>
         </table>
