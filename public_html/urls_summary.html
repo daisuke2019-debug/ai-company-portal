@@ -3,25 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【公式】AI Company 全 Web サイト ＆ Web ツール 完全統括一覧 (Google Doc Sheet)</title>
+    <title>【公式】AI Company 組織・Webツール・アセット区分け統括一覧</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1e3a8a;
+            --primary: #0f172a;
             --accent: #2563eb;
-            --sv-amber: #d97706;
-            --sv-bg: #fffbe6;
-            --bg-page: #f1f5f9;
+            --amber: #d97706;
+            --emerald: #059669;
+            --bg-page: #f8fafc;
             --card-bg: #ffffff;
             --text-dark: #0f172a;
             --text-muted: #475569;
             --border: #cbd5e1;
-        }
-
-        @media print {
-            body { background: white !important; padding: 0 !important; }
-            .paper { box-shadow: none !important; margin: 0 !important; width: 100% !important; border: none !important; }
-            .no-print { display: none !important; }
         }
 
         body {
@@ -35,290 +29,187 @@
             align-items: center;
         }
 
-        .action-bar {
-            width: 100%;
-            max-width: 850px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .btn-print {
-            background-color: var(--accent);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
-            transition: all 0.2s ease;
-        }
-
-        .btn-print:hover {
-            background-color: #1d4ed8;
-            transform: translateY(-1px);
-        }
-
-        /* Google ドキュメント風 A4ペーパーデザイン */
         .paper {
-            background: var(--card-bg);
             width: 100%;
-            max-width: 850px;
-            min-height: 1100px;
-            padding: 60px 70px;
-            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-            border-radius: 4px;
-            border: 1px solid var(--border);
-            box-sizing: border-box;
+            max-width: 950px;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 2px solid var(--border);
         }
 
-        .header {
-            border-bottom: 2px solid var(--primary);
+        .header-box {
+            border-bottom: 3px solid var(--primary);
             padding-bottom: 20px;
             margin-bottom: 30px;
         }
 
-        .header h1 {
-            color: var(--primary);
-            font-size: 1.8rem;
+        .section-title {
+            font-size: 18px;
             font-weight: 900;
-            margin: 0 0 10px 0;
-            letter-spacing: -0.5px;
-        }
-
-        .meta-info {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .category-title {
-            background-color: #eff6ff;
-            color: var(--accent);
-            padding: 8px 14px;
-            border-left: 5px solid var(--accent);
-            font-size: 1.1rem;
-            font-weight: 800;
-            margin: 30px 0 15px 0;
-            border-radius: 0 6px 6px 0;
-        }
-
-        .category-title-sv {
-            background-color: var(--sv-bg);
-            color: var(--sv-amber);
-            padding: 8px 14px;
-            border-left: 5px solid var(--sv-amber);
-            font-size: 1.1rem;
-            font-weight: 800;
-            margin: 30px 0 15px 0;
-            border-radius: 0 6px 6px 0;
-        }
-
-        .url-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            padding: 16px 20px;
-            margin-bottom: 14px;
-            transition: all 0.2s ease;
-        }
-
-        .url-card:hover {
-            border-color: var(--accent);
-            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.08);
-        }
-
-        .url-name {
-            font-size: 1rem;
-            font-weight: 800;
-            color: var(--text-dark);
-            margin-bottom: 6px;
+            padding: 12px 18px;
+            border-radius: 12px;
+            margin-top: 30px;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
-        .url-desc {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-            line-height: 1.5;
+        .asset-primary {
+            background-color: #fef3c7;
+            color: #92400e;
+            border: 2px solid #f59e0b;
+        }
+
+        .asset-sv {
+            background-color: #dbeafe;
+            color: #1e40af;
+            border: 2px solid #3b82f6;
+        }
+
+        .asset-tools {
+            background-color: #f1f5f9;
+            color: #334155;
+            border: 2px solid #94a3b8;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+        }
+
+        th, td {
+            padding: 14px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            font-size: 14px;
+        }
+
+        th {
+            background-color: #f8fafc;
+            font-weight: 800;
+            color: var(--text-dark);
         }
 
         .url-link {
-            font-size: 0.9rem;
             color: var(--accent);
             font-weight: 700;
-            word-break: break-all;
             text-decoration: none;
-            display: inline-block;
         }
 
         .url-link:hover {
             text-decoration: underline;
         }
 
-        .badge-status {
-            background-color: #dcfce7;
-            color: #15803d;
-            font-size: 0.72rem;
-            padding: 2px 8px;
-            border-radius: 9999px;
-            font-weight: 700;
-            border: 1px solid #86efac;
+        .badge {
+            font-size: 11px;
+            font-weight: 900;
+            padding: 3px 8px;
+            border-radius: 6px;
+            display: inline-block;
         }
-
-        .badge-dept {
-            background-color: #fef3c7;
-            color: #b45309;
-            font-size: 0.72rem;
-            padding: 2px 8px;
-            border-radius: 9999px;
-            font-weight: 700;
-            border: 1px solid #fde68a;
-        }
-
-        .footer {
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid #e2e8f0;
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
+        .badge-gold { background: #fef3c7; color: #92400e; }
+        .badge-blue { background: #dbeafe; color: #1e40af; }
     </style>
 </head>
 <body>
 
-    <div class="action-bar no-print">
-        <div style="font-weight: 700; color: var(--text-muted);">📄 Google ドキュメント 統合まとめシート（管轄分類更新版）</div>
-        <button class="btn-print" onclick="window.print()">🖨️ PDF / 1枚印刷</button>
-    </div>
-
     <div class="paper">
-        <div class="header">
-            <h1>🏢 AI Company 全 Web サイト ＆ Web ツール 完全統括一覧</h1>
-            <div class="meta-info">
-                <span><strong>発行組織</strong>: AI Company 代表取締役社長室 (EA秘書室)</span>
-                <span><strong>作成責任者</strong>: コ・ユンジョン (EA秘書)</span>
-                <span><strong>更新日</strong>: 2026年10月7日 (組織管轄最新化)</span>
-            </div>
+        <div class="header-box">
+            <h1 style="margin:0; font-size:24px; font-weight:900;">【公式】AI Company 組織・Webツール・アセット区分け統括一覧</h1>
+            <p style="margin:8px 0 0 0; color:var(--text-muted); font-weight:700; font-size:13px;">
+                ※我が社第一資産（全AI社員ポータル）と、現場仕事で共有する実務ツール（現場SV・店舗巡回支援本部）を明確に切り離し保全管理
+            </p>
         </div>
 
-        <!-- カテゴリー① -->
-        <div class="category-title">👑 【カテゴリー①】経営・全社員組織図・全社武器庫 統合ポータル</div>
-        
-        <div class="url-card">
-            <div class="url-name">
-                1. AI Company Visual Portal（完全版 組織図・武器庫ポータル）
-                <span class="badge-status">● 200 OK 正常稼働</span>
-            </div>
-            <div class="url-desc">Dai CEO、BOARD役員8名、AI社員全49名（全50名）組織図、実務データマップ、全武器庫統合ポータル。</div>
-            <a href="https://daisuke2019-debug.github.io/ai-company-portal/public_html/index.html" target="_blank" class="url-link">🔗 https://daisuke2019-debug.github.io/ai-company-portal/public_html/index.html</a>
+        <!-- 👑 1. 我が社 第一資産 -->
+        <div class="section-title asset-primary">
+            <span>👑 1. AI Company 我が社 第一資産 (最高経営・全AI社員アセット)</span>
+            <span class="badge badge-gold">完全独立保全</span>
         </div>
+        <p style="font-size:13px; color:#92400e; font-weight:700; margin-top:-5px;">
+            ※現場SVの実務共有ツールとは100%完全に切り離し、専用独立URLにて永久保全。
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th>アセット名・機能</th>
+                    <th>専用独立 URL</th>
+                    <th>管理区分・役割</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Visual Portal (全AI社員ポータル)</strong><br><small style="color:var(--text-muted)">全49名・50名AI社員組織ビジュアル</small></td>
+                    <td><a href="https://daisuke2019-debug.github.io/ai-company-portal/public_html/ai-company-visual-portal/index.html" target="_blank" class="url-link">🔗 専用独立URLを開く</a></td>
+                    <td><span class="badge badge-gold">Dai CEO直属 / 第一資産</span></td>
+                </tr>
+            </tbody>
+        </table>
 
-
-        <!-- カテゴリー② -->
-        <div class="category-title-sv">📊 【カテゴリー②】現場SV・店舗巡回支援本部 管轄ポータル群 （オペラSV統括 責任管理）</div>
-
-        <div class="url-card">
-            <div class="url-name">
-                2. AI Company 統合ダッシュボード ＆ DCM SRP施策ポータル
-                <span class="badge-status">● 200 OK 正常稼働</span>
-                <span class="badge-dept">📊 現場SV・店舗巡回支援本部</span>
-            </div>
-            <div class="url-desc">10月 DCM SRP施策ガイド、店舗巡回マスタ入力ルール、KPI報奨金カード、現場巡回統合ダッシュボード。</div>
-            <a href="https://daisuke2019-debug.github.io/ai-company-portal/index.html" target="_blank" class="url-link">🔗 https://daisuke2019-debug.github.io/ai-company-portal/index.html</a>
+        <!-- 🏬 2. 現場SV・店舗巡回支援本部 (仕事共有ツール) -->
+        <div class="section-title asset-sv">
+            <span>🏬 2. 現場SV・店舗巡回支援本部 (実務・仕事共有ツール)</span>
+            <span class="badge badge-blue">オペラSV統括ライン</span>
         </div>
+        <p style="font-size:13px; color:#1e40af; font-weight:700; margin-top:-5px;">
+            ※Dai CEOが普段のお仕事（サムスンSV・店舗巡回・DCM SRP施策）で現場と共有・運用している実務専用ツール。
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th>ツール名・機能</th>
+                    <th>共有 Web URL</th>
+                    <th>ファイルパス / 管理部署</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>AI Company 統合ダッシュボード</strong><br><small style="color:var(--text-muted)">DCM SRP施策・データ統合管理</small></td>
+                    <td><a href="https://daisuke2019-debug.github.io/ai-company-portal/index.html" target="_blank" class="url-link">🔗 共有ダッシュボードを開く</a></td>
+                    <td><code>index.html</code><br><span class="badge badge-blue">現場SV・店舗巡回支援本部</span></td>
+                </tr>
+                <tr>
+                    <td><strong>店舗マスタチェック指摘ポータル</strong><br><small style="color:var(--text-muted)">現場店舗のマスタチェック・指摘カウント</small></td>
+                    <td><a href="https://daisuke2019-debug.github.io/ai-company-portal/01_Portal_Web/master-miss-portal/index.html" target="_blank" class="url-link">🔗 指摘ポータルを開く</a></td>
+                    <td><code>01_Portal_Web/master-miss-portal/index.html</code><br><span class="badge badge-blue">現場SV・店舗巡回支援本部</span></td>
+                </tr>
+            </tbody>
+        </table>
 
-        <div class="url-card">
-            <div class="url-name">
-                3. 店舗マスタミス自動カウント ＆ リアルタイムドラッグ＆ドロップWebポータル
-                <span class="badge-status">● 200 OK 正常稼働</span>
-                <span class="badge-dept">📊 現場SV・店舗巡回支援本部</span>
-            </div>
-            <div class="url-desc">エクセル・報告書のリアルタイムドラッグ＆ドロップ検証、店舗マスタミス自動カウント、アラート表示ポータル。</div>
-            <a href="https://daisuke2019-debug.github.io/master-miss-portal/" target="_blank" class="url-link">🔗 https://daisuke2019-debug.github.io/master-miss-portal/</a>
+        <!-- 🛠️ 3. Webツール・ボード資料系 -->
+        <div class="section-title asset-tools">
+            <span>🛠️ 3. その他 Webツール・BOARD資料・Noteコンテンツ</span>
         </div>
-
-
-        <!-- カテゴリー③ -->
-        <div class="category-title">🛠️ 【カテゴリー③】実務・業務自動化 ツール群 (武器庫)</div>
-
-        <div class="url-card">
-            <div class="url-name">
-                4. プロ仕様 画像注釈 ＆ 手順書自動生成スタジオ
-                <span class="badge-status">● 200 OK 正常稼働</span>
-            </div>
-            <div class="url-desc">写真モザイク加工、手順書1枚画像自動生成、写真固定ロック機能。</div>
-            <a href="https://daisuke2019-debug.github.io/ai-company-portal/public_html/manual_annotator.html" target="_blank" class="url-link">🔗 https://daisuke2019-debug.github.io/ai-company-portal/public_html/manual_annotator.html</a>
-        </div>
-
-        <div class="url-card">
-            <div class="url-name">
-                5. Galaxy POP Generator（POP自動生成ツール デモプレビュー）
-                <span class="badge-status">● 200 OK 正常稼働</span>
-            </div>
-            <div class="url-desc">Galaxy S26 / A57 等の店頭販促POP自動生成ツール。</div>
-            <a href="https://daisuke2019-debug.github.io/ai-company-portal/public_html/demo_preview.html" target="_blank" class="url-link">🔗 https://daisuke2019-debug.github.io/ai-company-portal/public_html/demo_preview.html</a>
-        </div>
-
-        <div class="url-card">
-            <div class="url-name">
-                6. BOARD役員会議 組織ツリービジュアル
-                <span class="badge-status">● 200 OK 正常稼働</span>
-            </div>
-            <div class="url-desc">BOARD役員8名とAI社員の連携ビジュアルツリーシート。</div>
-            <a href="https://daisuke2019-debug.github.io/ai-company-portal/public_html/board_tree_visual.html" target="_blank" class="url-link">🔗 https://daisuke2019-debug.github.io/ai-company-portal/public_html/board_tree_visual.html</a>
-        </div>
-
-        <div class="url-card">
-            <div class="url-name">
-                7. 取締役会 1枚サマリーシート
-                <span class="badge-status">● 200 OK 正常稼働</span>
-            </div>
-            <div class="url-desc">役員会議の要約・全成果物1枚閲覧シート。</div>
-            <a href="https://daisuke2019-debug.github.io/ai-company-portal/public_html/board_summary_singlepage.html" target="_blank" class="url-link">🔗 https://daisuke2019-debug.github.io/ai-company-portal/public_html/board_summary_singlepage.html</a>
-        </div>
-
-        <div class="url-card">
-            <div class="url-name">
-                8. note 初投稿 原稿プレビュー
-                <span class="badge-status">● 200 OK 正常稼働</span>
-            </div>
-            <div class="url-desc">まーけ編集長監修 note第1弾記事のWebプレビュー。</div>
-            <a href="https://daisuke2019-debug.github.io/ai-company-portal/public_html/note_first_post_preview.html" target="_blank" class="url-link">🔗 https://daisuke2019-debug.github.io/ai-company-portal/public_html/note_first_post_preview.html</a>
-        </div>
-
-        <div class="url-card">
-            <div class="url-name">
-                9. チームボード note 連携プレビュー
-                <span class="badge-status">● 200 OK 正常稼働</span>
-            </div>
-            <div class="url-desc">チーム共有ボード・note連動機能のプレビュー。</div>
-            <a href="https://daisuke2019-debug.github.io/ai-company-portal/public_html/team_board_note_preview.html" target="_blank" class="url-link">🔗 https://daisuke2019-debug.github.io/ai-company-portal/public_html/team_board_note_preview.html</a>
-        </div>
-
-
-        <!-- カテゴリー④ -->
-        <div class="category-title">🌐 【カテゴリー④】初期・静的Webサイト</div>
-
-        <div class="url-card">
-            <div class="url-name">
-                10. My Static Site（静的Webサイト）
-                <span class="badge-status">● 200 OK 正常稼働</span>
-            </div>
-            <div class="url-desc">初期構築テスト用 静的Webサイト。</div>
-            <a href="https://daisuke2019-debug.github.io/my-static-site/" target="_blank" class="url-link">🔗 https://daisuke2019-debug.github.io/my-static-site/</a>
-        </div>
-
-        <div class="footer">
-            © 2026 AI Company Inc. All Rights Reserved. | Executive Assistant Office (Ko Yoon-jung)
-        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>名称</th>
+                    <th>Web URL</th>
+                    <th>概要</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>BOARD 決定事項 1枚シート</strong></td>
+                    <td><a href="https://daisuke2019-debug.github.io/ai-company-portal/public_html/board_summary_singlepage.html" target="_blank" class="url-link">🔗 1枚シートを見る</a></td>
+                    <td>取締役会アジェンダ・決定事項ダッシュボード</td>
+                </tr>
+                <tr>
+                    <td><strong>BOARD 議題 構造ツリー図</strong></td>
+                    <td><a href="https://daisuke2019-debug.github.io/ai-company-portal/public_html/board_tree_visual.html" target="_blank" class="url-link">🔗 ツリー図を見る</a></td>
+                    <td>取締役会全6議題の決定構造ツリー</td>
+                </tr>
+                <tr>
+                    <td><strong>画像注釈＆手順書作成スタジオ</strong></td>
+                    <td><a href="https://daisuke2019-debug.github.io/ai-company-portal/public_html/manual_annotator.html" target="_blank" class="url-link">🔗 スタジオを開く</a></td>
+                    <td>マニュアル画像注釈・編集Webアプリ</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
 </body>
