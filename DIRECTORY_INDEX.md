@@ -25,7 +25,7 @@
 | ツール名・機能 | 現場共有 Web URL | ローカルパス | 状態 |
 | :--- | :--- | :--- | :--- |
 | **AI Company 統合ダッシュボード** | 🔗 [index.html](https://daisuke2019-debug.github.io/ai-company-portal/index.html) | `index.html` | 🟢 稼働中 |
-| **店舗マスタチェック指摘ポータル** | 🔗 [01_Portal_Web/master-miss-portal](https://daisuke2019-debug.github.io/ai-company-portal/01_Portal_Web/master-miss-portal/index.html) | `01_Portal_Web/master-miss-portal/index.html` | 🟢 修復完了・正常動作 |
+| **店舗マスタチェック指摘ポータル** | 🔗 [01_Portal_Web/master-miss-portal](https://daisuke2019-debug.github.io/master-miss-portal/) | `01_Portal_Web/master-miss-portal/index.html` | 🟢 修復完了・正常動作 |
 
 ---
 

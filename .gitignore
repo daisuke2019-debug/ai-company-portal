@@ -1,0 +1,8 @@
+# 秘密情報
+.env
+
+# 店舗マスタミスポータルは独立リポジトリ (daisuke2019-debug/master-miss-portal) で管理
+01_Portal_Web/master-miss-portal/
+
+# 手元専用（公開しない）
+05_System_Internal/archives/
