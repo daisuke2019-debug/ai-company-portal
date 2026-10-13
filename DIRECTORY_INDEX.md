@@ -9,10 +9,12 @@
 ## 🏛️ 1. AI Company 我が社 第一資産 (最高経営・全AI社員アセット)
 * **アセット名**: `Visual Portal (全AI社員ポータル)`
 * **管理区分**: Dai CEO 直属 / 第一資産永久保全エリア
-* **専用独立 Web URL**:
+* **本体 (編集はこの1ファイルのみ)**:
+  - 🔗 [Main URL](https://daisuke2019-debug.github.io/ai-company-portal/public_html/index.html) (`public_html/index.html`)
+* **互換用 転送URL (本体へ自動転送)**:
   - 🔗 [Dedicated Folder URL](https://daisuke2019-debug.github.io/ai-company-portal/public_html/ai-company-visual-portal/index.html) (`public_html/ai-company-visual-portal/index.html`)
   - 🔗 [Dedicated Direct File URL](https://daisuke2019-debug.github.io/ai-company-portal/public_html/ai_company_visual_portal.html) (`public_html/ai_company_visual_portal.html`)
-* **概要**: AI社員全49名・50名の組織ビジュアル・顔写真・プロフィールを表示する最高第一資産。
+* **概要**: AI社員全53名・全54名の組織ビジュアル・顔写真・プロフィールを表示する最高第一資産。
 
 ---
 
