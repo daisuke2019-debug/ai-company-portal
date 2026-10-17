@@ -6,3 +6,11 @@
 
 # 手元専用（公開しない）
 05_System_Internal/archives/
+
+# 本業データ・作業用ファイルは入れない
+*.xlsx
+*.csv
+*.docx
+*.wav
+*.mp3
+*.webm
