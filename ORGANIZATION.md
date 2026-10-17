@@ -98,7 +98,7 @@
 - **📈 トレンラー (Trend Writer)** : トレンドライター / SNSバズワード・最新AIニュースの探索とトレンド記事化
 - **🐦 Xリサーチャー【新設】** : Xアナリティクス専門 / X固有のインプレッション・アルゴリズム・バズ投稿構造解析
 - **📝 Noteリサーチャー【新設】** : Note市場リサーチャー / Note有料記事市場・検索需要・売れ筋構成の競合調査
-- **📱 ガジラ (Gadget Specialist)** : ハードウェア解説 / Plaud Note、Galaxy、Watch最新スペック比較・技術解説
+- **📱 ガジラ (Gadget Specialist)** : ハードウェア解説 / Plaud Note Pro、Galaxy、Watch最新スペック比較・技術解説
 - **🎧 ガジェラー (Gadget Reviewer)** : 実機レビューライター / ユーザー目線での実機レビュー・使いこなし体験談執筆
 - **📡 ポッド (Podcast)** : 音声・メディアディレクター / Notebook Audio Overview音声ポッドキャスト・動画配信最適化
 - **🎨 デザイ (Designer)** : POP・画像デザイン / Galaxy POP生成・アイキャッチ・alt自動作成
