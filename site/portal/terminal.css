@@ -1,0 +1,245 @@
+/* =========================================================
+   Visual Portal — ターミナル風ダークテーマ（2026-10）
+   既存の portal.css / ページ内 <style> / インライン色の上から重ねる。
+   アクセントはテラコッタ1色。Anthropic / Claude のロゴ・マークは使わない。
+   ========================================================= */
+
+:root {
+    --term-bg: #1a1918;
+    --term-surface: #232220;
+    --term-surface-2: #2b2a27;
+    --term-border: #3a3835;
+    --term-border-strong: #57534d;
+    --term-text: #ece8e1;
+    --term-text-2: #c9c4ba;
+    --term-muted: #a39e93;
+    --term-accent: #d97757;
+    --term-accent-soft: rgba(217, 119, 87, 0.14);
+    --term-mono: "JetBrains Mono", "Noto Sans Mono", ui-monospace, Consolas, monospace;
+    --term-sans: "Noto Sans JP", system-ui, sans-serif;
+
+    /* portal.css の変数も暗くする */
+    --bg-base: var(--term-bg);
+    --bg-card: var(--term-surface);
+    --text-primary: var(--term-text);
+    --text-secondary: var(--term-text-2);
+    --text-muted: var(--term-muted);
+    color-scheme: dark;
+}
+
+html, body {
+    background: var(--term-bg) !important;
+    color: var(--term-text) !important;
+    font-family: var(--term-sans) !important;
+    overflow-x: hidden;
+}
+
+/* ---------- 全体の面と文字（インラインの淡い色もまとめて上書き） ---------- */
+.app-wrapper, .content-wrapper, main.dashboard-view, .tab-content {
+    background: transparent !important;
+    color: var(--term-text) !important;
+}
+
+.app-wrapper [style*="background"] {
+    background: var(--term-surface-2) !important;
+    border-color: var(--term-border) !important;
+}
+.app-wrapper [style*="color"] {
+    color: var(--term-text) !important;
+}
+.app-wrapper [style*="border"] {
+    border-color: var(--term-border) !important;
+}
+
+.app-wrapper p, .app-wrapper li, .app-wrapper td, .app-wrapper span, .app-wrapper div {
+    border-color: var(--term-border);
+}
+
+.app-wrapper a { color: var(--term-accent) !important; }
+
+/* ---------- ヘッダー：ターミナルのタイトルバー ---------- */
+.main-header {
+    background: var(--term-bg) !important;
+    border-bottom: 1px solid var(--term-border) !important;
+    box-shadow: none !important;
+}
+.logo-container h1 {
+    font-family: var(--term-mono) !important;
+    color: var(--term-text) !important;
+    letter-spacing: 0 !important;
+    background: none !important;
+    -webkit-text-fill-color: var(--term-text) !important;
+}
+.logo-container h1::after {
+    content: "  ~/visual-portal";
+    color: var(--term-muted);
+    font-weight: 400;
+    font-size: 0.6em;
+}
+.logo-container p {
+    font-family: var(--term-mono) !important;
+    color: var(--term-muted) !important;
+}
+
+.dashboard-tabs .tab-btn {
+    font-family: var(--term-mono) !important;
+    background: transparent !important;
+    color: var(--term-text-2) !important;
+    border: 1px solid var(--term-border) !important;
+    border-radius: 6px !important;
+    box-shadow: none !important;
+}
+.dashboard-tabs .tab-btn:hover { border-color: var(--term-border-strong) !important; color: var(--term-text) !important; }
+.dashboard-tabs .tab-btn.active {
+    background: var(--term-accent-soft) !important;
+    color: var(--term-accent) !important;
+    border-color: var(--term-accent) !important;
+}
+.dashboard-tabs .tab-btn.active::before { content: "> "; }
+
+.badge-status {
+    font-family: var(--term-mono) !important;
+    background: transparent !important;
+    color: var(--term-accent) !important;
+    border: 1px solid var(--term-accent) !important;
+}
+
+/* ---------- 見出し：コマンド風 ---------- */
+.app-wrapper h2, .app-wrapper h3, .app-wrapper h4 {
+    color: var(--term-text) !important;
+    -webkit-text-fill-color: var(--term-text) !important;
+    background: none !important;
+}
+.app-wrapper h2 { font-family: var(--term-mono) !important; }
+.app-wrapper h2::before { content: "> "; color: var(--term-accent); }
+
+.hero-intro {
+    background: var(--term-surface) !important;
+    border: 1px solid var(--term-border) !important;
+    box-shadow: none !important;
+}
+.hero-intro p { color: var(--term-text-2) !important; }
+
+/* ---------- 組織図のカード ---------- */
+.org-board-v2 {
+    background: transparent !important;
+    border: 1px solid var(--term-border) !important;
+    box-shadow: none !important;
+}
+
+.card-bright,
+.card-luka-left, .card-ceo-center, .card-ea-right, .card-coo-v2 {
+    background: var(--term-surface) !important;
+    border: 1px solid var(--term-border) !important;
+    border-top: 3px solid var(--term-accent) !important;
+    box-shadow: none !important;
+    color: var(--term-text) !important;
+}
+.card-bright:hover { border-color: var(--term-accent) !important; transform: none !important; box-shadow: none !important; }
+.card-title-text { color: var(--term-text) !important; font-family: var(--term-mono) !important; }
+.card-desc-text { color: var(--term-text-2) !important; }
+
+.role-badge-bright, .tag-bright, .tag-badge {
+    font-family: var(--term-mono) !important;
+    background: var(--term-accent-soft) !important;
+    color: var(--term-accent) !important;
+    border: 1px solid transparent !important;
+}
+.tag-bright {
+    background: var(--term-surface-2) !important;
+    color: var(--term-text-2) !important;
+    border-color: var(--term-border) !important;
+}
+
+.board-column-v2 {
+    background: var(--term-surface) !important;
+    border: 1px solid var(--term-border) !important;
+    box-shadow: none !important;
+}
+.column-title-v2 {
+    font-family: var(--term-mono) !important;
+    color: var(--term-text) !important;
+    border-bottom: 1px solid var(--term-border) !important;
+}
+.column-title-v2 span:last-child {
+    background: var(--term-accent-soft) !important;
+    color: var(--term-accent) !important;
+}
+
+.member-card-mini {
+    background: var(--term-surface-2) !important;
+    border: 1px solid var(--term-border) !important;
+    border-left: 1px solid var(--term-border) !important;
+    box-shadow: none !important;
+}
+.member-card-mini:hover, .member-card-mini:focus-visible {
+    background: var(--term-surface-2) !important;
+    border-color: var(--term-accent) !important;
+    outline: none !important;
+}
+.member-name-mini { color: var(--term-text) !important; font-family: var(--term-mono) !important; }
+.member-role-mini { color: var(--term-accent) !important; }
+.member-desc-mini { color: var(--term-muted) !important; }
+
+/* ---------- その他タブの共通部品（portal.css 由来） ---------- */
+.agent-card, .asset-card, .dir-card, .card, .panel, .glass-panel, table, th, td {
+    background-color: var(--term-surface) !important;
+    color: var(--term-text) !important;
+    border-color: var(--term-border) !important;
+    box-shadow: none !important;
+}
+th { color: var(--term-accent) !important; font-family: var(--term-mono) !important; }
+button:not(.tab-btn):not(.pm-close):not(.pm-copy) {
+    background: var(--term-surface-2) !important;
+    color: var(--term-text) !important;
+    border: 1px solid var(--term-border) !important;
+    box-shadow: none !important;
+}
+
+/* ---------- プロフィールのポップアップ ---------- */
+#profile-modal { background: rgba(0, 0, 0, 0.65) !important; }
+#profile-modal .pm-card { background: var(--term-surface) !important; color: var(--term-text) !important; border: 1px solid var(--term-border) !important; box-shadow: none !important; }
+#profile-modal .pm-name { font-family: var(--term-mono) !important; color: var(--term-text) !important; }
+#profile-modal .pm-role { color: var(--term-accent) !important; }
+#profile-modal .pm-desc { color: var(--term-text-2) !important; }
+#profile-modal .pm-engine { font-family: var(--term-mono) !important; background: var(--term-accent-soft) !important; color: var(--term-accent) !important; }
+#profile-modal .pm-tag { background: var(--term-surface-2) !important; color: var(--term-text-2) !important; border: 1px solid var(--term-border) !important; }
+#profile-modal .pm-label { color: var(--term-muted) !important; font-family: var(--term-mono) !important; }
+#profile-modal .pm-prompt { font-family: var(--term-mono) !important; background: var(--term-bg) !important; color: var(--term-text-2) !important; border: 1px solid var(--term-border) !important; }
+#profile-modal .pm-close, #profile-modal .pm-copy { background: var(--term-surface-2) !important; color: var(--term-text) !important; border: 1px solid var(--term-border) !important; }
+strong.profile-clickable, b.profile-clickable { text-decoration-color: var(--term-accent); }
+
+/* ---------- 画面の下のステータス行 ---------- */
+.term-statusline {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 900;
+    display: flex; gap: 16px; align-items: center;
+    padding: 6px 16px;
+    font-family: var(--term-mono); font-size: 0.75rem;
+    color: var(--term-muted);
+    background: var(--term-bg);
+    border-top: 1px solid var(--term-border);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.term-statusline .dot { color: var(--term-accent); }
+body { padding-bottom: 36px !important; }
+
+/* ---------- レスポンシブ：5列固定をやめる ---------- */
+.board-columns-5col { grid-template-columns: repeat(5, minmax(0, 1fr)) !important; }
+@media (max-width: 1200px) {
+    .board-columns-5col { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+}
+@media (max-width: 800px) {
+    .board-columns-5col { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+@media (max-width: 560px) {
+    .board-columns-5col { grid-template-columns: minmax(0, 1fr) !important; }
+    .card-luka-left, .card-ceo-center, .card-ea-right, .card-coo-v2 {
+        min-width: 0 !important; max-width: 100% !important; flex: 1 1 100% !important;
+    }
+    .content-wrapper, main.dashboard-view, .org-board-v2 { padding-left: 12px !important; padding-right: 12px !important; }
+    .logo-container h1::after { content: ""; }
+}
+.content-wrapper, main.dashboard-view, .org-board-v2, .app-wrapper { max-width: 100% !important; }
+@media (min-width: 1500px) {
+    .content-wrapper, .app-wrapper { max-width: 1500px !important; }
+}
