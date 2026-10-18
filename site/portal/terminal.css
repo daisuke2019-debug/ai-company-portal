@@ -243,3 +243,20 @@ body { padding-bottom: 36px !important; }
 @media (min-width: 1500px) {
     .content-wrapper, .app-wrapper { max-width: 1500px !important; }
 }
+
+/* ---------- ルカ直轄の2名（ルカのカードの中に表示） ---------- */
+.luka-reports {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--term-border);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.luka-reports-title {
+    font-family: var(--term-mono);
+    font-size: 0.72rem;
+    color: var(--term-muted);
+}
+.luka-reports-title::before { content: "└ "; color: var(--term-accent); }
+.luka-reports .member-card-mini { text-align: left; }
